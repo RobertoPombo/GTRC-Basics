@@ -23,7 +23,7 @@ namespace GTRC_Basics
                 case "System.DateTime": if (DateTime.TryParse(Value.ToString(), out DateTime _DateTime)) { return _DateTime; } else { return DateTime.MinValue; }
                 case "System.TimeSpan": if (TimeSpan.TryParse(Value.ToString(), out TimeSpan _TimeSpan)) { return _TimeSpan; } else { return TimeSpan.Zero; }
                 case "System.Object": if (Int32.TryParse(Value.ToString(), out Int32 _ID)) { return _ID; } else { return GlobalValues.NoID; }
-                default: return null;
+                default: return false;
             }
         }
 
@@ -31,20 +31,20 @@ namespace GTRC_Basics
         {
             switch (property.PropertyType.ToString())
             {
-                case "System.Boolean": return (bool)property.GetValue(obj);
-                case "System.String": return (string)property.GetValue(obj);
-                case "System.Int16": return (Int16)property.GetValue(obj);
-                case "System.Int32": return (Int32)property.GetValue(obj);
-                case "System.Int64": return (Int64)property.GetValue(obj);
-                case "System.UInt16": return (UInt16)property.GetValue(obj);
-                case "System.UInt32": return (UInt32)property.GetValue(obj);
-                case "System.UInt64": return (UInt64)property.GetValue(obj);
-                case "System.Single": return (float)property.GetValue(obj);
-                case "System.Double": return (double)property.GetValue(obj);
-                case "System.Decimal": return (decimal)property.GetValue(obj);
-                case "System.DateTime": return (DateTime)property.GetValue(obj);
-                case "System.Object": return (int)property.GetValue(obj).GetType().GetProperty("ID").GetValue(property.GetValue(obj));
-                default: return property.GetValue(obj);
+                case "System.Boolean": return (bool)(property.GetValue(obj) ?? false);
+                case "System.String": return (string)(property.GetValue(obj) ?? "");
+                case "System.Int16": return (Int16)(property.GetValue(obj) ?? 0);
+                case "System.Int32": return (Int32)(property.GetValue(obj) ?? 0);
+                case "System.Int64": return (Int64)(property.GetValue(obj) ?? 0);
+                case "System.UInt16": return (UInt16)(property.GetValue(obj) ?? 0);
+                case "System.UInt32": return (UInt32)(property.GetValue(obj) ?? 0);
+                case "System.UInt64": return (UInt64)(property.GetValue(obj) ?? 0);
+                case "System.Single": return (float)(property.GetValue(obj) ?? 0);
+                case "System.Double": return (double)(property.GetValue(obj) ?? 0);
+                case "System.Decimal": return (decimal)(property.GetValue(obj) ?? 0);
+                case "System.DateTime": return (DateTime)(property.GetValue(obj) ?? 0);
+                case "System.Object": return (int)(property.GetValue(obj)?.GetType().GetProperty("ID")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoID);
+                default: return property.GetValue(obj) ?? false;
             }
         }
 
