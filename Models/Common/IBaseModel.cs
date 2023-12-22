@@ -1,0 +1,10 @@
+﻿using System.Reflection;
+
+namespace GTRC_Basics.Models.Common
+{
+    public interface IBaseModel
+    {
+        public static List<List<PropertyInfo>> UniqProps = [[]];
+        public int Id { get; set; }
+    }
+}
