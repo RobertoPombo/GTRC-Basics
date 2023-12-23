@@ -4,50 +4,6 @@ namespace GTRC_Basics
 {
     public static class Scripts
     {
-        public static dynamic CastValue(PropertyInfo property, dynamic Value)
-        {
-            Value ??= "";
-            switch (property.PropertyType.ToString())
-            {
-                case "System.Boolean": if (Boolean.TryParse(Value.ToString(), out bool _bool)) { return _bool; } else { return false; }
-                case "System.String": return Value.ToString();
-                case "System.Int16": if (Int16.TryParse(Value.ToString(), out Int16 _Int16)) { return _Int16; } else { return (Int16)0; }
-                case "System.Int32": if (Int32.TryParse(Value.ToString(), out Int32 _Int32)) { return _Int32; } else { return (Int16)0; }
-                case "System.Int64": if (Int64.TryParse(Value.ToString(), out Int64 _Int64)) { return _Int64; } else { return (Int64)0; }
-                case "System.UInt16": if (UInt16.TryParse(Value.ToString(), out UInt16 _UInt16)) { return _UInt16; } else { return (Int16)0; }
-                case "System.UInt32": if (UInt32.TryParse(Value.ToString(), out UInt32 _UInt32)) { return _UInt32; } else { return (UInt32)0; }
-                case "System.UInt64": if (UInt64.TryParse(Value.ToString(), out UInt64 _UInt64)) { return _UInt64; } else { return (UInt64)0; }
-                case "System.Single": if (Single.TryParse(Value.ToString(), out float _float)) { return _float; } else { return (float)0; }
-                case "System.Double": if (Double.TryParse(Value.ToString(), out double _double)) { return _double; } else { return (double)0; }
-                case "System.Decimal": if (Decimal.TryParse(Value.ToString(), out decimal _decimal)) { return _decimal; } else { return (decimal)0; }
-                case "System.DateTime": if (DateTime.TryParse(Value.ToString(), out DateTime _DateTime)) { return _DateTime; } else { return DateTime.MinValue; }
-                case "System.TimeSpan": if (TimeSpan.TryParse(Value.ToString(), out TimeSpan _TimeSpan)) { return _TimeSpan; } else { return TimeSpan.Zero; }
-                case "System.Object": if (Int32.TryParse(Value.ToString(), out Int32 _ID)) { return _ID; } else { return GlobalValues.NoID; }
-                default: return false;
-            }
-        }
-
-        public static dynamic GetCastedValue(object obj, PropertyInfo property)
-        {
-            switch (property.PropertyType.ToString())
-            {
-                case "System.Boolean": return (bool)(property.GetValue(obj) ?? false);
-                case "System.String": return (string)(property.GetValue(obj) ?? "");
-                case "System.Int16": return (Int16)(property.GetValue(obj) ?? 0);
-                case "System.Int32": return (Int32)(property.GetValue(obj) ?? 0);
-                case "System.Int64": return (Int64)(property.GetValue(obj) ?? 0);
-                case "System.UInt16": return (UInt16)(property.GetValue(obj) ?? 0);
-                case "System.UInt32": return (UInt32)(property.GetValue(obj) ?? 0);
-                case "System.UInt64": return (UInt64)(property.GetValue(obj) ?? 0);
-                case "System.Single": return (float)(property.GetValue(obj) ?? 0);
-                case "System.Double": return (double)(property.GetValue(obj) ?? 0);
-                case "System.Decimal": return (decimal)(property.GetValue(obj) ?? 0);
-                case "System.DateTime": return (DateTime)(property.GetValue(obj) ?? 0);
-                case "System.Object": return (int)(property.GetValue(obj)?.GetType().GetProperty("ID")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoID);
-                default: return property.GetValue(obj) ?? false;
-            }
-        }
-
         public static string RemoveSpaceStartEnd(string s)
         {
             s ??= "";
@@ -342,6 +298,76 @@ namespace GTRC_Basics
                 }
             }
             return text;
+        }
+        public static dynamic CastValue(PropertyInfo property, dynamic Value)
+        {
+            Value ??= "";
+            switch (property.PropertyType.ToString())
+            {
+                case "System.Boolean": if (Boolean.TryParse(Value.ToString(), out bool _bool)) { return _bool; } else { return false; }
+                case "System.String": return Value.ToString();
+                case "System.Int16": if (Int16.TryParse(Value.ToString(), out Int16 _Int16)) { return _Int16; } else { return (Int16)0; }
+                case "System.Int32": if (Int32.TryParse(Value.ToString(), out Int32 _Int32)) { return _Int32; } else { return (Int16)0; }
+                case "System.Int64": if (Int64.TryParse(Value.ToString(), out Int64 _Int64)) { return _Int64; } else { return (Int64)0; }
+                case "System.UInt16": if (UInt16.TryParse(Value.ToString(), out UInt16 _UInt16)) { return _UInt16; } else { return (Int16)0; }
+                case "System.UInt32": if (UInt32.TryParse(Value.ToString(), out UInt32 _UInt32)) { return _UInt32; } else { return (UInt32)0; }
+                case "System.UInt64": if (UInt64.TryParse(Value.ToString(), out UInt64 _UInt64)) { return _UInt64; } else { return (UInt64)0; }
+                case "System.Single": if (Single.TryParse(Value.ToString(), out float _float)) { return _float; } else { return (float)0; }
+                case "System.Double": if (Double.TryParse(Value.ToString(), out double _double)) { return _double; } else { return (double)0; }
+                case "System.Decimal": if (Decimal.TryParse(Value.ToString(), out decimal _decimal)) { return _decimal; } else { return (decimal)0; }
+                case "System.DateTime": if (DateTime.TryParse(Value.ToString(), out DateTime _DateTime)) { return _DateTime; } else { return DateTime.MinValue; }
+                case "System.DateOnly": if (DateOnly.TryParse(Value.ToString(), out DateOnly _DateOnly)) { return _DateOnly; } else { return DateOnly.MinValue; }
+                case "System.TimeSpan": if (TimeSpan.TryParse(Value.ToString(), out TimeSpan _TimeSpan)) { return _TimeSpan; } else { return TimeSpan.Zero; }
+                case "GTRC_Basics.TimeUnit": if (TimeUnit.TryParse(Value.ToString(), out TimeUnit _TimeUnit)) { return _TimeUnit; } else { return TimeUnit.Miliseconds; }
+                case "GTRC_Basics.SessionType": if (SessionType.TryParse(Value.ToString(), out SessionType _SessionType)) { return _SessionType; } else { return SessionType.Practice; }
+                case "GTRC_Basics.ServerType": if (ServerType.TryParse(Value.ToString(), out ServerType _ServerType)) { return _ServerType; } else { return ServerType.Practice; }
+                case "GTRC_Basics.CarClass": if (CarClass.TryParse(Value.ToString(), out CarClass _CarClass)) { return _CarClass; } else { return CarClass.General; }
+                case "GTRC_Basics.EntrylistType": if (EntrylistType.TryParse(Value.ToString(), out EntrylistType _EntrylistType)) { return _EntrylistType; } else { return EntrylistType.None; }
+                case "GTRC_Basics.IncidentsStatus": if (IncidentsStatus.TryParse(Value.ToString(), out IncidentsStatus _IncidentsStatus)) { return _IncidentsStatus; } else { return IncidentsStatus.Open; }
+                case "GTRC_Basics.ReportReason": if (ReportReason.TryParse(Value.ToString(), out ReportReason _ReportReason)) { return _ReportReason; } else { return ReportReason.ManualReport; }
+                case "GTRC_Basics.IncidentPropCategory": if (IncidentPropCategory.TryParse(Value.ToString(), out IncidentPropCategory _IncidentPropCategory)) { return _IncidentPropCategory; } else { return IncidentPropCategory.OriginalReport; }
+                case "GTRC_Basics.FormationLapType": if (FormationLapType.TryParse(Value.ToString(), out FormationLapType _FormationLapType)) { return _FormationLapType; } else { return FormationLapType.Manual; }
+                case "GTRC_Basics.DayOfWeekend": if (DayOfWeekend.TryParse(Value.ToString(), out DayOfWeekend _DayOfWeekend)) { return _DayOfWeekend; } else { return DayOfWeekend.Friday; }
+                case "GTRC_Basics.RtgState": if (RtgState.TryParse(Value.ToString(), out RtgState _RtgState)) { return _RtgState; } else { return RtgState.NoRTG; }
+                case "GTRC_Basics.SessionState": if (SessionState.TryParse(Value.ToString(), out SessionState _SessionState)) { return _SessionState; } else { return SessionState.DNS; }
+                case "System.Object": if (Int32.TryParse(Value.ToString(), out Int32 _Id)) { return _Id; } else { return GlobalValues.NoID; }
+                default: return false;
+            }
+        }
+
+        public static dynamic GetCastedValue(object obj, PropertyInfo property)
+        {
+            switch (property.PropertyType.ToString())
+            {
+                case "System.Boolean": return (bool)(property.GetValue(obj) ?? false);
+                case "System.String": return (string)(property.GetValue(obj) ?? "");
+                case "System.Int16": return (Int16)(property.GetValue(obj) ?? 0);
+                case "System.Int32": return (Int32)(property.GetValue(obj) ?? 0);
+                case "System.Int64": return (Int64)(property.GetValue(obj) ?? 0);
+                case "System.UInt16": return (UInt16)(property.GetValue(obj) ?? 0);
+                case "System.UInt32": return (UInt32)(property.GetValue(obj) ?? 0);
+                case "System.UInt64": return (UInt64)(property.GetValue(obj) ?? 0);
+                case "System.Single": return (float)(property.GetValue(obj) ?? 0);
+                case "System.Double": return (double)(property.GetValue(obj) ?? 0);
+                case "System.Decimal": return (decimal)(property.GetValue(obj) ?? 0);
+                case "System.DateTime": return (DateTime)(property.GetValue(obj) ?? DateTime.MinValue);
+                case "System.DateOnly": return (DateOnly)(property.GetValue(obj) ?? DateOnly.MinValue);
+                case "System.TimeSpan": return (TimeSpan)(property.GetValue(obj) ?? TimeSpan.Zero);
+                case "GTRC_Basics.TimeUnit": return (TimeUnit)(property.GetValue(obj) ?? TimeUnit.Miliseconds);
+                case "GTRC_Basics.SessionType": return (SessionType)(property.GetValue(obj) ?? SessionType.Practice);
+                case "GTRC_Basics.ServerType": return (ServerType)(property.GetValue(obj) ?? ServerType.Practice);
+                case "GTRC_Basics.CarClass": return (CarClass)(property.GetValue(obj) ?? CarClass.General);
+                case "GTRC_Basics.EntrylistType": return (EntrylistType)(property.GetValue(obj) ?? EntrylistType.None);
+                case "GTRC_Basics.IncidentsStatus": return (IncidentsStatus)(property.GetValue(obj) ?? IncidentsStatus.Open);
+                case "GTRC_Basics.ReportReason": return (ReportReason)(property.GetValue(obj) ?? ReportReason.ManualReport);
+                case "GTRC_Basics.IncidentPropCategory": return (IncidentPropCategory)(property.GetValue(obj) ?? IncidentPropCategory.OriginalReport);
+                case "GTRC_Basics.FormationLapType": return (FormationLapType)(property.GetValue(obj) ?? FormationLapType.Manual);
+                case "GTRC_Basics.DayOfWeekend": return (DayOfWeekend)(property.GetValue(obj) ?? DayOfWeekend.Friday);
+                case "GTRC_Basics.RtgState": return (RtgState)(property.GetValue(obj) ?? RtgState.NoRTG);
+                case "GTRC_Basics.SessionState": return (SessionState)(property.GetValue(obj) ?? SessionState.DNS);
+                case "System.Object": return (int)(property.GetValue(obj)?.GetType().GetProperty("Id")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoID);
+                default: return property.GetValue(obj) ?? false;
+            }
         }
     }
 }
