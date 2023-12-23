@@ -2,11 +2,11 @@
 
 namespace GTRC_Basics.Models
 {
-    public class Track : BaseModel
+    public class Track : IBaseModel
     {
         public static readonly string DefaultAccTrackID = "TrackID";
-        static Track() { UniqProps = [[typeof(Track).GetProperty(nameof(AccTrackId))!]]; }
 
+        public int Id { get; set; }
         public string AccTrackId { get; set; } = DefaultAccTrackID;
         public string Name { get; set; } = "";
         public int PitBoxesCount { get; set; } = 0;
