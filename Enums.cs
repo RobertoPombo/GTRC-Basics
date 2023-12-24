@@ -105,4 +105,12 @@
         Running = 1,
         Finished = 2,
     }
+
+    public enum DtoType
+    {
+        Add = 0,
+        Update = 1,
+        Filter = 2,
+        Filters = 3,
+    }
 }
