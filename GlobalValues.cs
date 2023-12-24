@@ -8,6 +8,7 @@
         public static readonly int ID0 = 1;
         public static readonly DateTime DateTimeMinValue = DateTime.MinValue.AddYears(1800);
         public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
+        public static readonly List<string> numericalTypes = ["System.Int16", "System.Int32", "System.Int64", "System.UInt16", "System.UInt32", "System.UInt64", "System.Single", "System.Double", "System.Decimal", "System.DateTime"];
 
         private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private static string currentLogText = " ";

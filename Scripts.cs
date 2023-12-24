@@ -176,12 +176,12 @@ namespace GTRC_Basics
                 }
             }
 
-            if (pathName.Length > 0 && pathName.Substring(pathName.Length - 1) != "\\")
+            if (pathName.Length > 0 && pathName[^1..] != "\\")
             {
                 pathName += "\\";
             }
 
-            while (pathName.Length > 0 && pathName.Substring(0, 1) == "\\")
+            while (pathName.Length > 0 && pathName[..1] == "\\")
             {
                 pathName = pathName[1..];
             }
@@ -193,7 +193,7 @@ namespace GTRC_Basics
 
             path = pathStart + pathName;
 
-            if (path.Length >= path0.Length && path.Substring(0, path0.Length) == path0)
+            if (path.Length >= path0.Length && path[..path0.Length] == path0)
             {
                 path = "//" + path[path0.Length..];
             }
@@ -299,6 +299,14 @@ namespace GTRC_Basics
             }
             return text;
         }
+
+        public static List<PropertyInfo> GetPropertyList(Type type)
+        {
+            List<PropertyInfo> list = [];
+            foreach (PropertyInfo property in type.GetProperties()) { list.Add(property); }
+            return list;
+        }
+
         public static dynamic CastValue(PropertyInfo property, dynamic Value)
         {
             Value ??= "";
