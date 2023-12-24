@@ -5,15 +5,15 @@ namespace GTRC_Basics.Models
     public class Car : IBaseModel
     {
         public int Id { get; set; }
-        public int AccCarId { get; set; } = 0;
-        public string Name { get; set; } = "";
-        public string Manufacturer { get; set; } = "";
-        public string Model { get; set; } = "";
+        public uint AccCarId { get; set; } = uint.MinValue;
+        public string Name { get; set; } = string.Empty;
+        public string Manufacturer { get; set; } = string.Empty;
+        public string Model { get; set; } = string.Empty;
         public CarClass Class { get; set; } = CarClass.General;
-        public int Year { get; set; } = DateTime.Now.Year;
-        public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
-        public int WidthMm { get; set; } = 2000;
-        public int LengthMm { get; set; } = 5000;
-        public string NameGtrc { get; set; } = "";
+        public ushort Year { get; set; } = (ushort)DateTime.UtcNow.Year;
+        public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
+        public ushort WidthMm { get; set; } = 2000;
+        public ushort LengthMm { get; set; } = 5000;
+        public string NameGtrc { get; set; } = string.Empty;
     }
 }

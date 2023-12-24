@@ -4,14 +4,15 @@ namespace GTRC_Basics.Models
 {
     public class Track : IBaseModel
     {
-        public static readonly string DefaultAccTrackID = "TrackID";
+        public static readonly string DefaultAccTrackId = "trackid";
+        public static readonly ushort DefaultAccTimePenDtS = 30;
 
         public int Id { get; set; }
-        public string AccTrackId { get; set; } = DefaultAccTrackID;
-        public string Name { get; set; } = "";
-        public int PitBoxesCount { get; set; } = 0;
-        public int ServerSlotsCount { get; set; } = 0;
-        public int AccTimePenDT { get; set; } = 30;
-        public string NameGtrc { get; set; } = "";
+        public string AccTrackId { get; set; } = DefaultAccTrackId;
+        public string Name { get; set; } = string.Empty;
+        public ushort PitBoxesCount { get; set; } = ushort.MinValue;
+        public ushort ServerSlotsCount { get; set; } = ushort.MinValue;
+        public ushort AccTimePenDtS { get; set; } = DefaultAccTimePenDtS;
+        public string NameGtrc { get; set; } = string.Empty;
     }
 }

@@ -6,7 +6,7 @@ namespace GTRC_Basics
     {
         public static string RemoveSpaceStartEnd(string s)
         {
-            s ??= "";
+            s ??= string.Empty;
             while (s.Length > 0 && s[..1] == " ") { s = s[1..]; }
             while (s.Length > 0 && s.Substring(s.Length - 1, 1) == " ") { s = s[..^1]; }
             return s;
@@ -30,7 +30,7 @@ namespace GTRC_Basics
             _string = _string.Substring(start, ulength);
             if (length < 0)
             {
-                string revString = "";
+                string revString = string.Empty;
                 foreach (char _char in _string.Reverse()) { revString += _char; }
                 return revString;
             }
@@ -62,8 +62,8 @@ namespace GTRC_Basics
             List<string> vocals = ["a", "e", "i", "o", "u"];
             foreach (string vocal in vocals)
             {
-                str = str.Replace(vocal.ToLower(), "");
-                str = str.Replace(vocal.ToUpper(), "");
+                str = str.Replace(vocal.ToLower(), string.Empty);
+                str = str.Replace(vocal.ToUpper(), string.Empty);
             }
             return str;
         }
@@ -86,14 +86,14 @@ namespace GTRC_Basics
             str_sek = int_sek.ToString() + ".";
             if (int_sek < 10 && (int_min > 0 || int_std > 0)) { str_sek = "0" + str_sek; }
 
-            if (int_min == 0 && int_std == 0) { str_min = ""; }
+            if (int_min == 0 && int_std == 0) { str_min = string.Empty; }
             else
             {
                 str_min = int_min.ToString() + ":";
                 if (int_min < 10 && int_std > 0) { str_min = "0" + str_min; }
             }
 
-            if (int_std == 0) { str_std = ""; }
+            if (int_std == 0) { str_std = string.Empty; }
             else { str_std = int_std.ToString() + ":"; }
 
             return str_std + str_min + str_sek + str_ms;
@@ -246,7 +246,7 @@ namespace GTRC_Basics
             int daydigitcount = 0;
             int monthdigitcount = 0;
             int yeardigitcount = 0;
-            string text = "";
+            string text = string.Empty;
             foreach (char currentChar in parseType.Reverse())
             {
                 switch (currentChar)
@@ -285,7 +285,7 @@ namespace GTRC_Basics
             int secDigitCount = 0;
             int minDigitCount = 0;
             int hDigitCount = 0;
-            string text = "";
+            string text = string.Empty;
             foreach (char currentChar in parseType.Reverse())
             {
                 switch (currentChar)
@@ -309,11 +309,12 @@ namespace GTRC_Basics
 
         public static dynamic CastValue(PropertyInfo property, dynamic Value)
         {
-            Value ??= "";
+            Value ??= string.Empty;
             switch (property.PropertyType.ToString())
             {
                 case "System.Boolean": if (Boolean.TryParse(Value.ToString(), out bool _bool)) { return _bool; } else { return false; }
                 case "System.String": return Value.ToString();
+                case "System.Byte": if (Byte.TryParse(Value.ToString(), out Byte _Byte)) { return _Byte; } else { return (Byte)0; }
                 case "System.Int16": if (Int16.TryParse(Value.ToString(), out Int16 _Int16)) { return _Int16; } else { return (Int16)0; }
                 case "System.Int32": if (Int32.TryParse(Value.ToString(), out Int32 _Int32)) { return _Int32; } else { return (Int16)0; }
                 case "System.Int64": if (Int64.TryParse(Value.ToString(), out Int64 _Int64)) { return _Int64; } else { return (Int64)0; }
@@ -349,7 +350,8 @@ namespace GTRC_Basics
             switch (property.PropertyType.ToString())
             {
                 case "System.Boolean": return (bool)(property.GetValue(obj) ?? false);
-                case "System.String": return (string)(property.GetValue(obj) ?? "");
+                case "System.String": return (string)(property.GetValue(obj) ?? string.Empty);
+                case "System.Byte": return (Byte)(property.GetValue(obj) ?? 0);
                 case "System.Int16": return (Int16)(property.GetValue(obj) ?? 0);
                 case "System.Int32": return (Int32)(property.GetValue(obj) ?? 0);
                 case "System.Int64": return (Int64)(property.GetValue(obj) ?? 0);
