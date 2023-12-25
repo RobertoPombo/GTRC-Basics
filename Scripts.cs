@@ -341,6 +341,9 @@ namespace GTRC_Basics
                 case "GTRC_Basics.SessionState": if (SessionState.TryParse(Value.ToString(), out SessionState _SessionState)) { return _SessionState; } else { return SessionState.DNS; }
                 case "GTRC_Basics.DtoType": if (DtoType.TryParse(Value.ToString(), out DtoType _DtoType)) { return _DtoType; } else { return DtoType.Add; }
                 case "GTRC_Basics.HttpRequestType": if (HttpRequestType.TryParse(Value.ToString(), out HttpRequestType _HttpRequestType)) { return _HttpRequestType; } else { return HttpRequestType.Get; }
+                case "GTRC_Basics.ProtocolType": if (ProtocolType.TryParse(Value.ToString(), out ProtocolType _ProtocolType)) { return _ProtocolType; } else { return ProtocolType.http; }
+                case "GTRC_Basics.NetworkType": if (NetworkType.TryParse(Value.ToString(), out NetworkType _NetworkType)) { return _NetworkType; } else { return NetworkType.Localhost; }
+                case "GTRC_Basics.IpAdressType": if (IpAdressType.TryParse(Value.ToString(), out IpAdressType _IpAdressType)) { return _IpAdressType; } else { return IpAdressType.IPv4; }
                 case "System.Object": if (Int32.TryParse(Value.ToString(), out Int32 _Id)) { return _Id; } else { return GlobalValues.NoId; }
                 default: return false;
             }
@@ -379,6 +382,9 @@ namespace GTRC_Basics
                 case "GTRC_Basics.SessionState": return (SessionState)(property.GetValue(obj) ?? SessionState.DNS);
                 case "GTRC_Basics.DtoType": return (DtoType)(property.GetValue(obj) ?? DtoType.Add);
                 case "GTRC_Basics.HttpRequestType": return (HttpRequestType)(property.GetValue(obj) ?? HttpRequestType.Get);
+                case "GTRC_Basics.ProtocolType": return (ProtocolType)(property.GetValue(obj) ?? ProtocolType.http);
+                case "GTRC_Basics.NetworkType": return (NetworkType)(property.GetValue(obj) ?? NetworkType.Localhost);
+                case "GTRC_Basics.IpAdressType": return (IpAdressType)(property.GetValue(obj) ?? IpAdressType.IPv4);
                 case "System.Object": return (int)(property.GetValue(obj)?.GetType().GetProperty("Id")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoId);
                 default: return property.GetValue(obj) ?? false;
             }

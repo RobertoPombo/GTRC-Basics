@@ -121,4 +121,22 @@
         Delete = 2,
         Update = 3,
     }
+
+    public enum ProtocolType
+    {
+        http = 0,
+        https = 1,
+    }
+
+    public enum NetworkType
+    {
+        Localhost = 0,
+        IpAdress = 1,
+    }
+
+    public enum IpAdressType
+    {
+        IPv4 = 0,
+        IPv6 = 1,
+    }
 }
