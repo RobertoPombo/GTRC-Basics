@@ -1,4 +1,7 @@
-﻿namespace GTRC_Basics
+﻿using GTRC_Basics.Models;
+using GTRC_Basics.Models.DTOs;
+
+namespace GTRC_Basics
 {
     public delegate void Notify();
 
@@ -19,5 +22,76 @@
 
         public static event Notify? NewLogText;
         public static void OnNewLogText() { NewLogText?.Invoke(); }
+
+        public static readonly List<Type> ModelTypeList = [typeof(Color), typeof(Car), typeof(Track), typeof(User), typeof(Series)];
+        public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
+        {
+            { typeof(Color), [typeof(ColorUniqPropsDto0)] },
+            { typeof(Car), [typeof(CarUniqPropsDto0)] },
+            { typeof(Track), [typeof(TrackUniqPropsDto0)] },
+            { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
+            { typeof(Series), [typeof(SeriesUniqPropsDto0)] }
+        };
+        public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
+        {
+            {
+                typeof(Color), new()
+                {
+                    { DtoType.Add, typeof(ColorAddDto) },
+                    { DtoType.Update, typeof(ColorUpdateDto) },
+                    { DtoType.Filter, typeof(ColorFilterDto) },
+                    { DtoType.Filters, typeof(ColorFilterDtos) },
+                }
+            },
+            {
+                typeof(Car), new()
+                {
+                    { DtoType.Add, typeof(CarAddDto) },
+                    { DtoType.Update, typeof(CarUpdateDto) },
+                    { DtoType.Filter, typeof(CarFilterDto) },
+                    { DtoType.Filters, typeof(CarFilterDtos) },
+                }
+            },
+            {
+                typeof(Track), new()
+                {
+                    { DtoType.Add, typeof(TrackAddDto) },
+                    { DtoType.Update, typeof(TrackUpdateDto) },
+                    { DtoType.Filter, typeof(TrackFilterDto) },
+                    { DtoType.Filters, typeof(TrackFilterDtos) },
+                }
+            },
+            {
+                typeof(User), new()
+                {
+                    { DtoType.Add, typeof(UserAddDto) },
+                    { DtoType.Update, typeof(UserUpdateDto) },
+                    { DtoType.Filter, typeof(UserFilterDto) },
+                    { DtoType.Filters, typeof(UserFilterDtos) },
+                }
+            },
+            {
+                typeof(Series), new()
+                {
+                    { DtoType.Add, typeof(SeriesAddDto) },
+                    { DtoType.Update, typeof(SeriesUpdateDto) },
+                    { DtoType.Filter, typeof(SeriesFilterDto) },
+                    { DtoType.Filters, typeof(SeriesFilterDtos) },
+                }
+            },
+        };
+
+        public static bool IsForeignId(string propertyName)
+        {
+            if (propertyName.Length > 2 && propertyName[^2..] == "Id")
+            {
+                foreach (Type type in ModelTypeList)
+                {
+                    if (propertyName[..^2] == type.Name) { return true; }
+                }
+                return false;
+            }
+            return false;
+        }
     }
 }

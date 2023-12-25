@@ -113,4 +113,12 @@
         Filter = 2,
         Filters = 3,
     }
+
+    public enum HttpRequestType
+    {
+        Get = 0,
+        Add = 1,
+        Delete = 2,
+        Update = 3,
+    }
 }
