@@ -124,8 +124,9 @@
 
     public enum ProtocolType
     {
-        http = 0,
-        https = 1,
+        None = 0,
+        http = 1,
+        https = 2,
     }
 
     public enum NetworkType
