@@ -12,31 +12,6 @@ namespace GTRC_Basics
             return s;
         }
 
-        public static string SubStr(string _string, int start)
-        {
-            return SubStr(_string, start, int.MaxValue);
-        }
-
-        public static string SubStr(string _string, int start, int length)
-        {
-            int ulength = Math.Abs(length);
-            if (start < 0)
-            {
-                start = _string.Length + start;
-                start = Math.Max(0, start);
-            }
-            start = Math.Min(_string.Length, Math.Max(0, start));
-            ulength = Math.Min(ulength, _string.Length - start);
-            _string = _string.Substring(start, ulength);
-            if (length < 0)
-            {
-                string revString = string.Empty;
-                foreach (char _char in _string.Reverse()) { revString += _char; }
-                return revString;
-            }
-            else { return _string; }
-        }
-
         public static string StrRemoveSpecialLetters(string str)
         {
             str = str.Replace("ß", "ss");
@@ -351,43 +326,43 @@ namespace GTRC_Basics
 
         public static dynamic GetCastedValue(object obj, PropertyInfo property)
         {
-            switch (property.PropertyType.ToString())
+            return property.PropertyType.ToString() switch
             {
-                case "System.Boolean": return (bool)(property.GetValue(obj) ?? false);
-                case "System.String": return (string)(property.GetValue(obj) ?? string.Empty);
-                case "System.Byte": return (Byte)(property.GetValue(obj) ?? 0);
-                case "System.Int16": return (Int16)(property.GetValue(obj) ?? 0);
-                case "System.Int32": return (Int32)(property.GetValue(obj) ?? 0);
-                case "System.Int64": return (Int64)(property.GetValue(obj) ?? 0);
-                case "System.UInt16": return (UInt16)(property.GetValue(obj) ?? 0);
-                case "System.UInt32": return (UInt32)(property.GetValue(obj) ?? 0);
-                case "System.UInt64": return (UInt64)(property.GetValue(obj) ?? 0);
-                case "System.Single": return (float)(property.GetValue(obj) ?? 0);
-                case "System.Double": return (double)(property.GetValue(obj) ?? 0);
-                case "System.Decimal": return (decimal)(property.GetValue(obj) ?? 0);
-                case "System.DateTime": return (DateTime)(property.GetValue(obj) ?? DateTime.MinValue);
-                case "System.DateOnly": return (DateOnly)(property.GetValue(obj) ?? DateOnly.MinValue);
-                case "System.TimeSpan": return (TimeSpan)(property.GetValue(obj) ?? TimeSpan.Zero);
-                case "GTRC_Basics.TimeUnit": return (TimeUnit)(property.GetValue(obj) ?? TimeUnit.Miliseconds);
-                case "GTRC_Basics.SessionType": return (SessionType)(property.GetValue(obj) ?? SessionType.Practice);
-                case "GTRC_Basics.ServerType": return (ServerType)(property.GetValue(obj) ?? ServerType.Practice);
-                case "GTRC_Basics.CarClass": return (CarClass)(property.GetValue(obj) ?? CarClass.General);
-                case "GTRC_Basics.EntrylistType": return (EntrylistType)(property.GetValue(obj) ?? EntrylistType.None);
-                case "GTRC_Basics.IncidentsStatus": return (IncidentsStatus)(property.GetValue(obj) ?? IncidentsStatus.Open);
-                case "GTRC_Basics.ReportReason": return (ReportReason)(property.GetValue(obj) ?? ReportReason.ManualReport);
-                case "GTRC_Basics.IncidentPropCategory": return (IncidentPropCategory)(property.GetValue(obj) ?? IncidentPropCategory.OriginalReport);
-                case "GTRC_Basics.FormationLapType": return (FormationLapType)(property.GetValue(obj) ?? FormationLapType.Manual);
-                case "GTRC_Basics.DayOfWeekend": return (DayOfWeekend)(property.GetValue(obj) ?? DayOfWeekend.Friday);
-                case "GTRC_Basics.RtgState": return (RtgState)(property.GetValue(obj) ?? RtgState.NoRTG);
-                case "GTRC_Basics.SessionState": return (SessionState)(property.GetValue(obj) ?? SessionState.DNS);
-                case "GTRC_Basics.DtoType": return (DtoType)(property.GetValue(obj) ?? DtoType.Add);
-                case "GTRC_Basics.HttpRequestType": return (HttpRequestType)(property.GetValue(obj) ?? HttpRequestType.Get);
-                case "GTRC_Basics.ProtocolType": return (ProtocolType)(property.GetValue(obj) ?? ProtocolType.None);
-                case "GTRC_Basics.NetworkType": return (NetworkType)(property.GetValue(obj) ?? NetworkType.Localhost);
-                case "GTRC_Basics.IpAdressType": return (IpAdressType)(property.GetValue(obj) ?? IpAdressType.IPv4);
-                case "System.Object": return (int)(property.GetValue(obj)?.GetType().GetProperty("Id")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoId);
-                default: return property.GetValue(obj) ?? false;
-            }
+                "System.Boolean" => (bool)(property.GetValue(obj) ?? false),
+                "System.String" => (string)(property.GetValue(obj) ?? string.Empty),
+                "System.Byte" => (Byte)(property.GetValue(obj) ?? 0),
+                "System.Int16" => (Int16)(property.GetValue(obj) ?? 0),
+                "System.Int32" => (Int32)(property.GetValue(obj) ?? 0),
+                "System.Int64" => (Int64)(property.GetValue(obj) ?? 0),
+                "System.UInt16" => (UInt16)(property.GetValue(obj) ?? 0),
+                "System.UInt32" => (UInt32)(property.GetValue(obj) ?? 0),
+                "System.UInt64" => (UInt64)(property.GetValue(obj) ?? 0),
+                "System.Single" => (float)(property.GetValue(obj) ?? 0),
+                "System.Double" => (double)(property.GetValue(obj) ?? 0),
+                "System.Decimal" => (decimal)(property.GetValue(obj) ?? 0),
+                "System.DateTime" => (DateTime)(property.GetValue(obj) ?? DateTime.MinValue),
+                "System.DateOnly" => (DateOnly)(property.GetValue(obj) ?? DateOnly.MinValue),
+                "System.TimeSpan" => (TimeSpan)(property.GetValue(obj) ?? TimeSpan.Zero),
+                "GTRC_Basics.TimeUnit" => (TimeUnit)(property.GetValue(obj) ?? TimeUnit.Miliseconds),
+                "GTRC_Basics.SessionType" => (SessionType)(property.GetValue(obj) ?? SessionType.Practice),
+                "GTRC_Basics.ServerType" => (ServerType)(property.GetValue(obj) ?? ServerType.Practice),
+                "GTRC_Basics.CarClass" => (CarClass)(property.GetValue(obj) ?? CarClass.General),
+                "GTRC_Basics.EntrylistType" => (EntrylistType)(property.GetValue(obj) ?? EntrylistType.None),
+                "GTRC_Basics.IncidentsStatus" => (IncidentsStatus)(property.GetValue(obj) ?? IncidentsStatus.Open),
+                "GTRC_Basics.ReportReason" => (ReportReason)(property.GetValue(obj) ?? ReportReason.ManualReport),
+                "GTRC_Basics.IncidentPropCategory" => (IncidentPropCategory)(property.GetValue(obj) ?? IncidentPropCategory.OriginalReport),
+                "GTRC_Basics.FormationLapType" => (FormationLapType)(property.GetValue(obj) ?? FormationLapType.Manual),
+                "GTRC_Basics.DayOfWeekend" => (DayOfWeekend)(property.GetValue(obj) ?? DayOfWeekend.Friday),
+                "GTRC_Basics.RtgState" => (RtgState)(property.GetValue(obj) ?? RtgState.NoRTG),
+                "GTRC_Basics.SessionState" => (SessionState)(property.GetValue(obj) ?? SessionState.DNS),
+                "GTRC_Basics.DtoType" => (DtoType)(property.GetValue(obj) ?? DtoType.Add),
+                "GTRC_Basics.HttpRequestType" => (HttpRequestType)(property.GetValue(obj) ?? HttpRequestType.Get),
+                "GTRC_Basics.ProtocolType" => (ProtocolType)(property.GetValue(obj) ?? ProtocolType.None),
+                "GTRC_Basics.NetworkType" => (NetworkType)(property.GetValue(obj) ?? NetworkType.Localhost),
+                "GTRC_Basics.IpAdressType" => (IpAdressType)(property.GetValue(obj) ?? IpAdressType.IPv4),
+                "System.Object" => (dynamic)(int)(property.GetValue(obj)?.GetType().GetProperty("Id")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoId),
+                _ => property.GetValue(obj) ?? false,
+            };
         }
     }
 }
