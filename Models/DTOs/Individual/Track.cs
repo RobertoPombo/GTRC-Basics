@@ -21,7 +21,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class TrackUpdateDto : TrackAddDto
     {
-        [Required] public int Id { get; set; } = GlobalValues.NoID;
+        [Required] public int Id { get; set; } = GlobalValues.NoId;
     }
 
 

@@ -22,7 +22,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class ColorUpdateDto : ColorAddDto
     {
-        [Required] public int Id { get; set; } = GlobalValues.NoID;
+        [Required] public int Id { get; set; } = GlobalValues.NoId;
     }
 
 

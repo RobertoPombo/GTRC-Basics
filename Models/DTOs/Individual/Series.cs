@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace GTRC_Basics.Models.DTOs
 {
     public class SeriesUniqPropsDto0 : Mapper<Series>
@@ -17,7 +16,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class SeriesUpdateDto : SeriesAddDto
     {
-        [Required] public int Id { get; set; } = GlobalValues.NoID;
+        [Required] public int Id { get; set; } = GlobalValues.NoId;
     }
 
 
