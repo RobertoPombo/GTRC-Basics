@@ -8,7 +8,7 @@ namespace GTRC_Basics
     public static class GlobalValues
     {
         public static readonly string Id = "Id";
-        public static readonly int NoId = -1;
+        public static readonly int NoId = 0;
         public static readonly int Id0 = 1;
         public static readonly DateTime DateTimeMinValue = DateTime.MinValue.AddYears(1800);
         public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
