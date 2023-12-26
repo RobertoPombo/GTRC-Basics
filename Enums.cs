@@ -108,10 +108,11 @@
 
     public enum DtoType
     {
-        Add = 0,
-        Update = 1,
-        Filter = 2,
-        Filters = 3,
+        UniqProps = 0,
+        Add = 1,
+        Update = 2,
+        Filter = 3,
+        Filters = 4,
     }
 
     public enum HttpRequestType
