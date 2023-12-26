@@ -10,7 +10,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class CarAddDto : Mapper<Car>
     {
-        public int? AccCarId { get; set; }
+        public uint? AccCarId { get; set; }
         public string? Name { get; set; }
         public string? Manufacturer { get; set; }
         public string? Model { get; set; }
