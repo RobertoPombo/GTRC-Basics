@@ -13,7 +13,7 @@ namespace GTRC_Basics.Models.DTOs
             get { return dto; }
             set
             {
-                if (value.GetType() == GlobalValues.DictDtoModels[typeof(ModelType)][dtoType])
+                if (value.GetType() == GlobalValues.DictUniqPropsDtoModels[typeof(ModelType)][index])
                 {
                     dto = GetMappedDto(value);
                 }
