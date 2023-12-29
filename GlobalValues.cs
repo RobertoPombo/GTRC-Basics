@@ -12,7 +12,11 @@ namespace GTRC_Basics
         public static readonly int Id0 = 1;
         public static readonly DateTime DateTimeMinValue = DateTime.MinValue.AddYears(1800);
         public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
-        public static readonly List<string> numericalTypes = ["System.Int16", "System.Int32", "System.Int64", "System.UInt16", "System.UInt32", "System.UInt64", "System.Single", "System.Double", "System.Decimal", "System.DateTime"];
+        public static readonly List<Type> numericalTypes = [
+            typeof(byte), typeof(byte?), typeof(short), typeof(short?), typeof(ushort), typeof(ushort?), typeof(int), typeof(int?), typeof(uint), typeof(uint?),
+            typeof(float), typeof(float?), typeof(double), typeof(double?), typeof(decimal), typeof(decimal?), typeof(DateTime), typeof(DateTime?), typeof(DateOnly),
+            typeof(DateOnly?), typeof(TimeSpan), typeof(TimeSpan?)
+            ];
 
         private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private static string currentLogText = string.Empty;

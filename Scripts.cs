@@ -282,87 +282,77 @@ namespace GTRC_Basics
             return list;
         }
 
-        public static dynamic CastValue(PropertyInfo property, dynamic Value)
+        public static dynamic? GetCastedValue(dynamic obj, PropertyInfo property) { try { return CastValue(property, property.GetValue(obj)); } catch { return null; } }
+
+        public static dynamic? CastValue(PropertyInfo property, dynamic? Value)
         {
-            Value ??= string.Empty;
-            switch (property.PropertyType.ToString())
-            {
-                case "System.Boolean": if (Boolean.TryParse(Value.ToString(), out bool _bool)) { return _bool; } else { return false; }
-                case "System.String": return Value.ToString();
-                case "System.Byte": if (Byte.TryParse(Value.ToString(), out Byte _Byte)) { return _Byte; } else { return (Byte)0; }
-                case "System.Int16": if (Int16.TryParse(Value.ToString(), out Int16 _Int16)) { return _Int16; } else { return (Int16)0; }
-                case "System.Int32": if (Int32.TryParse(Value.ToString(), out Int32 _Int32)) { return _Int32; } else { return (Int16)0; }
-                case "System.Int64": if (Int64.TryParse(Value.ToString(), out Int64 _Int64)) { return _Int64; } else { return (Int64)0; }
-                case "System.UInt16": if (UInt16.TryParse(Value.ToString(), out UInt16 _UInt16)) { return _UInt16; } else { return (Int16)0; }
-                case "System.UInt32": if (UInt32.TryParse(Value.ToString(), out UInt32 _UInt32)) { return _UInt32; } else { return (UInt32)0; }
-                case "System.UInt64": if (UInt64.TryParse(Value.ToString(), out UInt64 _UInt64)) { return _UInt64; } else { return (UInt64)0; }
-                case "System.Single": if (Single.TryParse(Value.ToString(), out float _float)) { return _float; } else { return (float)0; }
-                case "System.Double": if (Double.TryParse(Value.ToString(), out double _double)) { return _double; } else { return (double)0; }
-                case "System.Decimal": if (Decimal.TryParse(Value.ToString(), out decimal _decimal)) { return _decimal; } else { return (decimal)0; }
-                case "System.DateTime": if (DateTime.TryParse(Value.ToString(), out DateTime _DateTime)) { return _DateTime; } else { return DateTime.MinValue; }
-                case "System.DateOnly": if (DateOnly.TryParse(Value.ToString(), out DateOnly _DateOnly)) { return _DateOnly; } else { return DateOnly.MinValue; }
-                case "System.TimeSpan": if (TimeSpan.TryParse(Value.ToString(), out TimeSpan _TimeSpan)) { return _TimeSpan; } else { return TimeSpan.Zero; }
-                case "GTRC_Basics.TimeUnit": if (TimeUnit.TryParse(Value.ToString(), out TimeUnit _TimeUnit)) { return _TimeUnit; } else { return TimeUnit.Miliseconds; }
-                case "GTRC_Basics.SessionType": if (SessionType.TryParse(Value.ToString(), out SessionType _SessionType)) { return _SessionType; } else { return SessionType.Practice; }
-                case "GTRC_Basics.ServerType": if (ServerType.TryParse(Value.ToString(), out ServerType _ServerType)) { return _ServerType; } else { return ServerType.Practice; }
-                case "GTRC_Basics.CarClass": if (CarClass.TryParse(Value.ToString(), out CarClass _CarClass)) { return _CarClass; } else { return CarClass.General; }
-                case "GTRC_Basics.EntrylistType": if (EntrylistType.TryParse(Value.ToString(), out EntrylistType _EntrylistType)) { return _EntrylistType; } else { return EntrylistType.None; }
-                case "GTRC_Basics.IncidentsStatus": if (IncidentsStatus.TryParse(Value.ToString(), out IncidentsStatus _IncidentsStatus)) { return _IncidentsStatus; } else { return IncidentsStatus.Open; }
-                case "GTRC_Basics.ReportReason": if (ReportReason.TryParse(Value.ToString(), out ReportReason _ReportReason)) { return _ReportReason; } else { return ReportReason.ManualReport; }
-                case "GTRC_Basics.IncidentPropCategory": if (IncidentPropCategory.TryParse(Value.ToString(), out IncidentPropCategory _IncidentPropCategory)) { return _IncidentPropCategory; } else { return IncidentPropCategory.OriginalReport; }
-                case "GTRC_Basics.FormationLapType": if (FormationLapType.TryParse(Value.ToString(), out FormationLapType _FormationLapType)) { return _FormationLapType; } else { return FormationLapType.Manual; }
-                case "GTRC_Basics.DayOfWeekend": if (DayOfWeekend.TryParse(Value.ToString(), out DayOfWeekend _DayOfWeekend)) { return _DayOfWeekend; } else { return DayOfWeekend.Friday; }
-                case "GTRC_Basics.RtgState": if (RtgState.TryParse(Value.ToString(), out RtgState _RtgState)) { return _RtgState; } else { return RtgState.NoRTG; }
-                case "GTRC_Basics.SessionState": if (SessionState.TryParse(Value.ToString(), out SessionState _SessionState)) { return _SessionState; } else { return SessionState.DNS; }
-                case "GTRC_Basics.DtoType": if (DtoType.TryParse(Value.ToString(), out DtoType _DtoType)) { return _DtoType; } else { return DtoType.Add; }
-                case "GTRC_Basics.HttpRequestType": if (HttpRequestType.TryParse(Value.ToString(), out HttpRequestType _HttpRequestType)) { return _HttpRequestType; } else { return HttpRequestType.Get; }
-                case "GTRC_Basics.ProtocolType": if (ProtocolType.TryParse(Value.ToString(), out ProtocolType _ProtocolType)) { return _ProtocolType; } else { return ProtocolType.None; }
-                case "GTRC_Basics.NetworkType": if (NetworkType.TryParse(Value.ToString(), out NetworkType _NetworkType)) { return _NetworkType; } else { return NetworkType.Localhost; }
-                case "GTRC_Basics.IpAdressType": if (IpAdressType.TryParse(Value.ToString(), out IpAdressType _IpAdressType)) { return _IpAdressType; } else { return IpAdressType.IPv4; }
-                case "System.Object": if (Int32.TryParse(Value.ToString(), out Int32 _Id)) { return _Id; } else { return GlobalValues.NoId; }
-                default: return false;
-            }
+            string? strValue = Value?.ToString();
+            Type type = property.PropertyType;
+            if (type == typeof(string)) { return strValue; }
+            else if (type == typeof(bool)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
+            else if (type == typeof(bool?)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
+            else if (type == typeof(byte)) { if (Byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
+            else if (type == typeof(byte?)) { if (Byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
+            else if (type == typeof(short)) { if (Int16.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
+            else if (type == typeof(short?)) { if (Int16.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ushort)) { if (UInt16.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ushort?)) { if (UInt16.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
+            else if (type == typeof(int)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
+            else if (type == typeof(int?)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
+            else if (type == typeof(uint)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
+            else if (type == typeof(uint?)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
+            else if (type == typeof(float)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
+            else if (type == typeof(float?)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
+            else if (type == typeof(double)) { if (Double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
+            else if (type == typeof(double?)) { if (Double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
+            else if (type == typeof(decimal)) { if (Decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
+            else if (type == typeof(decimal?)) { if (Decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DateTime)) { if (DateTime.TryParse(strValue, out DateTime cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DateTime?)) { if (DateTime.TryParse(strValue, out DateTime cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DateOnly)) { if (DateOnly.TryParse(strValue, out DateOnly cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DateOnly?)) { if (DateOnly.TryParse(strValue, out DateOnly cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeSpan)) { if (TimeSpan.TryParse(strValue, out TimeSpan cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeSpan?)) { if (TimeSpan.TryParse(strValue, out TimeSpan cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeUnit)) { if (TimeUnit.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeUnit?)) { if (TimeUnit.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionType)) { if (SessionType.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionType?)) { if (SessionType.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ServerType)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ServerType?)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(CarClass)) { if (CarClass.TryParse(strValue, out CarClass cv)) { return cv; } else { return null; } }
+            else if (type == typeof(CarClass?)) { if (CarClass.TryParse(strValue, out CarClass cv)) { return cv; } else { return null; } }
+            else if (type == typeof(EntrylistType)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(EntrylistType?)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentsStatus)) { if (IncidentsStatus.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentsStatus?)) { if (IncidentsStatus.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ReportReason)) { if (ReportReason.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ReportReason?)) { if (ReportReason.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentPropCategory)) { if (IncidentPropCategory.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentPropCategory?)) { if (IncidentPropCategory.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(FormationLapType)) { if (FormationLapType.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(FormationLapType?)) { if (FormationLapType.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DayOfWeekend)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DayOfWeekend?)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
+            else if (type == typeof(RtgState)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(RtgState?)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionState)) { if (SessionState.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionState?)) { if (SessionState.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DtoType)) { if (DtoType.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DtoType?)) { if (DtoType.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(HttpRequestType)) { if (HttpRequestType.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(HttpRequestType?)) { if (HttpRequestType.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ProtocolType)) { if (ProtocolType.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ProtocolType?)) { if (ProtocolType.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(NetworkType)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(NetworkType?)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IpAdressType)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IpAdressType?)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else { return null; }
         }
 
-        public static dynamic GetCastedValue(object obj, PropertyInfo property)
+        public static DataType GetParsedValue<DataType>(string str, IFormatProvider? format = null) where DataType : IParsable<DataType>
         {
-            return property.PropertyType.ToString() switch
-            {
-                "System.Boolean" => (bool)(property.GetValue(obj) ?? false),
-                "System.String" => (string)(property.GetValue(obj) ?? string.Empty),
-                "System.Byte" => (Byte)(property.GetValue(obj) ?? 0),
-                "System.Int16" => (Int16)(property.GetValue(obj) ?? 0),
-                "System.Int32" => (Int32)(property.GetValue(obj) ?? 0),
-                "System.Int64" => (Int64)(property.GetValue(obj) ?? 0),
-                "System.UInt16" => (UInt16)(property.GetValue(obj) ?? 0),
-                "System.UInt32" => (UInt32)(property.GetValue(obj) ?? 0),
-                "System.UInt64" => (UInt64)(property.GetValue(obj) ?? 0),
-                "System.Single" => (float)(property.GetValue(obj) ?? 0),
-                "System.Double" => (double)(property.GetValue(obj) ?? 0),
-                "System.Decimal" => (decimal)(property.GetValue(obj) ?? 0),
-                "System.DateTime" => (DateTime)(property.GetValue(obj) ?? DateTime.MinValue),
-                "System.DateOnly" => (DateOnly)(property.GetValue(obj) ?? DateOnly.MinValue),
-                "System.TimeSpan" => (TimeSpan)(property.GetValue(obj) ?? TimeSpan.Zero),
-                "GTRC_Basics.TimeUnit" => (TimeUnit)(property.GetValue(obj) ?? TimeUnit.Miliseconds),
-                "GTRC_Basics.SessionType" => (SessionType)(property.GetValue(obj) ?? SessionType.Practice),
-                "GTRC_Basics.ServerType" => (ServerType)(property.GetValue(obj) ?? ServerType.Practice),
-                "GTRC_Basics.CarClass" => (CarClass)(property.GetValue(obj) ?? CarClass.General),
-                "GTRC_Basics.EntrylistType" => (EntrylistType)(property.GetValue(obj) ?? EntrylistType.None),
-                "GTRC_Basics.IncidentsStatus" => (IncidentsStatus)(property.GetValue(obj) ?? IncidentsStatus.Open),
-                "GTRC_Basics.ReportReason" => (ReportReason)(property.GetValue(obj) ?? ReportReason.ManualReport),
-                "GTRC_Basics.IncidentPropCategory" => (IncidentPropCategory)(property.GetValue(obj) ?? IncidentPropCategory.OriginalReport),
-                "GTRC_Basics.FormationLapType" => (FormationLapType)(property.GetValue(obj) ?? FormationLapType.Manual),
-                "GTRC_Basics.DayOfWeekend" => (DayOfWeekend)(property.GetValue(obj) ?? DayOfWeekend.Friday),
-                "GTRC_Basics.RtgState" => (RtgState)(property.GetValue(obj) ?? RtgState.NoRTG),
-                "GTRC_Basics.SessionState" => (SessionState)(property.GetValue(obj) ?? SessionState.DNS),
-                "GTRC_Basics.DtoType" => (DtoType)(property.GetValue(obj) ?? DtoType.Add),
-                "GTRC_Basics.HttpRequestType" => (HttpRequestType)(property.GetValue(obj) ?? HttpRequestType.Get),
-                "GTRC_Basics.ProtocolType" => (ProtocolType)(property.GetValue(obj) ?? ProtocolType.None),
-                "GTRC_Basics.NetworkType" => (NetworkType)(property.GetValue(obj) ?? NetworkType.Localhost),
-                "GTRC_Basics.IpAdressType" => (IpAdressType)(property.GetValue(obj) ?? IpAdressType.IPv4),
-                "System.Object" => (dynamic)(int)(property.GetValue(obj)?.GetType().GetProperty("Id")?.GetValue(property.GetValue(obj)) ?? GlobalValues.NoId),
-                _ => property.GetValue(obj) ?? false,
-            };
+            return DataType.Parse(str, format);
         }
     }
 }
