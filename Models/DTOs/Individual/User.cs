@@ -58,9 +58,8 @@ namespace GTRC_Basics.Models.DTOs
         public short? EloRating { get; set; }
         public short? SafetyRating { get; set; }
         public byte? Warnings { get; set; }
-        public string? DiscordName { get; set; }
-        public bool? IsOnDiscordServer { get; set; }
-        public string? AccessToken { get; set; }
+        public string? UserName { get; set; }
+        public string? RefreshToken { get; set; }
     }
 
 

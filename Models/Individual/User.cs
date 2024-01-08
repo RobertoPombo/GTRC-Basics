@@ -26,8 +26,7 @@ namespace GTRC_Basics.Models
         public short EloRating { get; set; } = DefaultEloRating;
         public short SafetyRating { get; set; } = DefaultSafetyRating;
         public byte Warnings { get; set; } = byte.MinValue;
-        public string DiscordName { get; set; } = string.Empty;
-        public bool IsOnDiscordServer { get; set; } = false;
-        public string AccessToken { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
+        public string RefreshToken { get; set; } = string.Empty;
     }
 }
