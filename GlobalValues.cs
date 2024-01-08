@@ -42,6 +42,7 @@ namespace GTRC_Basics
             {
                 typeof(Color), new()
                 {
+                    { DtoType.Full, typeof(ColorFullDto) },
                     { DtoType.Add, typeof(ColorAddDto) },
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
@@ -51,6 +52,7 @@ namespace GTRC_Basics
             {
                 typeof(Car), new()
                 {
+                    { DtoType.Full, typeof(CarFullDto) },
                     { DtoType.Add, typeof(CarAddDto) },
                     { DtoType.Update, typeof(CarUpdateDto) },
                     { DtoType.Filter, typeof(CarFilterDto) },
@@ -60,6 +62,7 @@ namespace GTRC_Basics
             {
                 typeof(Track), new()
                 {
+                    { DtoType.Full, typeof(TrackFullDto) },
                     { DtoType.Add, typeof(TrackAddDto) },
                     { DtoType.Update, typeof(TrackUpdateDto) },
                     { DtoType.Filter, typeof(TrackFilterDto) },
@@ -69,6 +72,7 @@ namespace GTRC_Basics
             {
                 typeof(User), new()
                 {
+                    { DtoType.Full, typeof(UserFullDto) },
                     { DtoType.Add, typeof(UserAddDto) },
                     { DtoType.Update, typeof(UserUpdateDto) },
                     { DtoType.Filter, typeof(UserFilterDto) },
@@ -78,6 +82,7 @@ namespace GTRC_Basics
             {
                 typeof(Series), new()
                 {
+                    { DtoType.Full, typeof(SeriesFullDto) },
                     { DtoType.Add, typeof(SeriesAddDto) },
                     { DtoType.Update, typeof(SeriesUpdateDto) },
                     { DtoType.Filter, typeof(SeriesFilterDto) },

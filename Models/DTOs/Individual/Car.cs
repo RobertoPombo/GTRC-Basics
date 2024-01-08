@@ -1,7 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace GTRC_Basics.Models.DTOs
 {
+    public class CarFullDto : Car
+    {
+        public string Logo
+        {
+            get { return "\\Logos\\" + Manufacturer + ".png"; }
+            set { }
+        }
+    }
+
+
     public class CarUniqPropsDto0 : Mapper<Car>
     {
         [Required] public uint AccCarId { get; set; } = uint.MinValue;

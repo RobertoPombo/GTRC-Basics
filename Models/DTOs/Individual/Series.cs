@@ -2,6 +2,12 @@
 
 namespace GTRC_Basics.Models.DTOs
 {
+    public class SeriesFullDto : Series
+    {
+
+    }
+
+
     public class SeriesUniqPropsDto0 : Mapper<Series>
     {
         [Required] public string Name { get; set; } = Series.DefaultName;

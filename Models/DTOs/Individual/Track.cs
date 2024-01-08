@@ -2,6 +2,12 @@
 
 namespace GTRC_Basics.Models.DTOs
 {
+    public class TrackFullDto : Track
+    {
+
+    }
+
+
     public class TrackUniqPropsDto0 : Mapper<Track>
     {
         [Required] public string AccTrackId { get; set; } = string.Empty;

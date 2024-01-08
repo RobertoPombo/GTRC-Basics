@@ -26,6 +26,10 @@ namespace GTRC_Basics.Models.DTOs
 
         public void ReMap(ModelType obj) { Map(obj, this); }
 
+        public dynamic MapToFull() { return Map(this, Activator.CreateInstance(GlobalValues.DictDtoModels[typeof(ModelType)][DtoType.Full])!); }
+
+        public static dynamic MapToFull(ModelType obj) { return Map(obj, Activator.CreateInstance(GlobalValues.DictDtoModels[typeof(ModelType)][DtoType.Full])!); }
+
         public bool IsSimilar(ModelType obj)
         {
             foreach (PropertyInfo property in GetType().GetProperties())

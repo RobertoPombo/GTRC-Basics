@@ -1,7 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace GTRC_Basics.Models.DTOs
 {
+    public class ColorFullDto : Color
+    {
+        public System.Drawing.Color Preview
+        {
+            get { return System.Drawing.Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue); }
+            set { }
+        }
+    }
+
+
     public class ColorUniqPropsDto0 : Mapper<Color>
     {
         [Required] public byte Alpha { get; set; } = byte.MinValue;
