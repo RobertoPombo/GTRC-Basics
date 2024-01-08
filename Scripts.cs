@@ -301,6 +301,10 @@ namespace GTRC_Basics
             else if (type == typeof(int?)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
             else if (type == typeof(uint)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
             else if (type == typeof(uint?)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
+            else if (type == typeof(long)) { if (Int64.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
+            else if (type == typeof(long?)) { if (Int64.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ulong)) { if (UInt64.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ulong?)) { if (UInt64.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
             else if (type == typeof(float)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
             else if (type == typeof(float?)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
             else if (type == typeof(double)) { if (Double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
