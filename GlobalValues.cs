@@ -14,8 +14,8 @@ namespace GTRC_Basics
         public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
         public static readonly List<Type> numericalTypes = [
             typeof(byte), typeof(byte?), typeof(short), typeof(short?), typeof(ushort), typeof(ushort?), typeof(int), typeof(int?), typeof(uint), typeof(uint?),
-            typeof(float), typeof(float?), typeof(double), typeof(double?), typeof(decimal), typeof(decimal?), typeof(DateTime), typeof(DateTime?), typeof(DateOnly),
-            typeof(DateOnly?), typeof(TimeSpan), typeof(TimeSpan?)
+            typeof(long), typeof(long?), typeof(ulong), typeof(ulong?), typeof(float), typeof(float?), typeof(double), typeof(double?), typeof(decimal), typeof(decimal?),
+            typeof(DateTime), typeof(DateTime?), typeof(DateOnly), typeof(DateOnly?), typeof(TimeSpan), typeof(TimeSpan?)
             ];
 
         private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -35,7 +35,8 @@ namespace GTRC_Basics
             { typeof(Car), [typeof(CarUniqPropsDto0)] },
             { typeof(Track), [typeof(TrackUniqPropsDto0)] },
             { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
-            { typeof(Series), [typeof(SeriesUniqPropsDto0)] }
+            { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
+            { typeof(Season), [typeof(SeasonUniqPropsDto0)] }
         };
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
         {
@@ -89,6 +90,16 @@ namespace GTRC_Basics
                     { DtoType.Filters, typeof(SeriesFilterDtos) },
                 }
             },
+            {
+                typeof(Season), new()
+                {
+                    { DtoType.Full, typeof(SeasonFullDto) },
+                    { DtoType.Add, typeof(SeasonAddDto) },
+                    { DtoType.Update, typeof(SeasonUpdateDto) },
+                    { DtoType.Filter, typeof(SeasonFilterDto) },
+                    { DtoType.Filters, typeof(SeasonFilterDtos) },
+                }
+            }
         };
 
         public static bool IsForeignId(string propertyName)
