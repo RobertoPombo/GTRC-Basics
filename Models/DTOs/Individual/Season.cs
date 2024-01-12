@@ -39,7 +39,8 @@ namespace GTRC_Basics.Models.DTOs
         public ulong? DiscordRoleId { get; set; }
         public ulong? DiscordChannelId { get; set; }
         public string? ShortDescription { get; set; }
-        public string? Description { get; set; }
+        public string? GeneralDescription { get; set; }
+        public string? SpecificDescription { get; set; }
     }
 
 

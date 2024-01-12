@@ -36,6 +36,7 @@ namespace GTRC_Basics.Models
         public ulong DiscordChannelId { get; set; } = GlobalValues.NoDiscordId;
         public FormationLapType FormationLapType { get; set; } = FormationLapType.Manual;
         public string ShortDescription { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
+        public string GeneralDescription { get; set; } = string.Empty;
+        public string SpecificDescription { get; set; } = string.Empty;
     }
 }
