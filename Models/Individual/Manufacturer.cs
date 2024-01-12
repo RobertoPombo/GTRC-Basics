@@ -2,9 +2,9 @@
 
 namespace GTRC_Basics.Models
 {
-    public class Series : IBaseModel
+    public class Manufacturer : IBaseModel
     {
-        public static readonly string DefaultName = nameof(Series) + " #1";
+        public static readonly string DefaultName = nameof(Manufacturer) + " #1";
 
         public override string ToString() { return Id.ToString() + ". " + Name; }
 

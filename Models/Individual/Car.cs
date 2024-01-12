@@ -1,13 +1,20 @@
-﻿using GTRC_Basics.Models.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+using GTRC_Basics.Models.Common;
 
 namespace GTRC_Basics.Models
 {
     public class Car : IBaseModel
     {
+        public static readonly string DefaultName = nameof(Car);
+
+        public override string ToString() { return Id.ToString() + ". " + Name; }
+
         public int Id { get; set; }
+        public string Name { get; set; } = DefaultName;
         public uint AccCarId { get; set; } = uint.MinValue;
-        public string Name { get; set; } = string.Empty;
-        public string Manufacturer { get; set; } = string.Empty;
+        [ForeignKey(nameof(Manufacturer))] public int ManufacturerId { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; } = new();
         public string Model { get; set; } = string.Empty;
         public CarClass Class { get; set; } = CarClass.General;
         public ushort Year { get; set; } = (ushort)DateTime.UtcNow.Year;

@@ -4,7 +4,11 @@ namespace GTRC_Basics.Models.DTOs
 {
     public class UserFullDto : User
     {
-        public string FullName { get { return FirstName + " " + LastName; } set { } }
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+            set { }
+        }
 
         public string ShortName
         {
@@ -37,12 +41,12 @@ namespace GTRC_Basics.Models.DTOs
 
     public class UserUniqPropsDto0 : Mapper<User>
     {
-        [Required] public ulong SteamId { get; set; } = User.MinSteamId;
+        [Required] public ulong SteamId { get; set; } = ulong.MinValue;
     }
 
     public class UserUniqPropsDto1 : Mapper<User>
     {
-        [Required] public ulong DiscordId { get; set; } = User.NoDiscordId;
+        [Required] public ulong DiscordId { get; set; } = ulong.MinValue;
     }
 
 
@@ -59,7 +63,8 @@ namespace GTRC_Basics.Models.DTOs
         public short? SafetyRating { get; set; }
         public byte? Warnings { get; set; }
         public string? UserName { get; set; }
-        public string? RefreshToken { get; set; }
+        public string? SteamLoginToken { get; set; }
+        public string? DiscordLoginToken { get; set; }
     }
 
 
@@ -80,5 +85,12 @@ namespace GTRC_Basics.Models.DTOs
         public UserFilterDto Filter { get; set; } = new();
         public UserFilterDto FilterMin { get; set; } = new();
         public UserFilterDto FilterMax { get; set; } = new();
+    }
+
+    public class UserName3DigitsDto : Mapper<User>
+    {
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string? Name3Digits { get; set; }
     }
 }

@@ -10,14 +10,20 @@ namespace GTRC_Basics.Models.DTOs
 
     public class TrackUniqPropsDto0 : Mapper<Track>
     {
+        [Required] public string Name { get; set; } = string.Empty;
+    }
+
+
+    public class TrackUniqPropsDto1 : Mapper<Track>
+    {
         [Required] public string AccTrackId { get; set; } = string.Empty;
     }
 
 
     public class TrackAddDto : Mapper<Track>
     {
-        public string? AccTrackId { get; set; }
         public string? Name { get; set; }
+        public string? AccTrackId { get; set; }
         public ushort? PitBoxesCount { get; set; }
         public ushort? ServerSlotsCount { get; set; }
         public ushort? AccTimePenDtS { get; set; }

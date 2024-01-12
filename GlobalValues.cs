@@ -12,6 +12,12 @@ namespace GTRC_Basics
         public static readonly int Id0 = 1;
         public static readonly DateTime DateTimeMinValue = DateTime.MinValue.AddYears(1800);
         public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
+        public static readonly ulong NoSteamId = (ulong)NoId;
+        public static readonly ulong MinSteamId = (ulong)Math.Pow(10, 16);
+        public static readonly ulong MaxSteamId = MinSteamId * 10 - 1;
+        public static readonly ulong NoDiscordId = (ulong)NoId;
+        public static readonly ulong MinDiscordId = (ulong)Math.Pow(10, 17);
+        public static readonly ulong MaxDiscordId = ulong.MaxValue;
         public static readonly List<Type> numericalTypes = [
             typeof(byte), typeof(byte?), typeof(short), typeof(short?), typeof(ushort), typeof(ushort?), typeof(int), typeof(int?), typeof(uint), typeof(uint?),
             typeof(long), typeof(long?), typeof(ulong), typeof(ulong?), typeof(float), typeof(float?), typeof(double), typeof(double?), typeof(decimal), typeof(decimal?),
@@ -28,12 +34,13 @@ namespace GTRC_Basics
         public static event Notify? NewLogText;
         public static void OnNewLogText() { NewLogText?.Invoke(); }
 
-        public static readonly List<Type> ModelTypeList = [typeof(Color), typeof(Car), typeof(Track), typeof(User), typeof(Series)];
+        public static readonly List<Type> ModelTypeList = [typeof(Color), typeof(Manufacturer), typeof(Car), typeof(Track), typeof(User), typeof(Series), typeof(Season)];
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
-            { typeof(Car), [typeof(CarUniqPropsDto0)] },
-            { typeof(Track), [typeof(TrackUniqPropsDto0)] },
+            { typeof(Manufacturer), [typeof(ManufacturerUniqPropsDto0)] },
+            { typeof(Car), [typeof(CarUniqPropsDto0), typeof(CarUniqPropsDto1)] },
+            { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
             { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] }
@@ -48,6 +55,16 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
                     { DtoType.Filters, typeof(ColorFilterDtos) },
+                }
+            },
+            {
+                typeof(Manufacturer), new()
+                {
+                    { DtoType.Full, typeof(ManufacturerFullDto) },
+                    { DtoType.Add, typeof(ManufacturerAddDto) },
+                    { DtoType.Update, typeof(ManufacturerUpdateDto) },
+                    { DtoType.Filter, typeof(ManufacturerFilterDto) },
+                    { DtoType.Filters, typeof(ManufacturerFilterDtos) },
                 }
             },
             {
@@ -104,15 +121,21 @@ namespace GTRC_Basics
 
         public static bool IsForeignId(string propertyName)
         {
-            if (propertyName.Length > 2 && propertyName[^2..] == "Id")
+            if (GetTypeForeignId(propertyName) is null) { return false; }
+            else { return true; }
+        }
+
+        public static Type? GetTypeForeignId(string propertyName)
+        {
+            if (propertyName.Length > Id.Length && propertyName[^Id.Length..] == Id)
             {
                 foreach (Type type in ModelTypeList)
                 {
-                    if (propertyName[..^2] == type.Name) { return true; }
+                    if (propertyName[..^Id.Length] == type.Name) { return type; }
                 }
-                return false;
+                return null;
             }
-            return false;
+            return null;
         }
     }
 }

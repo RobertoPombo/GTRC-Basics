@@ -1,16 +1,22 @@
-﻿using GTRC_Basics.Models.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+using GTRC_Basics.Models.Common;
 
 namespace GTRC_Basics.Models
 {
     public class Season : IBaseModel
     {
-        public static readonly string DefaultName = "Season #1";
+        public static readonly string DefaultName = nameof(Season) + " #1";
+        public static readonly Byte MinMinDriversPerEntry = 1;
+
+        public override string ToString() { return Id.ToString() + ". " + Name; }
 
         public int Id { get; set; }
         public string Name { get; set; } = DefaultName;
-        public Series Series { get; set; } = new();
-        public Byte MinDriversPerEntry { get; set; } = Byte.MinValue;
-        public Byte MaxDriversPerEntry { get; set; } = Byte.MaxValue;
+        [ForeignKey(nameof(Series))] public int SeriesId { get; set; }
+        public virtual Series Series { get; set; } = new();
+        public Byte MinDriversPerEntry { get; set; } = MinMinDriversPerEntry;
+        public Byte MaxDriversPerEntry { get; set; } = MinMinDriversPerEntry;
         public Byte GridSlotsLimit { get; set; } = Byte.MinValue;
         public Byte CarLimitBallast { get; set; } = Byte.MinValue;
         public Byte GainBallast { get; set; } = Byte.MinValue;
@@ -25,7 +31,9 @@ namespace GTRC_Basics.Models
         public DateTime DateCarChangeLimit { get; set; } = DateTime.UtcNow;
         public bool GroupCarLimits { get; set; } = false;
         public bool BopLatestModelOnly { get; set; } = false;
-        public ushort DaysIgnoreCarLimits { get; set; } = 0;
+        public ushort DaysIgnoreCarLimits { get; set; } = ushort.MinValue;
+        public ulong DiscordRoleId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordChannelId { get; set; } = GlobalValues.NoDiscordId;
         public FormationLapType FormationLapType { get; set; } = FormationLapType.Manual;
         public string ShortDescription { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

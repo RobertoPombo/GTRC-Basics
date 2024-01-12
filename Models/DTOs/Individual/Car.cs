@@ -5,15 +5,17 @@ namespace GTRC_Basics.Models.DTOs
 {
     public class CarFullDto : Car
     {
-        public string Logo
-        {
-            get { return "\\Logos\\" + Manufacturer + ".png"; }
-            set { }
-        }
+
     }
 
 
     public class CarUniqPropsDto0 : Mapper<Car>
+    {
+        [Required] public string Name { get; set; } = string.Empty;
+    }
+
+
+    public class CarUniqPropsDto1 : Mapper<Car>
     {
         [Required] public uint AccCarId { get; set; } = uint.MinValue;
     }
@@ -21,9 +23,9 @@ namespace GTRC_Basics.Models.DTOs
 
     public class CarAddDto : Mapper<Car>
     {
-        public uint? AccCarId { get; set; }
         public string? Name { get; set; }
-        public string? Manufacturer { get; set; }
+        public uint? AccCarId { get; set; }
+        public int? ManufacturerId { get; set; }
         public string? Model { get; set; }
         public CarClass? Class { get; set; }
         public ushort? Year { get; set; }

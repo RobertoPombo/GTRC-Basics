@@ -4,6 +4,16 @@ namespace GTRC_Basics
 {
     public static class Scripts
     {
+        public static bool IsValidSteamId(ulong? id)
+        {
+            return id is not null && id >= GlobalValues.MinSteamId && id <= GlobalValues.MaxSteamId;
+        }
+
+        public static bool IsValidDiscordId(ulong? id)
+        {
+            return id is not null && id >= GlobalValues.MinDiscordId && id <= GlobalValues.MaxDiscordId;
+        }
+
         public static string RemoveSpaceStartEnd(string s)
         {
             s ??= string.Empty;
@@ -351,14 +361,10 @@ namespace GTRC_Basics
             else if (type == typeof(NetworkType?)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType?)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else if (GlobalValues.ModelTypeList.Contains(type)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
             else if (type == typeof(System.Drawing.Color)) { return null; }
             else if (type == typeof(System.Drawing.Color?)) { return null; }
             else { return null; }
-        }
-
-        public static DataType GetParsedValue<DataType>(string str, IFormatProvider? format = null) where DataType : IParsable<DataType>
-        {
-            return DataType.Parse(str, format);
         }
     }
 }
