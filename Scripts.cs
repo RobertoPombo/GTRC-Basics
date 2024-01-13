@@ -14,6 +14,24 @@ namespace GTRC_Basics
             return id is not null && id >= GlobalValues.MinDiscordId && id <= GlobalValues.MaxDiscordId;
         }
 
+        public static ulong? String2LongSteamId(string? strId)
+        {
+            ulong id = ulong.MinValue;
+            strId = new string(strId?.Where(Char.IsNumber).ToArray());
+            _ = ulong.TryParse(strId, out id);
+            if (Scripts.IsValidSteamId(id)) { return id; }
+            else { return null; }
+        }
+
+        public static ulong? String2LongDiscordId(string? strId)
+        {
+            ulong id = ulong.MinValue;
+            strId = new string(strId?.Where(Char.IsNumber).ToArray());
+            _ = ulong.TryParse(strId, out id);
+            if (Scripts.IsValidDiscordId(id)) { return id; }
+            else { return null; }
+        }
+
         public static string RemoveSpaceStartEnd(string s)
         {
             s ??= string.Empty;
