@@ -86,11 +86,4 @@ namespace GTRC_Basics.Models.DTOs
         public UserFilterDto FilterMin { get; set; } = new();
         public UserFilterDto FilterMax { get; set; } = new();
     }
-
-    public class UserName3DigitsDto : Mapper<User>
-    {
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string? Name3Digits { get; set; }
-    }
 }
