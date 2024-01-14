@@ -62,7 +62,7 @@ namespace GTRC_Basics.Models.DTOs
         public short? EloRating { get; set; }
         public short? SafetyRating { get; set; }
         public byte? Warnings { get; set; }
-        public string? UserName { get; set; }
+        public string? NickName { get; set; }
         public string? SteamLoginToken { get; set; }
         public string? DiscordLoginToken { get; set; }
     }
@@ -85,5 +85,14 @@ namespace GTRC_Basics.Models.DTOs
         public UserFilterDto Filter { get; set; } = new();
         public UserFilterDto FilterMin { get; set; } = new();
         public UserFilterDto FilterMax { get; set; } = new();
+    }
+
+
+    public class UserFirstDiscordLoginDto : Mapper<User>
+    {
+        public ulong? SteamId { get; set; }
+        [Required] public string FirstName { get; set; } = string.Empty;
+        [Required] public string LastName { get; set; } = string.Empty;
+        public string? NickName { get; set; }
     }
 }
