@@ -35,6 +35,16 @@ namespace GTRC_Basics
         public static void OnNewLogText() { NewLogText?.Invoke(); }
 
         public static readonly List<Type> ModelTypeList = [typeof(Color), typeof(Manufacturer), typeof(Car), typeof(Track), typeof(User), typeof(Series), typeof(Season)];
+        public static readonly Dictionary<Type, string> SqlTableNames = new()
+        {
+            { typeof(Color), "Colors" },
+            { typeof(Manufacturer), "Manufacturers" },
+            { typeof(Car), "Cars" },
+            { typeof(Track), "Tracks" },
+            { typeof(User), "Users" },
+            { typeof(Series), "Series" },
+            { typeof(Season), "Seasons" }
+        };
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
