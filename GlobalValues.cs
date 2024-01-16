@@ -46,7 +46,8 @@ namespace GTRC_Basics
             typeof(UserRole),
             typeof(Series),
             typeof(Season),
-            typeof(SeasonCarclass) ];
+            typeof(SeasonCarclass),
+            typeof(Event) ];
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
             { typeof(Color), "Colors" },
@@ -60,7 +61,8 @@ namespace GTRC_Basics
             { typeof(UserRole), "UsersRoles" },
             { typeof(Series), "Series" },
             { typeof(Season), "Seasons" },
-            { typeof(SeasonCarclass), "SeasonsCarclasses" }
+            { typeof(SeasonCarclass), "SeasonsCarclasses" },
+            { typeof(Event), "Events" }
         };
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
@@ -75,7 +77,8 @@ namespace GTRC_Basics
             { typeof(UserRole), [typeof(UserRoleUniqPropsDto0)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
-            { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] }
+            { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] },
+            { typeof(Event), [typeof(EventUniqPropsDto0), typeof(EventUniqPropsDto1)] }
         };
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
         {
@@ -86,7 +89,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(ColorAddDto) },
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
-                    { DtoType.Filters, typeof(ColorFilterDtos) },
+                    { DtoType.Filters, typeof(ColorFilterDtos) }
                 }
             },
             {
@@ -96,7 +99,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(SimAddDto) },
                     { DtoType.Update, typeof(SimUpdateDto) },
                     { DtoType.Filter, typeof(SimFilterDto) },
-                    { DtoType.Filters, typeof(SimFilterDtos) },
+                    { DtoType.Filters, typeof(SimFilterDtos) }
                 }
             },
             {
@@ -106,7 +109,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(UserAddDto) },
                     { DtoType.Update, typeof(UserUpdateDto) },
                     { DtoType.Filter, typeof(UserFilterDto) },
-                    { DtoType.Filters, typeof(UserFilterDtos) },
+                    { DtoType.Filters, typeof(UserFilterDtos) }
                 }
             },
             {
@@ -116,7 +119,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(TrackAddDto) },
                     { DtoType.Update, typeof(TrackUpdateDto) },
                     { DtoType.Filter, typeof(TrackFilterDto) },
-                    { DtoType.Filters, typeof(TrackFilterDtos) },
+                    { DtoType.Filters, typeof(TrackFilterDtos) }
                 }
             },
             {
@@ -126,7 +129,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(CarclassAddDto) },
                     { DtoType.Update, typeof(CarclassUpdateDto) },
                     { DtoType.Filter, typeof(CarclassFilterDto) },
-                    { DtoType.Filters, typeof(CarclassFilterDtos) },
+                    { DtoType.Filters, typeof(CarclassFilterDtos) }
                 }
             },
             {
@@ -136,7 +139,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(ManufacturerAddDto) },
                     { DtoType.Update, typeof(ManufacturerUpdateDto) },
                     { DtoType.Filter, typeof(ManufacturerFilterDto) },
-                    { DtoType.Filters, typeof(ManufacturerFilterDtos) },
+                    { DtoType.Filters, typeof(ManufacturerFilterDtos) }
                 }
             },
             {
@@ -146,7 +149,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(CarAddDto) },
                     { DtoType.Update, typeof(CarUpdateDto) },
                     { DtoType.Filter, typeof(CarFilterDto) },
-                    { DtoType.Filters, typeof(CarFilterDtos) },
+                    { DtoType.Filters, typeof(CarFilterDtos) }
                 }
             },
             {
@@ -156,7 +159,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(RoleAddDto) },
                     { DtoType.Update, typeof(RoleUpdateDto) },
                     { DtoType.Filter, typeof(RoleFilterDto) },
-                    { DtoType.Filters, typeof(RoleFilterDtos) },
+                    { DtoType.Filters, typeof(RoleFilterDtos) }
                 }
             },
             {
@@ -166,7 +169,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(UserRoleAddDto) },
                     { DtoType.Update, typeof(UserRoleUpdateDto) },
                     { DtoType.Filter, typeof(UserRoleFilterDto) },
-                    { DtoType.Filters, typeof(UserRoleFilterDtos) },
+                    { DtoType.Filters, typeof(UserRoleFilterDtos) }
                 }
             },
             {
@@ -176,7 +179,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(SeriesAddDto) },
                     { DtoType.Update, typeof(SeriesUpdateDto) },
                     { DtoType.Filter, typeof(SeriesFilterDto) },
-                    { DtoType.Filters, typeof(SeriesFilterDtos) },
+                    { DtoType.Filters, typeof(SeriesFilterDtos) }
                 }
             },
             {
@@ -186,7 +189,7 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(SeasonAddDto) },
                     { DtoType.Update, typeof(SeasonUpdateDto) },
                     { DtoType.Filter, typeof(SeasonFilterDto) },
-                    { DtoType.Filters, typeof(SeasonFilterDtos) },
+                    { DtoType.Filters, typeof(SeasonFilterDtos) }
                 }
             },
             {
@@ -196,9 +199,19 @@ namespace GTRC_Basics
                     { DtoType.Add, typeof(SeasonCarclassAddDto) },
                     { DtoType.Update, typeof(SeasonCarclassUpdateDto) },
                     { DtoType.Filter, typeof(SeasonCarclassFilterDto) },
-                    { DtoType.Filters, typeof(SeasonCarclassFilterDtos) },
+                    { DtoType.Filters, typeof(SeasonCarclassFilterDtos) }
                 }
             },
+            {
+                typeof(Event), new()
+                {
+                    { DtoType.Full, typeof(EventFullDto) },
+                    { DtoType.Add, typeof(EventAddDto) },
+                    { DtoType.Update, typeof(EventUpdateDto) },
+                    { DtoType.Filter, typeof(EventFilterDto) },
+                    { DtoType.Filters, typeof(EventFilterDtos) }
+                }
+            }
         };
 
         public static bool IsForeignId(string propertyName)

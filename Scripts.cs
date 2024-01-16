@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 
+using GTRC_Basics.Models;
+
 namespace GTRC_Basics
 {
     public static class Scripts
@@ -30,6 +32,21 @@ namespace GTRC_Basics
             _ = ulong.TryParse(strId, out id);
             if (Scripts.IsValidDiscordId(id)) { return id; }
             else { return null; }
+        }
+
+        public static List<Event> SortByDate(List<Event> listEvents)
+        {
+            for (int index1 = 0; index1 < listEvents.Count - 1; index1++)
+            {
+                for (int index2 = index1; index2 < listEvents.Count; index2++)
+                {
+                    if (listEvents[index1].Date > listEvents[index2].Date)
+                    {
+                        (listEvents[index2], listEvents[index1]) = (listEvents[index1], listEvents[index2]);
+                    }
+                }
+            }
+            return listEvents;
         }
 
         public static string RemoveSpaceStartEnd(string s)
