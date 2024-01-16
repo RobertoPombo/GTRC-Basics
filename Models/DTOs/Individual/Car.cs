@@ -45,6 +45,7 @@ namespace GTRC_Basics.Models.DTOs
     public class CarFilterDto : CarAddDto
     {
         public int? Id { get; set; }
+        public string? Manufacturer { get; set; }
     }
 
 

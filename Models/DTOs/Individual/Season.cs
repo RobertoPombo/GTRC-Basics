@@ -53,6 +53,7 @@ namespace GTRC_Basics.Models.DTOs
     public class SeasonFilterDto : SeasonAddDto
     {
         public int? Id { get; set; }
+        public string? Series { get; set; }
     }
 
 

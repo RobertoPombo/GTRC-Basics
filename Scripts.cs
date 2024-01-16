@@ -316,7 +316,7 @@ namespace GTRC_Basics
         {
             string? strValue = Value?.ToString();
             Type type = property.PropertyType;
-            if (type == typeof(string)) { return strValue; }
+            if (type == typeof(string) || GlobalValues.ModelTypeList.Contains(type)) { return strValue; }
             else if (type == typeof(bool)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
             else if (type == typeof(bool?)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
             else if (type == typeof(byte)) { if (Byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
@@ -379,7 +379,6 @@ namespace GTRC_Basics
             else if (type == typeof(NetworkType?)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType?)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
-            else if (GlobalValues.ModelTypeList.Contains(type)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
             else if (type == typeof(System.Drawing.Color)) { return null; }
             else if (type == typeof(System.Drawing.Color?)) { return null; }
             else { return null; }
