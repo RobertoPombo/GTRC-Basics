@@ -6,7 +6,7 @@ namespace GTRC_Basics.Models
 {
     public class SeasonCarclass : IBaseModel
     {
-        public override string ToString() { return Id.ToString() + ". " + Season.ToString() + " - " + Carclass.ToString(); }
+        public override string ToString() { return Season.ToString() + " - " + Carclass.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Season))] public int SeasonId { get; set; }

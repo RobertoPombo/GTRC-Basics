@@ -17,6 +17,7 @@ namespace GTRC_Basics.Models.DTOs
     public class SeriesAddDto : Mapper<Series>
     {
         public string? Name { get; set; }
+        public int? SimId { get; set; }
     }
 
 
@@ -29,6 +30,7 @@ namespace GTRC_Basics.Models.DTOs
     public class SeriesFilterDto : SeriesAddDto
     {
         public int? Id { get; set; }
+        public string? Sim { get; set; }
     }
 
 

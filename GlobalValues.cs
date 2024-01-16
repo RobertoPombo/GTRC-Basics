@@ -36,22 +36,28 @@ namespace GTRC_Basics
 
         public static readonly List<Type> ModelTypeList = [
             typeof(Color),
+            typeof(Sim),
             typeof(User),
             typeof(Track),
             typeof(Carclass),
             typeof(Manufacturer),
             typeof(Car),
+            typeof(Role),
+            typeof(UserRole),
             typeof(Series),
             typeof(Season),
             typeof(SeasonCarclass) ];
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
             { typeof(Color), "Colors" },
+            { typeof(Sim), "Simulations" },
             { typeof(User), "Users" },
             { typeof(Track), "Tracks" },
             { typeof(Carclass), "Carclasses" },
             { typeof(Manufacturer), "Manufacturers" },
             { typeof(Car), "Cars" },
+            { typeof(Role), "Roles" },
+            { typeof(UserRole), "UsersRoles" },
             { typeof(Series), "Series" },
             { typeof(Season), "Seasons" },
             { typeof(SeasonCarclass), "SeasonsCarclasses" }
@@ -59,11 +65,14 @@ namespace GTRC_Basics
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
+            { typeof(Sim), [typeof(SimUniqPropsDto0)] },
             { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
             { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
             { typeof(Carclass), [typeof(CarclassUniqPropsDto0)] },
             { typeof(Manufacturer), [typeof(ManufacturerUniqPropsDto0)] },
             { typeof(Car), [typeof(CarUniqPropsDto0), typeof(CarUniqPropsDto1)] },
+            { typeof(Role), [typeof(RoleUniqPropsDto0)] },
+            { typeof(UserRole), [typeof(UserRoleUniqPropsDto0)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
             { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] }
@@ -78,6 +87,16 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
                     { DtoType.Filters, typeof(ColorFilterDtos) },
+                }
+            },
+            {
+                typeof(Sim), new()
+                {
+                    { DtoType.Full, typeof(SimFullDto) },
+                    { DtoType.Add, typeof(SimAddDto) },
+                    { DtoType.Update, typeof(SimUpdateDto) },
+                    { DtoType.Filter, typeof(SimFilterDto) },
+                    { DtoType.Filters, typeof(SimFilterDtos) },
                 }
             },
             {
@@ -128,6 +147,26 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(CarUpdateDto) },
                     { DtoType.Filter, typeof(CarFilterDto) },
                     { DtoType.Filters, typeof(CarFilterDtos) },
+                }
+            },
+            {
+                typeof(Role), new()
+                {
+                    { DtoType.Full, typeof(RoleFullDto) },
+                    { DtoType.Add, typeof(RoleAddDto) },
+                    { DtoType.Update, typeof(RoleUpdateDto) },
+                    { DtoType.Filter, typeof(RoleFilterDto) },
+                    { DtoType.Filters, typeof(RoleFilterDtos) },
+                }
+            },
+            {
+                typeof(UserRole), new()
+                {
+                    { DtoType.Full, typeof(UserRoleFullDto) },
+                    { DtoType.Add, typeof(UserRoleAddDto) },
+                    { DtoType.Update, typeof(UserRoleUpdateDto) },
+                    { DtoType.Filter, typeof(UserRoleFilterDto) },
+                    { DtoType.Filters, typeof(UserRoleFilterDtos) },
                 }
             },
             {
