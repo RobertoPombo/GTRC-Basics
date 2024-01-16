@@ -351,8 +351,6 @@ namespace GTRC_Basics
             else if (type == typeof(SessionType?)) { if (SessionType.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
             else if (type == typeof(ServerType)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
             else if (type == typeof(ServerType?)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(CarClass)) { if (CarClass.TryParse(strValue, out CarClass cv)) { return cv; } else { return null; } }
-            else if (type == typeof(CarClass?)) { if (CarClass.TryParse(strValue, out CarClass cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType?)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IncidentsStatus)) { if (IncidentsStatus.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }

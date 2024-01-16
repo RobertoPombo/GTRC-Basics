@@ -34,26 +34,39 @@ namespace GTRC_Basics
         public static event Notify? NewLogText;
         public static void OnNewLogText() { NewLogText?.Invoke(); }
 
-        public static readonly List<Type> ModelTypeList = [typeof(Color), typeof(Manufacturer), typeof(Car), typeof(Track), typeof(User), typeof(Series), typeof(Season)];
+        public static readonly List<Type> ModelTypeList = [
+            typeof(Color),
+            typeof(User),
+            typeof(Track),
+            typeof(Carclass),
+            typeof(Manufacturer),
+            typeof(Car),
+            typeof(Series),
+            typeof(Season),
+            typeof(SeasonCarclass) ];
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
             { typeof(Color), "Colors" },
+            { typeof(User), "Users" },
+            { typeof(Track), "Tracks" },
+            { typeof(Carclass), "Carclasses" },
             { typeof(Manufacturer), "Manufacturers" },
             { typeof(Car), "Cars" },
-            { typeof(Track), "Tracks" },
-            { typeof(User), "Users" },
             { typeof(Series), "Series" },
-            { typeof(Season), "Seasons" }
+            { typeof(Season), "Seasons" },
+            { typeof(SeasonCarclass), "SeasonsCarclasses" }
         };
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
+            { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
+            { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
+            { typeof(Carclass), [typeof(CarclassUniqPropsDto0)] },
             { typeof(Manufacturer), [typeof(ManufacturerUniqPropsDto0)] },
             { typeof(Car), [typeof(CarUniqPropsDto0), typeof(CarUniqPropsDto1)] },
-            { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
-            { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
-            { typeof(Season), [typeof(SeasonUniqPropsDto0)] }
+            { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
+            { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] }
         };
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
         {
@@ -65,6 +78,36 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
                     { DtoType.Filters, typeof(ColorFilterDtos) },
+                }
+            },
+            {
+                typeof(User), new()
+                {
+                    { DtoType.Full, typeof(UserFullDto) },
+                    { DtoType.Add, typeof(UserAddDto) },
+                    { DtoType.Update, typeof(UserUpdateDto) },
+                    { DtoType.Filter, typeof(UserFilterDto) },
+                    { DtoType.Filters, typeof(UserFilterDtos) },
+                }
+            },
+            {
+                typeof(Track), new()
+                {
+                    { DtoType.Full, typeof(TrackFullDto) },
+                    { DtoType.Add, typeof(TrackAddDto) },
+                    { DtoType.Update, typeof(TrackUpdateDto) },
+                    { DtoType.Filter, typeof(TrackFilterDto) },
+                    { DtoType.Filters, typeof(TrackFilterDtos) },
+                }
+            },
+            {
+                typeof(Carclass), new()
+                {
+                    { DtoType.Full, typeof(CarclassFullDto) },
+                    { DtoType.Add, typeof(CarclassAddDto) },
+                    { DtoType.Update, typeof(CarclassUpdateDto) },
+                    { DtoType.Filter, typeof(CarclassFilterDto) },
+                    { DtoType.Filters, typeof(CarclassFilterDtos) },
                 }
             },
             {
@@ -88,26 +131,6 @@ namespace GTRC_Basics
                 }
             },
             {
-                typeof(Track), new()
-                {
-                    { DtoType.Full, typeof(TrackFullDto) },
-                    { DtoType.Add, typeof(TrackAddDto) },
-                    { DtoType.Update, typeof(TrackUpdateDto) },
-                    { DtoType.Filter, typeof(TrackFilterDto) },
-                    { DtoType.Filters, typeof(TrackFilterDtos) },
-                }
-            },
-            {
-                typeof(User), new()
-                {
-                    { DtoType.Full, typeof(UserFullDto) },
-                    { DtoType.Add, typeof(UserAddDto) },
-                    { DtoType.Update, typeof(UserUpdateDto) },
-                    { DtoType.Filter, typeof(UserFilterDto) },
-                    { DtoType.Filters, typeof(UserFilterDtos) },
-                }
-            },
-            {
                 typeof(Series), new()
                 {
                     { DtoType.Full, typeof(SeriesFullDto) },
@@ -126,7 +149,17 @@ namespace GTRC_Basics
                     { DtoType.Filter, typeof(SeasonFilterDto) },
                     { DtoType.Filters, typeof(SeasonFilterDtos) },
                 }
-            }
+            },
+            {
+                typeof(SeasonCarclass), new()
+                {
+                    { DtoType.Full, typeof(SeasonCarclassFullDto) },
+                    { DtoType.Add, typeof(SeasonCarclassAddDto) },
+                    { DtoType.Update, typeof(SeasonCarclassUpdateDto) },
+                    { DtoType.Filter, typeof(SeasonCarclassFilterDto) },
+                    { DtoType.Filters, typeof(SeasonCarclassFilterDtos) },
+                }
+            },
         };
 
         public static bool IsForeignId(string propertyName)

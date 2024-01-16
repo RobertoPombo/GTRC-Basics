@@ -16,7 +16,8 @@ namespace GTRC_Basics.Models
         [ForeignKey(nameof(Manufacturer))] public int ManufacturerId { get; set; }
         public virtual Manufacturer Manufacturer { get; set; } = new();
         public string Model { get; set; } = string.Empty;
-        public CarClass Class { get; set; } = CarClass.General;
+        [ForeignKey(nameof(Carclass))] public int CarclassId { get; set; }
+        public virtual Carclass Carclass { get; set; } = new();
         public ushort Year { get; set; } = (ushort)DateTime.UtcNow.Year;
         public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
         public ushort WidthMm { get; set; } = 2000;

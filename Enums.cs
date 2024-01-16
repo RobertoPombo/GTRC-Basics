@@ -26,17 +26,6 @@
         Event = 2
     }
 
-    public enum CarClass
-    {
-        General = 0,
-        GT2 = 1,
-        GT3 = 2,
-        GT4 = 3,
-        GTC = 4,
-        Cup = 5,
-        TCX = 6
-    }
-
     public enum EntrylistType
     {
         None = 0,

@@ -27,7 +27,7 @@ namespace GTRC_Basics.Models.DTOs
         public uint? AccCarId { get; set; }
         public int? ManufacturerId { get; set; }
         public string? Model { get; set; }
-        public CarClass? Class { get; set; }
+        public int? CarclassId { get; set; }
         public ushort? Year { get; set; }
         public DateOnly? ReleaseDate { get; set; }
         public ushort? WidthMm { get; set; }
@@ -46,6 +46,7 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? Id { get; set; }
         public string? Manufacturer { get; set; }
+        public string? Carclass { get; set; }
     }
 
 
