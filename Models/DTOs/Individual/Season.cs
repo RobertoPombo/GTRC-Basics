@@ -10,14 +10,15 @@ namespace GTRC_Basics.Models.DTOs
 
     public class SeasonUniqPropsDto0 : Mapper<Season>
     {
+        [Required] public int SeriesId { get; set; }
         [Required] public string Name { get; set; } = string.Empty;
     }
 
 
     public class SeasonAddDto : Mapper<Season>
     {
-        public string? Name { get; set; }
         public int? SeriesId { get; set; }
+        public string? Name { get; set; }
         public Byte? MinDriversPerEntry { get; set; }
         public Byte? MaxDriversPerEntry { get; set; }
         public Byte? MinEntriesPerTeam { get; set; }

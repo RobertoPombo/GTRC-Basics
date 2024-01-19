@@ -1,4 +1,5 @@
 ﻿using GTRC_Basics.Models.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GTRC_Basics.Models
 {
@@ -13,6 +14,8 @@ namespace GTRC_Basics.Models
         public override string ToString() { return Id.ToString() + ". " + FirstName + " " + LastName; }
 
         public int Id { get; set; }
+        [ForeignKey(nameof(Community))] public int CommunityId { get; set; }
+        public virtual Community Community { get; set; } = new();
         public ulong SteamId { get; set; } = GlobalValues.NoSteamId;
         public ulong DiscordId { get; set; } = GlobalValues.NoDiscordId;
         public string FirstName { get; set; } = string.Empty;

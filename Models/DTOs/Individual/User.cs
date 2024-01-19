@@ -41,17 +41,20 @@ namespace GTRC_Basics.Models.DTOs
 
     public class UserUniqPropsDto0 : Mapper<User>
     {
+        [Required] public int CommunityId { get; set; }
         [Required] public ulong SteamId { get; set; } = ulong.MinValue;
     }
 
     public class UserUniqPropsDto1 : Mapper<User>
     {
+        [Required] public int CommunityId { get; set; }
         [Required] public ulong DiscordId { get; set; } = ulong.MinValue;
     }
 
 
     public class UserAddDto : Mapper<User>
     {
+        public int? CommunityId { get; set; }
         public ulong? SteamId { get; set; }
         public ulong? DiscordId { get; set; }
         public string? FirstName { get; set; }
@@ -77,6 +80,7 @@ namespace GTRC_Basics.Models.DTOs
     public class UserFilterDto : UserAddDto
     {
         public int? Id { get; set; }
+        public string? Community { get; set; }
     }
 
 
@@ -90,6 +94,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class UserFirstDiscordLoginDto : Mapper<User>
     {
+        [Required] public int CommunityId { get; set; }
         public ulong? SteamId { get; set; }
         [Required] public string FirstName { get; set; } = string.Empty;
         [Required] public string LastName { get; set; } = string.Empty;

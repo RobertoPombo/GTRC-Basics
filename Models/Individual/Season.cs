@@ -13,9 +13,9 @@ namespace GTRC_Basics.Models
         public override string ToString() { return Id.ToString() + ". " + Name + " (" + Series.Name + ")"; }
 
         public int Id { get; set; }
-        public string Name { get; set; } = DefaultName;
         [ForeignKey(nameof(Series))] public int SeriesId { get; set; }
         public virtual Series Series { get; set; } = new();
+        public string Name { get; set; } = DefaultName;
         public Byte MinDriversPerEntry { get; set; } = MinMinDriversPerEntry;
         public Byte MaxDriversPerEntry { get; set; } = MinMinDriversPerEntry;
         public Byte MinEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
