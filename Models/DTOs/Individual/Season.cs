@@ -20,27 +20,35 @@ namespace GTRC_Basics.Models.DTOs
         public int? SeriesId { get; set; }
         public Byte? MinDriversPerEntry { get; set; }
         public Byte? MaxDriversPerEntry { get; set; }
-        public Byte? GridSlotsLimit { get; set; }
+        public Byte? MinEntriesPerTeam { get; set; }
+        public Byte? MaxEntriesPerTeam { get; set; }
+        public bool? ForceDriverFromOrganization { get; set; }
+        public bool? AllowDriverLineupPerEvent { get; set; }
+        public DateTime? DateStartRegistration { get; set; }
+        public DateTime? DateEndRegistration { get; set; }
+        public Byte? MaxGridSlots { get; set; }
+        public Byte? MaxNoShows { get; set; }
+        public Byte? MaxSignOuts { get; set; }
+        public Byte? CarRegristrationLimit { get; set; }
+        public DateTime? DateStartCarRegristrationLimit { get; set; }
+        public bool? GroupCarRegristrationLimits { get; set; }
+        public ushort? DaysIgnoreCarRegristrationLimit { get; set; }
+        public Byte? CarChangeLimit { get; set; }
+        public DateTime? DateStartCarChangeLimit { get; set; }
+        public int? BopId { get; set; }
+        public DateTime? DateBoPFreeze { get; set; }
+        public bool? BopLatestModelOnly { get; set; }
         public Byte? CarLimitBallast { get; set; }
         public Byte? GainBallast { get; set; }
         public Byte? CarLimitRestrictor { get; set; }
         public Byte? GainRestrictor { get; set; }
-        public Byte? CarLimitRegisterLimit { get; set; }
-        public DateTime? DateRegisterLimit { get; set; }
-        public DateTime? DateBoPFreeze { get; set; }
-        public Byte? NoShowLimit { get; set; }
-        public Byte? SignOutLimit { get; set; }
-        public Byte? CarChangeLimit { get; set; }
-        public DateTime? DateCarChangeLimit { get; set; }
-        public bool? GroupCarLimits { get; set; }
-        public bool? BopLatestModelOnly { get; set; }
-        public ushort? DaysIgnoreCarLimits { get; set; }
-        public FormationLapType? FormationLapType { get; set; }
-        public ulong? DiscordRoleId { get; set; }
-        public ulong? DiscordChannelId { get; set; }
+        public ulong? DiscordDriverRoleId { get; set; }
+        public ulong? DiscordRegistrationChannelId { get; set; }
+        public ulong? DiscordTrackReportChannelId { get; set; }
         public string? ShortDescription { get; set; }
         public string? GeneralDescription { get; set; }
         public string? SpecificDescription { get; set; }
+        public FormationLapType? FormationLapType { get; set; }
     }
 
 
@@ -54,6 +62,7 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? Id { get; set; }
         public string? Series { get; set; }
+        public string? Bop { get; set; }
     }
 
 

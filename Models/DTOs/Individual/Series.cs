@@ -18,6 +18,8 @@ namespace GTRC_Basics.Models.DTOs
     {
         public string? Name { get; set; }
         public int? SimId { get; set; }
+        public ulong? DiscordRegistrationChannelId { get; set; }
+        public ulong? DiscordLogChannelId { get; set; }
     }
 
 

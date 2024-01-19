@@ -8,8 +8,9 @@ namespace GTRC_Basics.Models
     {
         public static readonly string DefaultName = nameof(Season) + " #1";
         public static readonly Byte MinMinDriversPerEntry = 1;
+        public static readonly Byte MinMinEntriesPerTeam = 1;
 
-        public override string ToString() { return Id.ToString() + ". " + Name; }
+        public override string ToString() { return Id.ToString() + ". " + Name + " (" + Series.Name + ")"; }
 
         public int Id { get; set; }
         public string Name { get; set; } = DefaultName;
@@ -17,26 +18,35 @@ namespace GTRC_Basics.Models
         public virtual Series Series { get; set; } = new();
         public Byte MinDriversPerEntry { get; set; } = MinMinDriversPerEntry;
         public Byte MaxDriversPerEntry { get; set; } = MinMinDriversPerEntry;
-        public Byte GridSlotsLimit { get; set; } = Byte.MinValue;
+        public Byte MinEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
+        public Byte MaxEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
+        public bool ForceDriverFromOrganization { get; set; } = true;
+        public bool AllowDriverLineupPerEvent { get; set; } = false;
+        public DateTime DateStartRegistration { get; set; } = DateTime.UtcNow;
+        public DateTime DateEndRegistration { get; set; } = DateTime.UtcNow;
+        public Byte MaxGridSlots { get; set; } = Byte.MinValue;
+        public Byte MaxNoShows { get; set; } = Byte.MinValue;
+        public Byte MaxSignOuts { get; set; } = Byte.MinValue;
+        public Byte CarRegristrationLimit { get; set; } = Byte.MinValue;
+        public DateTime DateStartCarRegristrationLimit { get; set; } = DateTime.UtcNow;
+        public bool GroupCarRegristrationLimits { get; set; } = false;
+        public ushort DaysIgnoreCarRegristrationLimit { get; set; } = ushort.MinValue;
+        public Byte CarChangeLimit { get; set; } = Byte.MinValue;
+        public DateTime DateStartCarChangeLimit { get; set; } = DateTime.UtcNow;
+        [ForeignKey(nameof(Bop))] public int BopId { get; set; }
+        public virtual Bop Bop { get; set; } = new();
+        public DateTime DateBoPFreeze { get; set; } = DateTime.UtcNow;
+        public bool BopLatestModelOnly { get; set; } = false;
         public Byte CarLimitBallast { get; set; } = Byte.MinValue;
         public Byte GainBallast { get; set; } = Byte.MinValue;
         public Byte CarLimitRestrictor { get; set; } = Byte.MinValue;
         public Byte GainRestrictor { get; set; } = Byte.MinValue;
-        public Byte CarLimitRegisterLimit { get; set; } = Byte.MinValue;
-        public DateTime DateRegisterLimit { get; set; } = DateTime.UtcNow;
-        public DateTime DateBoPFreeze { get; set; } = DateTime.UtcNow;
-        public Byte NoShowLimit { get; set; } = Byte.MinValue;
-        public Byte SignOutLimit { get; set; } = Byte.MinValue;
-        public Byte CarChangeLimit { get; set; } = Byte.MinValue;
-        public DateTime DateCarChangeLimit { get; set; } = DateTime.UtcNow;
-        public bool GroupCarLimits { get; set; } = false;
-        public bool BopLatestModelOnly { get; set; } = false;
-        public ushort DaysIgnoreCarLimits { get; set; } = ushort.MinValue;
-        public ulong DiscordRoleId { get; set; } = GlobalValues.NoDiscordId;
-        public ulong DiscordChannelId { get; set; } = GlobalValues.NoDiscordId;
-        public FormationLapType FormationLapType { get; set; } = FormationLapType.Manual;
+        public ulong DiscordDriverRoleId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordTrackReportChannelId { get; set; } = GlobalValues.NoDiscordId;
         public string ShortDescription { get; set; } = string.Empty;
         public string GeneralDescription { get; set; } = string.Empty;
         public string SpecificDescription { get; set; } = string.Empty;
+        public FormationLapType FormationLapType { get; set; } = FormationLapType.Manual;
     }
 }

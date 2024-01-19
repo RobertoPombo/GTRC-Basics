@@ -34,6 +34,25 @@ namespace GTRC_Basics
             else { return null; }
         }
 
+        public static bool IsForeignId(string propertyName)
+        {
+            if (GetTypeForeignId(propertyName) is null) { return false; }
+            else { return true; }
+        }
+
+        public static Type? GetTypeForeignId(string propertyName)
+        {
+            if (propertyName.Length > GlobalValues.Id.Length && propertyName[^GlobalValues.Id.Length..] == GlobalValues.Id)
+            {
+                foreach (Type type in GlobalValues.ModelTypeList)
+                {
+                    if (propertyName[..^GlobalValues.Id.Length] == type.Name) { return type; }
+                }
+                return null;
+            }
+            return null;
+        }
+
         public static List<Event> SortByDate(List<Event> listEvents)
         {
             for (int index1 = 0; index1 < listEvents.Count - 1; index1++)

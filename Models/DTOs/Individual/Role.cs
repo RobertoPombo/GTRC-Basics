@@ -17,6 +17,7 @@ namespace GTRC_Basics.Models.DTOs
     public class RoleAddDto : Mapper<Role>
     {
         public string? Name { get; set; }
+        public ulong? DiscordId { get; set; }
     }
 
 

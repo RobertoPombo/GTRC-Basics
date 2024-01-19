@@ -14,5 +14,7 @@ namespace GTRC_Basics.Models
         public string Name { get; set; } = DefaultName;
         [ForeignKey(nameof(Sim))] public int SimId { get; set; }
         public virtual Sim Sim { get; set; } = new();
+        public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordLogChannelId { get; set; } = GlobalValues.NoDiscordId;
     }
 }
