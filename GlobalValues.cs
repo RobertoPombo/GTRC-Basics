@@ -36,7 +36,6 @@ namespace GTRC_Basics
 
         public static readonly List<Type> ModelTypeList = [
             typeof(Color),
-            typeof(Community),
             typeof(Sim),
             typeof(User),
             typeof(Track),
@@ -59,7 +58,6 @@ namespace GTRC_Basics
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
             { typeof(Color), "Colors" },
-            { typeof(Community), "Communities" },
             { typeof(Sim), "Simulations" },
             { typeof(User), "Users" },
             { typeof(Track), "Tracks" },
@@ -83,7 +81,6 @@ namespace GTRC_Basics
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
-            { typeof(Community), [typeof(CommunityUniqPropsDto0)] },
             { typeof(Sim), [typeof(SimUniqPropsDto0)] },
             { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
             { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
@@ -114,16 +111,6 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(ColorUpdateDto) },
                     { DtoType.Filter, typeof(ColorFilterDto) },
                     { DtoType.Filters, typeof(ColorFilterDtos) }
-                }
-            },
-            {
-                typeof(Community), new()
-                {
-                    { DtoType.Full, typeof(CommunityFullDto) },
-                    { DtoType.Add, typeof(CommunityAddDto) },
-                    { DtoType.Update, typeof(CommunityUpdateDto) },
-                    { DtoType.Filter, typeof(CommunityFilterDto) },
-                    { DtoType.Filters, typeof(CommunityFilterDtos) }
                 }
             },
             {

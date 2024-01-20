@@ -11,8 +11,6 @@ namespace GTRC_Basics.Models
         public override string ToString() { return Id.ToString() + ". " + Name; }
 
         public int Id { get; set; }
-        [ForeignKey(nameof(Community))] public int CommunityId { get; set; }
-        public virtual Community Community { get; set; } = new();
         public string Name { get; set; } = DefaultName;
         [ForeignKey(nameof(Sim))] public int SimId { get; set; }
         public virtual Sim Sim { get; set; } = new();
