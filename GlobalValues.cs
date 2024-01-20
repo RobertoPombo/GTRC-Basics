@@ -81,7 +81,7 @@ namespace GTRC_Basics
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
-            { typeof(Sim), [typeof(SimUniqPropsDto0)] },
+            { typeof(Sim), [typeof(SimUniqPropsDto0), typeof(SimUniqPropsDto1)] },
             { typeof(User), [typeof(UserUniqPropsDto0), typeof(UserUniqPropsDto1)] },
             { typeof(Track), [typeof(TrackUniqPropsDto0), typeof(TrackUniqPropsDto1)] },
             { typeof(Carclass), [typeof(CarclassUniqPropsDto0)] },

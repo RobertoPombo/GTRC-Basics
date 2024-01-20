@@ -14,9 +14,16 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class SimUniqPropsDto1 : Mapper<Sim>
+    {
+        [Required] public string ShortName { get; set; } = string.Empty;
+    }
+
+
     public class SimAddDto : Mapper<Sim>
     {
         public string? Name { get; set; }
+        public string? ShortName { get; set; }
     }
 
 
