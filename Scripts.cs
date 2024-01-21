@@ -21,7 +21,7 @@ namespace GTRC_Basics
             ulong id = ulong.MinValue;
             strId = new string(strId?.Where(Char.IsNumber).ToArray());
             _ = ulong.TryParse(strId, out id);
-            if (Scripts.IsValidSteamId(id)) { return id; }
+            if (IsValidSteamId(id)) { return id; }
             else { return null; }
         }
 
@@ -30,7 +30,7 @@ namespace GTRC_Basics
             ulong id = ulong.MinValue;
             strId = new string(strId?.Where(Char.IsNumber).ToArray());
             _ = ulong.TryParse(strId, out id);
-            if (Scripts.IsValidDiscordId(id)) { return id; }
+            if (IsValidDiscordId(id)) { return id; }
             else { return null; }
         }
 

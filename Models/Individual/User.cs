@@ -1,5 +1,4 @@
 ﻿using GTRC_Basics.Models.Common;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GTRC_Basics.Models
 {
@@ -25,7 +24,7 @@ namespace GTRC_Basics.Models
         public short SafetyRating { get; set; } = DefaultSafetyRating;
         public byte Warnings { get; set; } = byte.MinValue;
         public string NickName { get; set; } = string.Empty;
-        public string? SteamLoginToken { get; set; }
-        public string? DiscordLoginToken { get; set; }
+        public string SteamLoginToken { get; set; } = string.Empty;
+        public string DiscordLoginToken { get; set; } = string.Empty;
     }
 }
