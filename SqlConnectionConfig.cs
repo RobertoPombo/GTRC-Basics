@@ -1,16 +1,21 @@
 ﻿using Dapper;
 using Newtonsoft.Json;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace GTRC_Basics
 {
     public class SqlConnectionConfig : ConnectionConfig
     {
+        public static readonly List<SqlConnectionConfig> List = [];
+        private static readonly string path = GlobalValues.DataDirectory + "config dbsql.json";
         private static readonly string defConStr = "Data Source=@\\@,@;Initial Catalog=@;User ID=@;Password=@;Integrated Security=True@;TrustServerCertificate=true";
 
-        public static readonly List<SqlConnectionConfig> List = [];
-
-        public SqlConnectionConfig() { List.Add(this); Name = name; }
+        public SqlConnectionConfig()
+        {
+            List.Add(this);
+            Name = name;
+        }
 
         private string name = "Preset #1";
         private bool isActive = false;
@@ -40,30 +45,7 @@ namespace GTRC_Basics
             set { if (value != isActive) { if (value) { DeactivateAllConnections(); } isActive = value; } }
         }
 
-        public bool IsUniqueName()
-        {
-            int listIndexThis = List.IndexOf(this);
-            for (int conNr = 0; conNr < List.Count; conNr++)
-            {
-                if (List[conNr].Name == name && conNr != listIndexThis) { return false; }
-            }
-            return true;
-        }
-
-        public static SqlConnectionConfig? GetActiveConnection()
-        {
-            foreach (SqlConnectionConfig con in List) { if (con.IsActive) { return con; } }
-            return null;
-        }
-
-        public static void DeactivateAllConnections()
-        {
-            SqlConnectionConfig? con = GetActiveConnection();
-            if (con is not null) { con.IsActive = false; }
-        }
-
-        [JsonIgnore]
-        public string ConnectionString
+        [JsonIgnore] public string ConnectionString
         {
             get
             {
@@ -90,21 +72,6 @@ namespace GTRC_Basics
             set { }
         }
 
-        public bool Connectivity()
-        {
-            foreach (string tableName in GlobalValues.SqlTableNames.Values)
-            {
-                string SqlQry = "SELECT TOP 0 * FROM " + tableName ?? string.Empty + ";";
-                try
-                {
-                    SqlConnection con = new(ConnectionString);
-                    _ = con.Query<dynamic>(SqlQry).ToList();
-                }
-                catch { return false; }
-            }
-            return true;
-        }
-
         public bool Reseed(Type modelType)
         {
             if (Connectivity() && GlobalValues.SqlTableNames.TryGetValue(modelType, out string? _tableName))
@@ -123,6 +90,64 @@ namespace GTRC_Basics
                 catch { return false; }
             }
             else { return false; }
+        }
+
+        public bool IsUniqueName()
+        {
+            int listIndexThis = List.IndexOf(this);
+            for (int conNr = 0; conNr < List.Count; conNr++)
+            {
+                if (List[conNr].Name == name && conNr != listIndexThis) { return false; }
+            }
+            return true;
+        }
+
+        public bool Connectivity()
+        {
+            foreach (string tableName in GlobalValues.SqlTableNames.Values)
+            {
+                string SqlQry = "SELECT TOP 0 * FROM " + tableName ?? string.Empty + ";";
+                try
+                {
+                    SqlConnection con = new(ConnectionString);
+                    _ = con.Query<dynamic>(SqlQry).ToList();
+                }
+                catch { return false; }
+            }
+            return true;
+        }
+
+        public static void LoadJson()
+        {
+            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
+            if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(List, Formatting.Indented), Encoding.Unicode); }
+            try
+            {
+                List.Clear();
+                _ = JsonConvert.DeserializeObject<List<SqlConnectionConfig>>(File.ReadAllText(path, Encoding.Unicode)) ?? [];
+                GlobalValues.CurrentLogText = "SQL-Database connection settings restored.";
+            }
+            catch { GlobalValues.CurrentLogText = "Restore SQL-Database connection settings failed!"; }
+            if (List.Count == 0) { _ = new SqlConnectionConfig(); }
+        }
+
+        public static void SaveJson()
+        {
+            string text = JsonConvert.SerializeObject(List, Formatting.Indented);
+            File.WriteAllText(path, text, Encoding.Unicode);
+            GlobalValues.CurrentLogText = "SQL-Database connection settings saved.";
+        }
+
+        public static SqlConnectionConfig? GetActiveConnection()
+        {
+            foreach (SqlConnectionConfig con in List) { if (con.IsActive) { return con; } }
+            return null;
+        }
+
+        public static void DeactivateAllConnections()
+        {
+            SqlConnectionConfig? con = GetActiveConnection();
+            if (con is not null) { con.IsActive = false; }
         }
     }
 }
