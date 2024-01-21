@@ -86,13 +86,4 @@ namespace GTRC_Basics.Models.DTOs
         public UserFilterDto FilterMin { get; set; } = new();
         public UserFilterDto FilterMax { get; set; } = new();
     }
-
-
-    public class UserFirstDiscordLoginDto : Mapper<User>
-    {
-        public ulong? SteamId { get; set; }
-        [Required] public string FirstName { get; set; } = string.Empty;
-        [Required] public string LastName { get; set; } = string.Empty;
-        public string? NickName { get; set; }
-    }
 }

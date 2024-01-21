@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace GTRC_Basics.Models.DTOs
 {
-    public abstract class Mapper<ModelType> where ModelType : class, IBaseModel, new()
+    public class Mapper<ModelType> where ModelType : class, IBaseModel, new()
     {
         public static dynamic Map(dynamic sourceObject, dynamic returnObject, bool acceptNull = false)
         {
