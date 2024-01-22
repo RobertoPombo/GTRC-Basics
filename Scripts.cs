@@ -399,6 +399,10 @@ namespace GTRC_Basics
             else if (type == typeof(FormationLapType?)) { if (FormationLapType.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
             else if (type == typeof(DayOfWeekend)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
             else if (type == typeof(DayOfWeekend?)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccDriverCategory)) { if (AccDriverCategory.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccDriverCategory?)) { if (AccDriverCategory.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccCupCategory)) { if (AccCupCategory.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccCupCategory?)) { if (AccCupCategory.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
             else if (type == typeof(RtgState)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
             else if (type == typeof(RtgState?)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
             else if (type == typeof(SessionState)) { if (SessionState.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }

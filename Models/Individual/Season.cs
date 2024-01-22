@@ -10,7 +10,7 @@ namespace GTRC_Basics.Models
         public static readonly byte MinMinDriversPerEntry = 1;
         public static readonly byte MinMinEntriesPerTeam = 1;
 
-        public override string ToString() { return Id.ToString() + ". " + Name + " (" + Series.Name + ")"; }
+        public override string ToString() { return Name + " - " + Series.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Series))] public int SeriesId { get; set; }

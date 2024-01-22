@@ -19,6 +19,8 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? OrganizationId { get; set; }
         public int? UserId { get; set; }
+        public bool? IsAdmin { get; set; }
+        public bool? IsInvited { get; set; }
     }
 
 

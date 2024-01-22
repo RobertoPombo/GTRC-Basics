@@ -6,7 +6,7 @@ namespace GTRC_Basics.Models
 {
     public class BopTrackCar : IBaseModel
     {
-        public override string ToString() { return Bop.ToString() + " - " + Track.Name + " - " + Car.Name; }
+        public override string ToString() { return Bop.ToString() + " | " + Track.ToString() + " | " + Car.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Bop))] public int BopId { get; set; }

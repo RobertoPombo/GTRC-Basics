@@ -52,6 +52,7 @@ namespace GTRC_Basics
             typeof(Organization),
             typeof(OrganizationUser),
             typeof(Team),
+            typeof(Entry),
             typeof(Event),
             typeof(EventCarclass),
             typeof(EventCar) ];
@@ -74,6 +75,7 @@ namespace GTRC_Basics
             { typeof(Organization), "Organizations" },
             { typeof(OrganizationUser), "OrganizationsUsers" },
             { typeof(Team), "Teams" },
+            { typeof(Entry), "Entries" },
             { typeof(Event), "Events" },
             { typeof(EventCarclass), "EventsCarclasses" },
             { typeof(EventCar), "EventsCars" }
@@ -97,6 +99,7 @@ namespace GTRC_Basics
             { typeof(Organization), [typeof(OrganizationUniqPropsDto0)] },
             { typeof(OrganizationUser), [typeof(OrganizationUserUniqPropsDto0)] },
             { typeof(Team), [typeof(TeamUniqPropsDto0)] },
+            { typeof(Entry), [typeof(EntryUniqPropsDto0)] },
             { typeof(Event), [typeof(EventUniqPropsDto0), typeof(EventUniqPropsDto1)] },
             { typeof(EventCarclass), [typeof(EventCarclassUniqPropsDto0)] },
             { typeof(EventCar), [typeof(EventCarUniqPropsDto0)] }
@@ -271,6 +274,16 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(TeamUpdateDto) },
                     { DtoType.Filter, typeof(TeamFilterDto) },
                     { DtoType.Filters, typeof(TeamFilterDtos) }
+                }
+            },
+            {
+                typeof(Entry), new()
+                {
+                    { DtoType.Full, typeof(EntryFullDto) },
+                    { DtoType.Add, typeof(EntryAddDto) },
+                    { DtoType.Update, typeof(EntryUpdateDto) },
+                    { DtoType.Filter, typeof(EntryFilterDto) },
+                    { DtoType.Filters, typeof(EntryFilterDtos) }
                 }
             },
             {

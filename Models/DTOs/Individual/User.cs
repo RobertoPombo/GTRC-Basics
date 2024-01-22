@@ -63,8 +63,6 @@ namespace GTRC_Basics.Models.DTOs
         public short? SafetyRating { get; set; }
         public byte? Warnings { get; set; }
         public string? NickName { get; set; }
-        public string? SteamLoginToken { get; set; }
-        public string? DiscordLoginToken { get; set; }
     }
 
 

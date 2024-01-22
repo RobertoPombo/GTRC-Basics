@@ -6,7 +6,7 @@ namespace GTRC_Basics.Models
 {
     public class UserRole : IBaseModel
     {
-        public override string ToString() { return User.ToString() + " - " + Role.ToString(); }
+        public override string ToString() { return User.ToString() + " | " + Role.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(User))] public int UserId { get; set; }

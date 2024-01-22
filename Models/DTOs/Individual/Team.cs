@@ -10,14 +10,12 @@ namespace GTRC_Basics.Models.DTOs
 
     public class TeamUniqPropsDto0 : Mapper<Team>
     {
-        [Required] public int SeasonId { get; set; }
         [Required] public string Name { get; set; } = string.Empty;
     }
 
 
     public class TeamAddDto : Mapper<Team>
     {
-        public int? SeasonId { get; set; }
         public string? Name { get; set; }
         public int? OrganizationId { get; set; }
     }
@@ -32,7 +30,6 @@ namespace GTRC_Basics.Models.DTOs
     public class TeamFilterDto : TeamAddDto
     {
         public int? Id { get; set; }
-        public string? Season { get; set; }
         public string? Organization { get; set; }
     }
 

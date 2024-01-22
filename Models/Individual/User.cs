@@ -10,7 +10,7 @@ namespace GTRC_Basics.Models
         public static readonly short DefaultSafetyRating = 50;
         public static readonly short MaxSafetyRating = 100;
 
-        public override string ToString() { return Id.ToString() + ". " + FirstName + " " + LastName; }
+        public override string ToString() { return FirstName + " " + LastName; }
 
         public int Id { get; set; }
         public ulong SteamId { get; set; } = GlobalValues.NoSteamId;
@@ -24,7 +24,5 @@ namespace GTRC_Basics.Models
         public short SafetyRating { get; set; } = DefaultSafetyRating;
         public byte Warnings { get; set; } = byte.MinValue;
         public string NickName { get; set; } = string.Empty;
-        public string SteamLoginToken { get; set; } = string.Empty;
-        public string DiscordLoginToken { get; set; } = string.Empty;
     }
 }

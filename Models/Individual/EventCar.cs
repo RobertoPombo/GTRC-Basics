@@ -6,7 +6,7 @@ namespace GTRC_Basics.Models
 {
     public class EventCar : IBaseModel
     {
-        public override string ToString() { return Event.ToString() + " - " + Car.Name; }
+        public override string ToString() { return Event.ToString() + " | " + Car.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Event))] public int EventId { get; set; }

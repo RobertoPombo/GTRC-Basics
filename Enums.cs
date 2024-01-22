@@ -79,6 +79,23 @@
         Sunday = 3
     }
 
+    public enum AccDriverCategory
+    {
+        Bronze = 0,
+        Silver = 1,
+        Gold = 2,
+        Platinum = 3
+    }
+
+    public enum AccCupCategory
+    {
+        Overall = 0,
+        ProAm = 1,
+        Am = 2,
+        Silver = 3,
+        National = 4
+    }
+
     public enum RtgState
     {
         NoRTG = 0,

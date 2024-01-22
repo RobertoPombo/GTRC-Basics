@@ -12,7 +12,7 @@ namespace GTRC_Basics.Models
         public static readonly byte MaxRainLevel = 100;
         public static readonly byte MaxWeatherRandomness = 7;
 
-        public override string ToString() { return Id.ToString() + ". " + Name + " (" + Season.Name + " - " + Season.Series.Name + ")"; }
+        public override string ToString() { return Name + " - " + Season.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Season))] public int SeasonId { get; set; }
