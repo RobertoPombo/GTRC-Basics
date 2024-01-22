@@ -19,30 +19,30 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? SeriesId { get; set; }
         public string? Name { get; set; }
-        public Byte? MinDriversPerEntry { get; set; }
-        public Byte? MaxDriversPerEntry { get; set; }
-        public Byte? MinEntriesPerTeam { get; set; }
-        public Byte? MaxEntriesPerTeam { get; set; }
+        public byte? MinDriversPerEntry { get; set; }
+        public byte? MaxDriversPerEntry { get; set; }
+        public byte? MinEntriesPerTeam { get; set; }
+        public byte? MaxEntriesPerTeam { get; set; }
         public bool? ForceDriverFromOrganization { get; set; }
         public bool? AllowDriverLineupPerEvent { get; set; }
         public DateTime? DateStartRegistration { get; set; }
         public DateTime? DateEndRegistration { get; set; }
-        public Byte? MaxGridSlots { get; set; }
-        public Byte? MaxNoShows { get; set; }
-        public Byte? MaxSignOuts { get; set; }
-        public Byte? CarRegristrationLimit { get; set; }
+        public byte? MaxGridSlots { get; set; }
+        public byte? MaxNoShows { get; set; }
+        public byte? MaxSignOuts { get; set; }
+        public byte? CarRegristrationLimit { get; set; }
         public DateTime? DateStartCarRegristrationLimit { get; set; }
         public bool? GroupCarRegristrationLimits { get; set; }
         public ushort? DaysIgnoreCarRegristrationLimit { get; set; }
-        public Byte? CarChangeLimit { get; set; }
+        public byte? CarChangeLimit { get; set; }
         public DateTime? DateStartCarChangeLimit { get; set; }
         public int? BopId { get; set; }
         public DateTime? DateBoPFreeze { get; set; }
         public bool? BopLatestModelOnly { get; set; }
-        public Byte? CarLimitBallast { get; set; }
-        public Byte? GainBallast { get; set; }
-        public Byte? CarLimitRestrictor { get; set; }
-        public Byte? GainRestrictor { get; set; }
+        public byte? CarLimitBallast { get; set; }
+        public byte? GainBallast { get; set; }
+        public byte? CarLimitRestrictor { get; set; }
+        public byte? GainRestrictor { get; set; }
         public ulong? DiscordDriverRoleId { get; set; }
         public ulong? DiscordRegistrationChannelId { get; set; }
         public ulong? DiscordTrackReportChannelId { get; set; }
