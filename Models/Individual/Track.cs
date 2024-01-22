@@ -13,8 +13,8 @@ namespace GTRC_Basics.Models
         public int Id { get; set; }
         public string Name { get; set; } = DefaultName;
         public string AccTrackId { get; set; } = DefaultAccTrackId;
-        public ushort PitBoxesCount { get; set; } = ushort.MinValue;
-        public ushort ServerSlotsCount { get; set; } = ushort.MinValue;
+        public byte PitBoxesCount { get; set; } = byte.MinValue;
+        public byte ServerSlotsCount { get; set; } = byte.MinValue;
         public ushort AccTimePenDtS { get; set; } = DefaultAccTimePenDtS;
         public string NameGoogleSheets { get; set; } = string.Empty;
     }
