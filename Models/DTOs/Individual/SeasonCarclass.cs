@@ -19,6 +19,7 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? SeasonId { get; set; }
         public int? CarclassId { get; set; }
+        public byte? MaxGridSlots { get; set; }
     }
 
 

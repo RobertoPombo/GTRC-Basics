@@ -13,5 +13,6 @@ namespace GTRC_Basics.Models
         public virtual Season Season { get; set; } = new();
         [ForeignKey(nameof(Carclass))] public int CarclassId { get; set; }
         public virtual Carclass Carclass { get; set; } = new();
+        public byte MaxGridSlots { get; set; } = byte.MaxValue;
     }
 }

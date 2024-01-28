@@ -24,7 +24,6 @@ namespace GTRC_Basics.Models
         public bool AllowDriverLineupPerEvent { get; set; } = false;
         public DateTime DateStartRegistration { get; set; } = DateTime.UtcNow;
         public DateTime DateEndRegistration { get; set; } = DateTime.UtcNow;
-        public byte MaxGridSlots { get; set; } = byte.MinValue;
         public byte MaxNoShows { get; set; } = byte.MinValue;
         public byte MaxSignOuts { get; set; } = byte.MinValue;
         public byte CarRegristrationLimit { get; set; } = byte.MinValue;
