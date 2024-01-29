@@ -17,9 +17,9 @@ namespace GTRC_Basics.Models
         public virtual Series Series { get; set; } = new();
         public string Name { get; set; } = DefaultName;
         public byte MinDriversPerEntry { get; set; } = MinMinDriversPerEntry;
-        public byte MaxDriversPerEntry { get; set; } = (byte)(MinMinDriversPerEntry + 1);
+        public byte MaxDriversPerEntry { get; set; } = MinMinDriversPerEntry;
         public byte MinEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
-        public byte MaxEntriesPerTeam { get; set; } = (byte)(MinMinEntriesPerTeam + 1);
+        public byte MaxEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
         public bool ForceDriverFromOrganization { get; set; } = true;
         public bool AllowDriverLineupPerEvent { get; set; } = false;
         public DateTime DateStartRegistration { get; set; } = DateTime.UtcNow;
