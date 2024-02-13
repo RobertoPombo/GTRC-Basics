@@ -7,6 +7,8 @@ namespace GTRC_Basics.Models
     public class Car : IBaseModel
     {
         public static readonly string DefaultName = nameof(Car);
+        public static readonly ushort MinWidthMm = 1;
+        public static readonly ushort MinLengthMm = 1;
 
         public override string ToString() { return Name; }
 

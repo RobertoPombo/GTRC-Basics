@@ -15,7 +15,7 @@ namespace GTRC_Basics.Models.DTOs
 
         private static dynamic GetMappedDto(dynamic _dto)
         {
-            return Mapper<ModelType>.Map(_dto, Activator.CreateInstance(GlobalValues.DictDtoModels[typeof(ModelType)][dtoType])!, true);
+            return Scripts.Map(_dto, Activator.CreateInstance(GlobalValues.DictDtoModels[typeof(ModelType)][dtoType])!, true);
         }
     }
 }

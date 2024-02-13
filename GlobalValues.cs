@@ -44,6 +44,7 @@ namespace GTRC_Basics
             typeof(Car),
             typeof(Role),
             typeof(UserRole),
+            typeof(UserDatetime),
             typeof(Bop),
             typeof(BopTrackCar),
             typeof(Series),
@@ -53,9 +54,15 @@ namespace GTRC_Basics
             typeof(OrganizationUser),
             typeof(Team),
             typeof(Entry),
+            typeof(EntryDatetime),
             typeof(Event),
             typeof(EventCarclass),
-            typeof(EventCar) ];
+            typeof(EventCar),
+            typeof(EntryEvent),
+            typeof(EntryUserEvent),
+            typeof(Pointssystem),
+            typeof(PointssystemPosition) ];
+
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
             { typeof(Color), "Colors" },
@@ -67,6 +74,7 @@ namespace GTRC_Basics
             { typeof(Car), "Cars" },
             { typeof(Role), "Roles" },
             { typeof(UserRole), "UsersRoles" },
+            { typeof(UserDatetime), "UsersDatetimes" },
             { typeof(Bop), "Bops" },
             { typeof(BopTrackCar), "BopsTracksCars" },
             { typeof(Series), "Series" },
@@ -76,10 +84,16 @@ namespace GTRC_Basics
             { typeof(OrganizationUser), "OrganizationsUsers" },
             { typeof(Team), "Teams" },
             { typeof(Entry), "Entries" },
+            { typeof(EntryDatetime), "EntriesDatetimes" },
             { typeof(Event), "Events" },
             { typeof(EventCarclass), "EventsCarclasses" },
-            { typeof(EventCar), "EventsCars" }
+            { typeof(EventCar), "EventsCars" },
+            { typeof(EntryEvent), "EntriesEvents" },
+            { typeof(EntryUserEvent), "EntriesUsersEvents" },
+            { typeof(Pointssystem), "Pointssystems" },
+            { typeof(PointssystemPosition), "PointssystemsPositions" }
         };
+
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
         {
             { typeof(Color), [typeof(ColorUniqPropsDto0)] },
@@ -91,6 +105,7 @@ namespace GTRC_Basics
             { typeof(Car), [typeof(CarUniqPropsDto0), typeof(CarUniqPropsDto1)] },
             { typeof(Role), [typeof(RoleUniqPropsDto0)] },
             { typeof(UserRole), [typeof(UserRoleUniqPropsDto0)] },
+            { typeof(UserDatetime), [typeof(UserDatetimeUniqPropsDto0)] },
             { typeof(Bop), [typeof(BopUniqPropsDto0)] },
             { typeof(BopTrackCar), [typeof(BopTrackCarUniqPropsDto0)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
@@ -100,10 +115,16 @@ namespace GTRC_Basics
             { typeof(OrganizationUser), [typeof(OrganizationUserUniqPropsDto0)] },
             { typeof(Team), [typeof(TeamUniqPropsDto0)] },
             { typeof(Entry), [typeof(EntryUniqPropsDto0)] },
+            { typeof(EntryDatetime), [typeof(EntryDatetimeUniqPropsDto0)] },
             { typeof(Event), [typeof(EventUniqPropsDto0), typeof(EventUniqPropsDto1)] },
             { typeof(EventCarclass), [typeof(EventCarclassUniqPropsDto0)] },
-            { typeof(EventCar), [typeof(EventCarUniqPropsDto0)] }
+            { typeof(EventCar), [typeof(EventCarUniqPropsDto0)] },
+            { typeof(EntryEvent), [typeof(EntryEventUniqPropsDto0)] },
+            { typeof(EntryUserEvent), [typeof(EntryUserEventUniqPropsDto0)] },
+            { typeof(Pointssystem), [typeof(PointssystemUniqPropsDto0)] },
+            { typeof(PointssystemPosition), [typeof(PointssystemPositionUniqPropsDto0)] }
         };
+
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
         {
             {
@@ -197,6 +218,16 @@ namespace GTRC_Basics
                 }
             },
             {
+                typeof(UserDatetime), new()
+                {
+                    { DtoType.Full, typeof(UserDatetimeFullDto) },
+                    { DtoType.Add, typeof(UserDatetimeAddDto) },
+                    { DtoType.Update, typeof(UserDatetimeUpdateDto) },
+                    { DtoType.Filter, typeof(UserDatetimeFilterDto) },
+                    { DtoType.Filters, typeof(UserDatetimeFilterDtos) }
+                }
+            },
+            {
                 typeof(Bop), new()
                 {
                     { DtoType.Full, typeof(BopFullDto) },
@@ -287,6 +318,16 @@ namespace GTRC_Basics
                 }
             },
             {
+                typeof(EntryDatetime), new()
+                {
+                    { DtoType.Full, typeof(EntryDatetimeFullDto) },
+                    { DtoType.Add, typeof(EntryDatetimeAddDto) },
+                    { DtoType.Update, typeof(EntryDatetimeUpdateDto) },
+                    { DtoType.Filter, typeof(EntryDatetimeFilterDto) },
+                    { DtoType.Filters, typeof(EntryDatetimeFilterDtos) }
+                }
+            },
+            {
                 typeof(Event), new()
                 {
                     { DtoType.Full, typeof(EventFullDto) },
@@ -314,6 +355,46 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(EventCarUpdateDto) },
                     { DtoType.Filter, typeof(EventCarFilterDto) },
                     { DtoType.Filters, typeof(EventCarFilterDtos) }
+                }
+            },
+            {
+                typeof(EntryEvent), new()
+                {
+                    { DtoType.Full, typeof(EntryEventFullDto) },
+                    { DtoType.Add, typeof(EntryEventAddDto) },
+                    { DtoType.Update, typeof(EntryEventUpdateDto) },
+                    { DtoType.Filter, typeof(EntryEventFilterDto) },
+                    { DtoType.Filters, typeof(EntryEventFilterDtos) }
+                }
+            },
+            {
+                typeof(EntryUserEvent), new()
+                {
+                    { DtoType.Full, typeof(EntryUserEventFullDto) },
+                    { DtoType.Add, typeof(EntryUserEventAddDto) },
+                    { DtoType.Update, typeof(EntryUserEventUpdateDto) },
+                    { DtoType.Filter, typeof(EntryUserEventFilterDto) },
+                    { DtoType.Filters, typeof(EntryUserEventFilterDtos) }
+                }
+            },
+            {
+                typeof(Pointssystem), new()
+                {
+                    { DtoType.Full, typeof(PointssystemFullDto) },
+                    { DtoType.Add, typeof(PointssystemAddDto) },
+                    { DtoType.Update, typeof(PointssystemUpdateDto) },
+                    { DtoType.Filter, typeof(PointssystemFilterDto) },
+                    { DtoType.Filters, typeof(PointssystemFilterDtos) }
+                }
+            },
+            {
+                typeof(PointssystemPosition), new()
+                {
+                    { DtoType.Full, typeof(PointssystemPositionFullDto) },
+                    { DtoType.Add, typeof(PointssystemPositionAddDto) },
+                    { DtoType.Update, typeof(PointssystemPositionUpdateDto) },
+                    { DtoType.Filter, typeof(PointssystemPositionFilterDto) },
+                    { DtoType.Filters, typeof(PointssystemPositionFilterDtos) }
                 }
             }
             /*

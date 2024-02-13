@@ -10,5 +10,6 @@ namespace GTRC_Basics.Models
 
         public int Id { get; set; }
         public string Name { get; set; } = DefaultName;
+        public DateTime RegisterDate { get; set; } = DateTime.UtcNow;
     }
 }

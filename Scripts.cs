@@ -6,6 +6,50 @@ namespace GTRC_Basics
 {
     public static class Scripts
     {
+        public static bool IsCompositeKey(string modelName)
+        {
+            foreach (Type modelType in GlobalValues.ModelTypeList)
+            {
+                if (modelName.Contains(modelType.Name) && modelName != modelType.Name) { return true; }
+            }
+            return false;
+        }
+
+        public static dynamic Map(dynamic sourceObj, dynamic returnObj, bool acceptNull = false)
+        {
+            foreach (PropertyInfo sourceProperty in sourceObj.GetType().GetProperties())
+            {
+                foreach (PropertyInfo returnProperty in returnObj.GetType().GetProperties())
+                {
+                    if (sourceProperty.Name == returnProperty.Name &&
+                        ((acceptNull && Nullable.GetUnderlyingType(returnProperty.PropertyType) is not null) || sourceProperty.GetValue(sourceObj) is not null))
+                    {
+                        returnProperty.SetValue(returnObj, sourceProperty.GetValue(sourceObj));
+                        break;
+                    }
+                }
+            }
+            return returnObj;
+        }
+
+        public static bool IsSimilar(dynamic obj1, dynamic obj2, bool acceptNull = false)
+        {
+            foreach (PropertyInfo property1 in obj1.GetType().GetProperties())
+            {
+                foreach (PropertyInfo property2 in obj2.GetType().GetProperties())
+                {
+                    var value1 = Scripts.GetCastedValue(obj1, property1);
+                    var value2 = Scripts.GetCastedValue(obj2, property2);
+                    if (property1.Name == property2.Name && (acceptNull || value1 is not null) && value1 != value2 &&
+                        (value1?.ToString().Length > 0 || value2?.ToString().Length > 0))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public static bool IsValidSteamId(ulong? id)
         {
             return id is not null && id >= GlobalValues.MinSteamId && id <= GlobalValues.MaxSteamId;
@@ -353,70 +397,70 @@ namespace GTRC_Basics
             string? strValue = Value?.ToString();
             Type type = property.PropertyType;
             if (type == typeof(string) || GlobalValues.ModelTypeList.Contains(type)) { return strValue; }
-            else if (type == typeof(bool)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
-            else if (type == typeof(bool?)) { if (Boolean.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
-            else if (type == typeof(byte)) { if (Byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
-            else if (type == typeof(byte?)) { if (Byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
-            else if (type == typeof(short)) { if (Int16.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
-            else if (type == typeof(short?)) { if (Int16.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ushort)) { if (UInt16.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ushort?)) { if (UInt16.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
-            else if (type == typeof(int)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
-            else if (type == typeof(int?)) { if (Int32.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
-            else if (type == typeof(uint)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
-            else if (type == typeof(uint?)) { if (UInt32.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
-            else if (type == typeof(long)) { if (Int64.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
-            else if (type == typeof(long?)) { if (Int64.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ulong)) { if (UInt64.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ulong?)) { if (UInt64.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
-            else if (type == typeof(float)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
-            else if (type == typeof(float?)) { if (Single.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
-            else if (type == typeof(double)) { if (Double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
-            else if (type == typeof(double?)) { if (Double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
-            else if (type == typeof(decimal)) { if (Decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
-            else if (type == typeof(decimal?)) { if (Decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
+            else if (type == typeof(bool)) { if (bool.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
+            else if (type == typeof(bool?)) { if (bool.TryParse(strValue, out bool cv)) { return cv; } else { return null; } }
+            else if (type == typeof(byte)) { if (byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
+            else if (type == typeof(byte?)) { if (byte.TryParse(strValue, out byte cv)) { return cv; } else { return null; } }
+            else if (type == typeof(short)) { if (short.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
+            else if (type == typeof(short?)) { if (short.TryParse(strValue, out short cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ushort)) { if (ushort.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ushort?)) { if (ushort.TryParse(strValue, out ushort cv)) { return cv; } else { return null; } }
+            else if (type == typeof(int)) { if (int.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
+            else if (type == typeof(int?)) { if (int.TryParse(strValue, out int cv)) { return cv; } else { return null; } }
+            else if (type == typeof(uint)) { if (uint.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
+            else if (type == typeof(uint?)) { if (uint.TryParse(strValue, out uint cv)) { return cv; } else { return null; } }
+            else if (type == typeof(long)) { if (long.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
+            else if (type == typeof(long?)) { if (long.TryParse(strValue, out long cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ulong)) { if (ulong.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ulong?)) { if (ulong.TryParse(strValue, out ulong cv)) { return cv; } else { return null; } }
+            else if (type == typeof(float)) { if (float.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
+            else if (type == typeof(float?)) { if (float.TryParse(strValue, out float cv)) { return cv; } else { return null; } }
+            else if (type == typeof(double)) { if (double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
+            else if (type == typeof(double?)) { if (double.TryParse(strValue, out double cv)) { return cv; } else { return null; } }
+            else if (type == typeof(decimal)) { if (decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
+            else if (type == typeof(decimal?)) { if (decimal.TryParse(strValue, out decimal cv)) { return cv; } else { return null; } }
             else if (type == typeof(DateTime)) { if (DateTime.TryParse(strValue, out DateTime cv)) { return cv; } else { return null; } }
             else if (type == typeof(DateTime?)) { if (DateTime.TryParse(strValue, out DateTime cv)) { return cv; } else { return null; } }
             else if (type == typeof(DateOnly)) { if (DateOnly.TryParse(strValue, out DateOnly cv)) { return cv; } else { return null; } }
             else if (type == typeof(DateOnly?)) { if (DateOnly.TryParse(strValue, out DateOnly cv)) { return cv; } else { return null; } }
             else if (type == typeof(TimeSpan)) { if (TimeSpan.TryParse(strValue, out TimeSpan cv)) { return cv; } else { return null; } }
             else if (type == typeof(TimeSpan?)) { if (TimeSpan.TryParse(strValue, out TimeSpan cv)) { return cv; } else { return null; } }
-            else if (type == typeof(TimeUnit)) { if (TimeUnit.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
-            else if (type == typeof(TimeUnit?)) { if (TimeUnit.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
-            else if (type == typeof(SessionType)) { if (SessionType.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(SessionType?)) { if (SessionType.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ServerType)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ServerType?)) { if (ServerType.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(EntrylistType)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(EntrylistType?)) { if (EntrylistType.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentsStatus)) { if (IncidentsStatus.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentsStatus?)) { if (IncidentsStatus.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ReportReason)) { if (ReportReason.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ReportReason?)) { if (ReportReason.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentPropCategory)) { if (IncidentPropCategory.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentPropCategory?)) { if (IncidentPropCategory.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(FormationLapType)) { if (FormationLapType.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(FormationLapType?)) { if (FormationLapType.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(DayOfWeekend)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
-            else if (type == typeof(DayOfWeekend?)) { if (DayOfWeekend.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
-            else if (type == typeof(AccDriverCategory)) { if (AccDriverCategory.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(AccDriverCategory?)) { if (AccDriverCategory.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(AccCupCategory)) { if (AccCupCategory.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(AccCupCategory?)) { if (AccCupCategory.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
-            else if (type == typeof(RtgState)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
-            else if (type == typeof(RtgState?)) { if (RtgState.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
-            else if (type == typeof(SessionState)) { if (SessionState.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
-            else if (type == typeof(SessionState?)) { if (SessionState.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
-            else if (type == typeof(DtoType)) { if (DtoType.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(DtoType?)) { if (DtoType.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(HttpRequestType)) { if (HttpRequestType.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(HttpRequestType?)) { if (HttpRequestType.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ProtocolType)) { if (ProtocolType.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ProtocolType?)) { if (ProtocolType.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(NetworkType)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(NetworkType?)) { if (NetworkType.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IpAdressType)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IpAdressType?)) { if (IpAdressType.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeUnit)) { if (Enum.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
+            else if (type == typeof(TimeUnit?)) { if (Enum.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionType)) { if (Enum.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionType?)) { if (Enum.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ServerType)) { if (Enum.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ServerType?)) { if (Enum.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(EntrylistType)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(EntrylistType?)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentsStatus)) { if (Enum.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentsStatus?)) { if (Enum.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ReportReason)) { if (Enum.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ReportReason?)) { if (Enum.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentPropCategory)) { if (Enum.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentPropCategory?)) { if (Enum.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(FormationLapType)) { if (Enum.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(FormationLapType?)) { if (Enum.TryParse(strValue, out FormationLapType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DayOfWeekend)) { if (Enum.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DayOfWeekend?)) { if (Enum.TryParse(strValue, out DayOfWeekend cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccDriverCategory)) { if (Enum.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccDriverCategory?)) { if (Enum.TryParse(strValue, out AccDriverCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccCupCategory)) { if (Enum.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(AccCupCategory?)) { if (Enum.TryParse(strValue, out AccCupCategory cv)) { return cv; } else { return null; } }
+            else if (type == typeof(RtgState)) { if (Enum.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(RtgState?)) { if (Enum.TryParse(strValue, out RtgState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionState)) { if (Enum.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionState?)) { if (Enum.TryParse(strValue, out SessionState cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DtoType)) { if (Enum.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DtoType?)) { if (Enum.TryParse(strValue, out DtoType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(HttpRequestType)) { if (Enum.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(HttpRequestType?)) { if (Enum.TryParse(strValue, out HttpRequestType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ProtocolType)) { if (Enum.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ProtocolType?)) { if (Enum.TryParse(strValue, out ProtocolType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(NetworkType)) { if (Enum.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(NetworkType?)) { if (Enum.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IpAdressType)) { if (Enum.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IpAdressType?)) { if (Enum.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
             else if (type == typeof(System.Drawing.Color)) { return null; }
             else if (type == typeof(System.Drawing.Color?)) { return null; }
             else { return null; }

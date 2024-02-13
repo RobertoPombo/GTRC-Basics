@@ -24,8 +24,7 @@ namespace GTRC_Basics.Models
         public DateTime SignOutDate { get; set; } = GlobalValues.DateTimeMaxValue;
         public short BallastKg { get; set; }
         public short Restrictor { get; set; }
-        public AccDriverCategory AccDriverCategory { get; set; } = AccDriverCategory.Platinum;
-        public bool ScorePoints { get; set; } = true;
+        public bool IsPointScorer { get; set; } = true;
         public bool IsPermanent { get; set; } = true;
     }
 }

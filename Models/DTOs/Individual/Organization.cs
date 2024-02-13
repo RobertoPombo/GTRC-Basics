@@ -17,6 +17,7 @@ namespace GTRC_Basics.Models.DTOs
     public class OrganizationAddDto : Mapper<Organization>
     {
         public string? Name { get; set; }
+        public DateTime? RegisterDate { get; set; }
     }
 
 

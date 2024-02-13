@@ -26,8 +26,7 @@ namespace GTRC_Basics.Models.DTOs
         public DateTime? SignOutDate { get; set; }
         public short? BallastKg { get; set; }
         public short? Restrictor { get; set; }
-        public AccDriverCategory? AccDriverCategory { get; set; }
-        public bool? ScorePoints { get; set; }
+        public bool? IsPointScorer { get; set; }
         public bool? IsPermanent { get; set; }
     }
 
