@@ -10,8 +10,8 @@ namespace GTRC_Basics
         public static readonly string Id = "Id";
         public static readonly int NoId = 0;
         public static readonly int Id0 = 1;
-        public static readonly DateTime DateTimeMinValue = DateTime.MinValue.AddYears(1800);
-        public static readonly DateTime DateTimeMaxValue = DateTime.MaxValue.AddDays(-1);
+        public static readonly DateTime DateTimeMinValue = new(1000, DateTime.MinValue.Month, DateTime.MinValue.Day, 0, 0, 0, 0, DateTime.MinValue.Kind);
+        public static readonly DateTime DateTimeMaxValue = new(DateTime.MaxValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day, 0, 0, 0, 0, DateTime.MaxValue.Kind);
         public static readonly ulong NoSteamId = (ulong)NoId;
         public static readonly ulong MinSteamId = (ulong)Math.Pow(10, 16);
         public static readonly ulong MaxSteamId = MinSteamId * 10 - 1;
