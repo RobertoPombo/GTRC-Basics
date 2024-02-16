@@ -28,7 +28,7 @@ namespace GTRC_Basics.Models.DTOs
         public short? Restrictor { get; set; }
         public bool? IsPointScorer { get; set; }
         public bool? IsPermanent { get; set; }
-        public ushort? PreferedRaceNumber { get; set; }
+        public ushort? RaceNumberPreference { get; set; }
     }
 
 
