@@ -12,7 +12,7 @@ namespace GTRC_Basics.Configs
         };
         private static readonly string path = GlobalValues.DataDirectory + "config discordBot.json";
         public static readonly List<DiscordBotConfig> List = [];
-        public static readonly string DefaultName = nameof(DiscordBotConfig);
+        public static readonly string DefaultName = "Discord Bot #1";
 
         public DiscordBotConfig()
         {
@@ -31,16 +31,19 @@ namespace GTRC_Basics.Configs
             get { return name; }
             set
             {
-                name = value;
-                int nr = 1;
-                string delimiter = " #";
-                string defName = name;
-                string[] defNameList = defName.Split(delimiter);
-                if (defNameList.Length > 1 && int.TryParse(defNameList[^1], out _)) { defName = defName[..^(defNameList[^1].Length + delimiter.Length)]; }
-                while (!IsUniqueName())
+                if (value.Length > 0)
                 {
-                    name = defName + delimiter + nr.ToString();
-                    nr++; if (nr == int.MaxValue) { break; }
+                    name = value;
+                    int nr = 1;
+                    string delimiter = " #";
+                    string defName = name;
+                    string[] defNameList = defName.Split(delimiter);
+                    if (defNameList.Length > 1 && int.TryParse(defNameList[^1], out _)) { defName = defName[..^(defNameList[^1].Length + delimiter.Length)]; }
+                    while (!IsUniqueName())
+                    {
+                        name = defName + delimiter + nr.ToString();
+                        nr++; if (nr == int.MaxValue) { break; }
+                    }
                 }
             }
         }
@@ -71,15 +74,6 @@ namespace GTRC_Basics.Configs
                 if (List[botNr].Name == name && botNr != listIndexThis) { return false; }
             }
             return true;
-        }
-
-        public static DiscordBotConfig GetByName(string _name)
-        {
-            foreach (DiscordBotConfig bot in List)
-            {
-                if (bot.Name == _name) { return bot; }
-            }
-            return new();
         }
 
         public static void LoadJson()
