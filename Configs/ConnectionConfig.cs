@@ -1,4 +1,4 @@
-﻿namespace GTRC_Basics
+﻿namespace GTRC_Basics.Configs
 {
     public class ConnectionConfig
     {

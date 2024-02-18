@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace GTRC_Basics
+namespace GTRC_Basics.Configs
 {
     public class SqlConnectionConfig : ConnectionConfig
     {
