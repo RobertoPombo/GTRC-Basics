@@ -7,8 +7,13 @@ namespace GTRC_Basics.Models.DTOs
     {
         public System.Drawing.Color Preview
         {
-            get { return System.Drawing.Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue); }
+            get { return GetPreview(this); }
             set { }
+        }
+
+        public static System.Drawing.Color GetPreview(Color obj)
+        {
+            return System.Drawing.Color.FromArgb(obj.Alpha, obj.Red, obj.Green, obj.Blue);
         }
     }
 

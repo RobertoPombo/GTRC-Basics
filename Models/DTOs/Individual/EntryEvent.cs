@@ -6,14 +6,24 @@ namespace GTRC_Basics.Models.DTOs
     {
         public bool RegisterState
         {
-            get { return Entry.RegisterDate < Event.Date && Entry.SignOutDate > Event.Date; }
+            get { return GetRegisterState(this); }
             set { }
         }
 
         public bool SignInState
         {
-            get { return SignInDate < Event.Date; }
+            get { return GetSignInState(this); }
             set { }
+        }
+
+        public static bool GetRegisterState(EntryEvent obj)
+        {
+            return obj.Entry.RegisterDate < obj.Event.Date && obj.Entry.SignOutDate > obj.Event.Date;
+        }
+
+        public static bool GetSignInState(EntryEvent obj)
+        {
+            return obj.SignInDate < obj.Event.Date;
         }
     }
 

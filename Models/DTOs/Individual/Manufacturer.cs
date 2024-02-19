@@ -7,9 +7,15 @@ namespace GTRC_Basics.Models.DTOs
     {
         public string Logo
         {
-            get { return "\\Logos\\" + Name + ".png"; }
+            get { return GetLogo(this); }
             set { }
         }
+
+        public static string GetLogo(Manufacturer obj)
+        {
+            return "\\Logos\\" + obj.Name + ".png";
+        }
+
     }
 
 

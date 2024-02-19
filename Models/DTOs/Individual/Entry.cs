@@ -5,7 +5,16 @@ namespace GTRC_Basics.Models.DTOs
 {
     public class EntryFullDto : Entry
     {
+        public bool RegisterState
+        {
+            get { return GetRegisterState(this); }
+            set { }
+        }
 
+        public static bool GetRegisterState(Entry obj)
+        {
+            return obj.RegisterDate < DateTime.UtcNow && obj.SignOutDate > DateTime.UtcNow;
+        }
     }
 
 

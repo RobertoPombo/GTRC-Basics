@@ -6,35 +6,42 @@ namespace GTRC_Basics.Models.DTOs
     {
         public string FullName
         {
-            get { return FirstName + " " + LastName; }
+            get { return GetFullName(this); }
             set { }
         }
 
         public string ShortName
         {
-            get
-            {
-                string _shortName = string.Empty;
-                List<char> cList = [' ', '-'];
-                if (FirstName is not null)
-                {
-                    for (int index = 0; index < FirstName.Length - 1; index++)
-                    {
-                        if (_shortName.Length == 0 && !cList.Contains(FirstName[index]))
-                        {
-                            _shortName = FirstName[index].ToString() + ".";
-                        }
-                        else if (cList.Contains(FirstName[index]) && !cList.Contains(FirstName[index + 1]))
-                        {
-                            _shortName += FirstName[index].ToString() + FirstName[index + 1].ToString() + ".";
-                        }
-                    }
-                    _shortName += " " + LastName;
-                }
-                else { _shortName = LastName; }
-                return _shortName;
-            }
+            get { return GetShortName(this); }
             set { }
+        }
+
+        public static string GetFullName(User obj)
+        {
+            return obj.FirstName + " " + obj.LastName;
+        }
+
+        public static string GetShortName(User obj)
+        {
+            string _shortName = string.Empty;
+            List<char> cList = [' ', '-'];
+            if (obj.FirstName is not null)
+            {
+                for (int index = 0; index < obj.FirstName.Length - 1; index++)
+                {
+                    if (_shortName.Length == 0 && !cList.Contains(obj.FirstName[index]))
+                    {
+                        _shortName = obj.FirstName[index].ToString() + ".";
+                    }
+                    else if (cList.Contains(obj.FirstName[index]) && !cList.Contains(obj.FirstName[index + 1]))
+                    {
+                        _shortName += obj.FirstName[index].ToString() + obj.FirstName[index + 1].ToString() + ".";
+                    }
+                }
+                _shortName += " " + obj.LastName;
+            }
+            else { _shortName = obj.LastName; }
+            return _shortName;
         }
     }
 

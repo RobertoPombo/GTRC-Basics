@@ -97,19 +97,49 @@ namespace GTRC_Basics
             return null;
         }
 
-        public static List<Event> SortByDate(List<Event> listEvents)
+        public static List<Event> SortByDate(List<Event> list)
         {
-            for (int index1 = 0; index1 < listEvents.Count - 1; index1++)
+            for (int index1 = 0; index1 < list.Count - 1; index1++)
             {
-                for (int index2 = index1; index2 < listEvents.Count; index2++)
+                for (int index2 = index1; index2 < list.Count; index2++)
                 {
-                    if (listEvents[index1].Date > listEvents[index2].Date)
+                    if (list[index1].Date > list[index2].Date)
                     {
-                        (listEvents[index2], listEvents[index1]) = (listEvents[index1], listEvents[index2]);
+                        (list[index2], list[index1]) = (list[index1], list[index2]);
                     }
                 }
             }
-            return listEvents;
+            return list;
+        }
+
+        public static List<UserDatetime> SortByDate(List<UserDatetime> list)
+        {
+            for (int index1 = 0; index1 < list.Count - 1; index1++)
+            {
+                for (int index2 = index1; index2 < list.Count; index2++)
+                {
+                    if (list[index1].Date > list[index2].Date)
+                    {
+                        (list[index2], list[index1]) = (list[index1], list[index2]);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public static List<EntryDatetime> SortByDate(List<EntryDatetime> list)
+        {
+            for (int index1 = 0; index1 < list.Count - 1; index1++)
+            {
+                for (int index2 = index1; index2 < list.Count; index2++)
+                {
+                    if (list[index1].Date > list[index2].Date)
+                    {
+                        (list[index2], list[index1]) = (list[index1], list[index2]);
+                    }
+                }
+            }
+            return list;
         }
 
         public static string RemoveSpaceStartEnd(string s)
