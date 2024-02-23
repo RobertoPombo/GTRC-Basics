@@ -40,7 +40,7 @@ namespace GTRC_Basics.Configs
         {
             string text = JsonConvert.SerializeObject(gSheetsBotConfig, Formatting.Indented);
             File.WriteAllText(path, text, Encoding.Unicode);
-            GlobalValues.CurrentLogText = "Google-Sheets settings saved.";
+            GlobalValues.CurrentLogText = "Google-Sheets bot settings saved.";
         }
     }
 }
