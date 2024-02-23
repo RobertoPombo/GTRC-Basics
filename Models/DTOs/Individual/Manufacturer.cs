@@ -15,7 +15,6 @@ namespace GTRC_Basics.Models.DTOs
         {
             return "\\Logos\\" + obj.Name + ".png";
         }
-
     }
 
 

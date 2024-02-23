@@ -27,6 +27,7 @@ namespace GTRC_Basics.Models.DTOs
         public byte? PitBoxesCount { get; set; }
         public byte? ServerSlotsCount { get; set; }
         public ushort? AccTimePenDtS { get; set; }
+        public string? NameLfm { get; set; }
         public string? NameGoogleSheets { get; set; }
     }
 

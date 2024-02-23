@@ -9,7 +9,6 @@ namespace GTRC_Basics.Configs
 
         private int intervallMin = 0;
 
-
         public int SeriesId { get; set; }
 
         public int SeasonId { get; set; }

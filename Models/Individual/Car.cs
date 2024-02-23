@@ -24,6 +24,7 @@ namespace GTRC_Basics.Models
         public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
         public ushort WidthMm { get; set; } = 2000;
         public ushort LengthMm { get; set; } = 5000;
+        public string NameLfm { get; set; } = string.Empty;
         public string NameGoogleSheets { get; set; } = string.Empty;
     }
 }

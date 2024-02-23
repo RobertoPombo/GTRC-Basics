@@ -32,6 +32,7 @@ namespace GTRC_Basics.Models.DTOs
         public DateOnly? ReleaseDate { get; set; }
         public ushort? WidthMm { get; set; }
         public ushort? LengthMm { get; set; }
+        public string? NameLfm { get; set; }
         public string? NameGoogleSheets { get; set; }
     }
 

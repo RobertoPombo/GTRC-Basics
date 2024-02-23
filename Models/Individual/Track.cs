@@ -16,6 +16,7 @@ namespace GTRC_Basics.Models
         public byte PitBoxesCount { get; set; } = byte.MinValue;
         public byte ServerSlotsCount { get; set; } = byte.MinValue;
         public ushort AccTimePenDtS { get; set; } = DefaultAccTimePenDtS;
+        public string NameLfm { get; set; } = string.Empty;
         public string NameGoogleSheets { get; set; } = string.Empty;
     }
 }
