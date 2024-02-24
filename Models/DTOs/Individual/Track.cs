@@ -20,6 +20,18 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class TrackUniqPropsDto2 : Mapper<Track>
+    {
+        [Required] public string NameLfm { get; set; } = string.Empty;
+    }
+
+
+    public class TrackUniqPropsDto3 : Mapper<Track>
+    {
+        [Required] public string NameGoogleSheets { get; set; } = string.Empty;
+    }
+
+
     public class TrackAddDto : Mapper<Track>
     {
         public string? Name { get; set; }

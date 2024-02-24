@@ -21,6 +21,18 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class CarUniqPropsDto2 : Mapper<Car>
+    {
+        [Required] public string NameLfm { get; set; } = string.Empty;
+    }
+
+
+    public class CarUniqPropsDto3 : Mapper<Car>
+    {
+        [Required] public string NameGoogleSheets { get; set; } = string.Empty;
+    }
+
+
     public class CarAddDto : Mapper<Car>
     {
         public string? Name { get; set; }
