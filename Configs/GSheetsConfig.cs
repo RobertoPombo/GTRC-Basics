@@ -132,73 +132,89 @@ namespace GTRC_Basics.Configs
             GlobalValues.CurrentLogText = action + " Google-Sheets range failed! [sheetID: " + sheetID + " | range: " + range + "]";
         }
 
-        public static dynamic LoadRange(string docID, string sheetID, string range)
+        public static void SetLogTextTableNotFound(int tableNr)
+        {
+            GlobalValues.CurrentLogText = "Table definition no " + tableNr.ToString() + "no found!";
+        }
+
+        public dynamic LoadRange(int tableNr, string range)
         {
             if (gSheetService is null) { SetLogTextCredentialsFailure(); }
-            else
+            else if (TableList.Count > tableNr)
             {
+                string docId = TableList[tableNr].DocId;
+                string sheetId = TableList[tableNr].SheetId;
                 try
                 {
-                    var request = gSheetService.Spreadsheets.Values.Get(docID, $"{sheetID}!" + range);
+                    var request = gSheetService.Spreadsheets.Values.Get(docId, $"{sheetId}!" + range);
                     var response = request.Execute();
                     dynamic rows = response.Values;
                     return rows;
                 }
-                catch { SetLogTextActionFailure("Load", sheetID, range); }
+                catch { SetLogTextActionFailure("Load", sheetId, range); }
             }
+            else { SetLogTextTableNotFound(tableNr); }
             return new List<List<string>>();
         }
 
-        public static void ClearRange(string docID, string sheetID, string range)
+        public void ClearRange(int tableNr, string range)
         {
             if (gSheetService is null) { SetLogTextCredentialsFailure(); }
-            else
+            else if (TableList.Count > tableNr)
             {
+                string docId = TableList[tableNr].DocId;
+                string sheetId = TableList[tableNr].SheetId;
                 try
                 {
                     var requestBody = new ClearValuesRequest();
-                    var deleteRequest = gSheetService.Spreadsheets.Values.Clear(requestBody, docID, $"{sheetID}!" + range);
+                    var deleteRequest = gSheetService.Spreadsheets.Values.Clear(requestBody, docId, $"{sheetId}!" + range);
                     var deleteResponse = deleteRequest.Execute();
                 }
-                catch { SetLogTextActionFailure("Clear", sheetID, range); }
+                catch { SetLogTextActionFailure("Clear", sheetId, range); }
             }
+            else { SetLogTextTableNotFound(tableNr); }
         }
 
-        public static void UpdateRange(string docID, string sheetID, string range, List<List<object>> rows)
+        public void UpdateRange(int tableNr, string range, List<List<object>> rows)
         {
             if (gSheetService is null) { SetLogTextCredentialsFailure(); }
-            else
+            else if (TableList.Count > tableNr)
             {
+                string docId = TableList[tableNr].DocId;
+                string sheetId = TableList[tableNr].SheetId;
                 try
                 {
                     var valueRange = new ValueRange { Values = new List<IList<object>>() };
                     foreach (List<object> row in rows) { valueRange.Values.Add(row); }
-                    var updateRequest = gSheetService.Spreadsheets.Values.Update(valueRange, docID, $"{sheetID}!" + range);
+                    var updateRequest = gSheetService.Spreadsheets.Values.Update(valueRange, docId, $"{sheetId}!" + range);
                     updateRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
                     var updateResponse = updateRequest.Execute();
                 }
-                catch { SetLogTextActionFailure("Update", sheetID, range); }
+                catch { SetLogTextActionFailure("Update", sheetId, range); }
             }
+            else { SetLogTextTableNotFound(tableNr); }
         }
 
-        public static void UpdateFontColor(string docID, string sheetID, List<GSheetsRange> ranges, Models.Color color)
+        public void UpdateFontColor(int tableNr, List<GSheetsRange> ranges, Models.Color color)
         {
             if (gSheetService is null) { SetLogTextCredentialsFailure(); }
-            else
+            else if (TableList.Count > tableNr)
             {
+                string docId = TableList[tableNr].DocId;
+                string sheetId = TableList[tableNr].SheetId;
                 try
                 {
-                    Spreadsheet spreadsheet = gSheetService.Spreadsheets.Get(docID).Execute();
-                    Sheet? sheet = spreadsheet.Sheets.FirstOrDefault(s => s.Properties.Title == sheetID);
-                    if (sheet is null || sheet.Properties.SheetId is null) { SetLogTextActionFailure("Update", sheetID, string.Empty); }
+                    Spreadsheet spreadsheet = gSheetService.Spreadsheets.Get(docId).Execute();
+                    Sheet? sheet = spreadsheet.Sheets.FirstOrDefault(s => s.Properties.Title == sheetId);
+                    if (sheet is null || sheet.Properties.SheetId is null) { SetLogTextActionFailure("Update", sheetId, string.Empty); }
                     else 
                     {
-                        int sheetId = (int)sheet.Properties.SheetId;
+                        int _sheetId = (int)sheet.Properties.SheetId;
                         var userEnteredFormat = new CellFormat()
                         {
                             TextFormat = new TextFormat()
                             {
-                                ForegroundColor = new Google.Apis.Sheets.v4.Data.Color()
+                                ForegroundColor = new Color()
                                 {
                                     Blue = (float)color.Blue / 255,
                                     Red = (float)color.Red / 255,
@@ -219,7 +235,7 @@ namespace GTRC_Basics.Configs
                                 {
                                     Range = new GridRange()
                                     {
-                                        SheetId = sheetId,
+                                        SheetId = _sheetId,
                                         StartColumnIndex = range.Col0,
                                         StartRowIndex = range.Row0,
                                         EndColumnIndex = range.Col1,
@@ -234,11 +250,12 @@ namespace GTRC_Basics.Configs
                             };
                             bussr.Requests.Add(updateCellsRequest);
                         }
-                        var response = gSheetService.Spreadsheets.BatchUpdate(bussr, docID).Execute();
+                        var response = gSheetService.Spreadsheets.BatchUpdate(bussr, docId).Execute();
                     }
                 }
-                catch { SetLogTextActionFailure("Update", sheetID, string.Empty); }
+                catch { SetLogTextActionFailure("Update", sheetId, string.Empty); }
             }
+            else { SetLogTextTableNotFound(tableNr); }
         }
     }
 }

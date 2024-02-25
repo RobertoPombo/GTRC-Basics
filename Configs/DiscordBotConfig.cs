@@ -58,6 +58,10 @@ namespace GTRC_Basics.Configs
 
         public ushort CharLimit { get { return charLimit; } set { charLimit = value; } }
 
+        public int SeriesId { get; set; }
+
+        public int SeasonId { get; set; }
+
         public bool IsActive
         {
             get { return isActive; }
@@ -99,7 +103,7 @@ namespace GTRC_Basics.Configs
 
         public static DiscordBotConfig? GetActiveBot()
         {
-            foreach (DiscordBotConfig bot in List) { if (bot.IsActive) { /* Not yet implemented: Set Bot as active Bot */ return bot; } }
+            foreach (DiscordBotConfig bot in List) { if (bot.IsActive) { return bot; } }
             return null;
         }
 
