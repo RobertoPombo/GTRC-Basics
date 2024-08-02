@@ -21,6 +21,7 @@ namespace GTRC_Basics.Models
         public DateTime Date { get; set; } = DateTime.UtcNow;
         [ForeignKey(nameof(Track))] public int TrackId { get; set; }
         public virtual Track Track { get; set; } = new();
+        public bool IsPreQualifying { get; set; } = false;
         public short AmbientTemp { get; set; } = DefaultAmbientTemp;
         public byte CloudLevel { get; set; } = byte.MinValue;
         public byte RainLevel { get; set; } = byte.MinValue;
