@@ -23,6 +23,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class CarUniqPropsDto2 : Mapper<Car>
     {
+        [Required] public int CarclassId { get; set; } = GlobalValues.NoId;
         [Required] public string NameLfm { get; set; } = string.Empty;
     }
 
