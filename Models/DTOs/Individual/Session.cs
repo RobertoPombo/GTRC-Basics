@@ -12,9 +12,9 @@ namespace GTRC_Basics.Models.DTOs
     public class SessionAddDto : Mapper<Session>
     {
         public int? EventId { get; set; }
-        public TimeSpan? StartTime { get; set; }
-        public TimeSpan? Duration { get; set; }
-        public TimeSpan? IngameDuration { get; set; }
+        public ushort? StartTimeOffsetMin { get; set; }
+        public ushort? DurationMin { get; set; }
+        public ushort? SessionsCount { get; set; }
         public SessionType? SessionType { get; set; }
         public bool? IsObligatedAttendance { get; set; }
         public int? PointssystemId { get; set; }

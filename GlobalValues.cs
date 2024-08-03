@@ -105,7 +105,7 @@ namespace GTRC_Basics
             { typeof(Lap), "Laps" },
             { typeof(Leaderboardline), "Leaderboardlines" },
             { typeof(Incident), "Incidents" },
-            { typeof(IncidentEntry), "IncidentEntries" }
+            { typeof(IncidentEntry), "IncidentsEntries" }
         };
 
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
