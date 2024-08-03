@@ -35,6 +35,10 @@ namespace GTRC_Basics.Models.DTOs
         public byte? RainLevel { get; set; }
         public byte? WeatherRandomness { get; set; }
         public bool? FixedConditions { get; set; }
+        public ushort? SessionOvertimeSeconds { get; set; }
+        public ushort? PreRaceWaitingTimeSeconds { get; set; }
+        public ushort? PostQualiSeconds { get; set; }
+        public ushort? PostRaceSeconds { get; set; }
     }
 
 

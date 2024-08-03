@@ -61,7 +61,14 @@ namespace GTRC_Basics
             typeof(EntryEvent),
             typeof(EntryUserEvent),
             typeof(Pointssystem),
-            typeof(PointssystemPosition) ];
+            typeof(PointssystemPosition),
+            typeof(Server),
+            typeof(Session),
+            typeof(Resultsfile),
+            typeof(Lap),
+            typeof(Leaderboardline),
+            typeof(Incident),
+            typeof(IncidentEntry)];
 
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
@@ -91,7 +98,14 @@ namespace GTRC_Basics
             { typeof(EntryEvent), "EntriesEvents" },
             { typeof(EntryUserEvent), "EntriesUsersEvents" },
             { typeof(Pointssystem), "Pointssystems" },
-            { typeof(PointssystemPosition), "PointssystemsPositions" }
+            { typeof(PointssystemPosition), "PointssystemsPositions" },
+            { typeof(Server), "Servers" },
+            { typeof(Session), "Sessions" },
+            { typeof(Resultsfile), "Resultsfiles" },
+            { typeof(Lap), "Laps" },
+            { typeof(Leaderboardline), "Leaderboardlines" },
+            { typeof(Incident), "Incidents" },
+            { typeof(IncidentEntry), "IncidentEntries" }
         };
 
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
@@ -122,7 +136,14 @@ namespace GTRC_Basics
             { typeof(EntryEvent), [typeof(EntryEventUniqPropsDto0)] },
             { typeof(EntryUserEvent), [typeof(EntryUserEventUniqPropsDto0)] },
             { typeof(Pointssystem), [typeof(PointssystemUniqPropsDto0)] },
-            { typeof(PointssystemPosition), [typeof(PointssystemPositionUniqPropsDto0)] }
+            { typeof(PointssystemPosition), [typeof(PointssystemPositionUniqPropsDto0)] },
+            { typeof(Server), [typeof(ServerUniqPropsDto0), typeof(ServerUniqPropsDto1)] },
+            { typeof(Session), [] },
+            { typeof(Resultsfile), [typeof(ResultsfileUniqPropsDto0), typeof(ResultsfileUniqPropsDto1)] },
+            { typeof(Lap), [] },
+            { typeof(Leaderboardline), [typeof(LeaderboardlineUniqPropsDto0)] },
+            { typeof(Incident), [] },
+            { typeof(IncidentEntry), [typeof(IncidentEntryUniqPropsDto0)] }
         };
 
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
@@ -395,6 +416,76 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(PointssystemPositionUpdateDto) },
                     { DtoType.Filter, typeof(PointssystemPositionFilterDto) },
                     { DtoType.Filters, typeof(PointssystemPositionFilterDtos) }
+                }
+            },
+            {
+                typeof(Server), new()
+                {
+                    { DtoType.Full, typeof(ServerFullDto) },
+                    { DtoType.Add, typeof(ServerAddDto) },
+                    { DtoType.Update, typeof(ServerUpdateDto) },
+                    { DtoType.Filter, typeof(ServerFilterDto) },
+                    { DtoType.Filters, typeof(ServerFilterDtos) }
+                }
+            },
+            {
+                typeof(Session), new()
+                {
+                    { DtoType.Full, typeof(SessionFullDto) },
+                    { DtoType.Add, typeof(SessionAddDto) },
+                    { DtoType.Update, typeof(SessionUpdateDto) },
+                    { DtoType.Filter, typeof(SessionFilterDto) },
+                    { DtoType.Filters, typeof(SessionFilterDtos) }
+                }
+            },
+            {
+                typeof(Resultsfile), new()
+                {
+                    { DtoType.Full, typeof(ResultsfileFullDto) },
+                    { DtoType.Add, typeof(ResultsfileAddDto) },
+                    { DtoType.Update, typeof(ResultsfileUpdateDto) },
+                    { DtoType.Filter, typeof(ResultsfileFilterDto) },
+                    { DtoType.Filters, typeof(ResultsfileFilterDtos) }
+                }
+            },
+            {
+                typeof(Lap), new()
+                {
+                    { DtoType.Full, typeof(LapFullDto) },
+                    { DtoType.Add, typeof(LapAddDto) },
+                    { DtoType.Update, typeof(LapUpdateDto) },
+                    { DtoType.Filter, typeof(LapFilterDto) },
+                    { DtoType.Filters, typeof(LapFilterDtos) }
+                }
+            },
+            {
+                typeof(Leaderboardline), new()
+                {
+                    { DtoType.Full, typeof(LeaderboardlineFullDto) },
+                    { DtoType.Add, typeof(LeaderboardlineAddDto) },
+                    { DtoType.Update, typeof(LeaderboardlineUpdateDto) },
+                    { DtoType.Filter, typeof(LeaderboardlineFilterDto) },
+                    { DtoType.Filters, typeof(LeaderboardlineFilterDtos) }
+                }
+            },
+            {
+                typeof(Incident), new()
+                {
+                    { DtoType.Full, typeof(IncidentFullDto) },
+                    { DtoType.Add, typeof(IncidentAddDto) },
+                    { DtoType.Update, typeof(IncidentUpdateDto) },
+                    { DtoType.Filter, typeof(IncidentFilterDto) },
+                    { DtoType.Filters, typeof(IncidentFilterDtos) }
+                }
+            },
+            {
+                typeof(IncidentEntry), new()
+                {
+                    { DtoType.Full, typeof(IncidentEntryFullDto) },
+                    { DtoType.Add, typeof(IncidentEntryAddDto) },
+                    { DtoType.Update, typeof(IncidentEntryUpdateDto) },
+                    { DtoType.Filter, typeof(IncidentEntryFilterDto) },
+                    { DtoType.Filters, typeof(IncidentEntryFilterDtos) }
                 }
             }
             /*

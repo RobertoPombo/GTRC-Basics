@@ -26,10 +26,10 @@ namespace GTRC_Basics.Models
         public DateTime DateEndRegistration { get; set; } = DateTime.UtcNow;
         public byte MaxNoShows { get; set; } = byte.MinValue;
         public byte MaxSignOuts { get; set; } = byte.MinValue;
-        public byte CarRegristrationLimit { get; set; } = byte.MinValue;
-        public DateTime DateStartCarRegristrationLimit { get; set; } = DateTime.UtcNow;
-        public bool GroupCarRegristrationLimits { get; set; } = false;
-        public ushort DaysIgnoreCarRegristrationLimit { get; set; } = ushort.MinValue;
+        public byte CarRegistrationLimit { get; set; } = byte.MinValue;
+        public DateTime DateStartCarRegistrationLimit { get; set; } = DateTime.UtcNow;
+        public bool GroupCarRegistrationLimits { get; set; } = false;
+        public ushort DaysIgnoreCarRegistrationLimit { get; set; } = ushort.MinValue;
         public byte CarChangeLimit { get; set; } = byte.MinValue;
         public DateTime DateStartCarChangeLimit { get; set; } = DateTime.UtcNow;
         [ForeignKey(nameof(Bop))] public int BopId { get; set; }

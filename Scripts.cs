@@ -181,9 +181,9 @@ namespace GTRC_Basics
             return str;
         }
 
-        public static string Ms2Laptime(int ms)
+        public static string Ms2Laptime(uint ms)
         {
-            if (ms == int.MinValue) { ms = int.MaxValue; }
+            if (ms == uint.MinValue) { ms = int.MaxValue; }
             float flo_input = (float)Math.Abs(ms);
             flo_input /= 1000;
             int int_std = Convert.ToInt32(Math.Floor(flo_input / 3600));
@@ -212,9 +212,9 @@ namespace GTRC_Basics
             return str_std + str_min + str_sek + str_ms;
         }
 
-        public static int Laptime2Ms(string laptime)
+        public static uint Laptime2Ms(string laptime)
         {
-            int ms = 0;
+            uint ms = 0;
             string msStr = "0";
             string secStr = "0";
             string minStr = "0";
@@ -250,7 +250,7 @@ namespace GTRC_Basics
                     else if (msStr.Length == 2) { msStr += "0"; }
                 }
             }
-            if (int.TryParse(msStr, out int msInt) && int.TryParse(secStr, out int secInt) && int.TryParse(minStr, out int minInt) && int.TryParse(hStr, out int hInt))
+            if (uint.TryParse(msStr, out uint msInt) && uint.TryParse(secStr, out uint secInt) && uint.TryParse(minStr, out uint minInt) && uint.TryParse(hStr, out uint hInt))
             {
                 ms = msInt + 1000 * (secInt + 60 * (minInt + 60 * hInt));
             }
@@ -459,12 +459,10 @@ namespace GTRC_Basics
             else if (type == typeof(TimeUnit?)) { if (Enum.TryParse(strValue, out TimeUnit cv)) { return cv; } else { return null; } }
             else if (type == typeof(SessionType)) { if (Enum.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
             else if (type == typeof(SessionType?)) { if (Enum.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ServerType)) { if (Enum.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(ServerType?)) { if (Enum.TryParse(strValue, out ServerType cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType?)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentsStatus)) { if (Enum.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
-            else if (type == typeof(IncidentsStatus?)) { if (Enum.TryParse(strValue, out IncidentsStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentStatus)) { if (Enum.TryParse(strValue, out IncidentStatus cv)) { return cv; } else { return null; } }
+            else if (type == typeof(IncidentStatus?)) { if (Enum.TryParse(strValue, out IncidentStatus cv)) { return cv; } else { return null; } }
             else if (type == typeof(ReportReason)) { if (Enum.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
             else if (type == typeof(ReportReason?)) { if (Enum.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }
             else if (type == typeof(IncidentPropCategory)) { if (Enum.TryParse(strValue, out IncidentPropCategory cv)) { return cv; } else { return null; } }

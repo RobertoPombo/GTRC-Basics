@@ -29,10 +29,10 @@ namespace GTRC_Basics.Models.DTOs
         public DateTime? DateEndRegistration { get; set; }
         public byte? MaxNoShows { get; set; }
         public byte? MaxSignOuts { get; set; }
-        public byte? CarRegristrationLimit { get; set; }
-        public DateTime? DateStartCarRegristrationLimit { get; set; }
-        public bool? GroupCarRegristrationLimits { get; set; }
-        public ushort? DaysIgnoreCarRegristrationLimit { get; set; }
+        public byte? CarRegistrationLimit { get; set; }
+        public DateTime? DateStartCarRegistrationLimit { get; set; }
+        public bool? GroupCarRegistrationLimits { get; set; }
+        public ushort? DaysIgnoreCarRegistrationLimit { get; set; }
         public byte? CarChangeLimit { get; set; }
         public DateTime? DateStartCarChangeLimit { get; set; }
         public int? BopId { get; set; }

@@ -19,13 +19,6 @@
         Race = 2
     }
 
-    public enum ServerType
-    {
-        PreQuali = 0,
-        Practice = 1,
-        Event = 2
-    }
-
     public enum EntrylistType
     {
         None = 0,
@@ -34,7 +27,7 @@
         Season = 3
     }
 
-    public enum IncidentsStatus
+    public enum IncidentStatus
     {
         Open = 0,
         DoneLive = 1,

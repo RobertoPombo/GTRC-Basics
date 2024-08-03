@@ -27,5 +27,9 @@ namespace GTRC_Basics.Models
         public byte RainLevel { get; set; } = byte.MinValue;
         public byte WeatherRandomness { get; set; } = byte.MinValue;
         public bool FixedConditions { get; set; } = false;
+        public ushort SessionOvertimeSeconds { get; set; } = 140;
+        public ushort PreRaceWaitingTimeSeconds { get; set; } = 120;
+        public ushort PostQualiSeconds { get; set; } = 30;
+        public ushort PostRaceSeconds { get; set; } = 140;
     }
 }
