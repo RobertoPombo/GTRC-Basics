@@ -9,6 +9,13 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class SessionUniqPropsDto0 : Mapper<Session>
+    {
+        [Required] public int EventId { get; set; }
+        [Required] public ushort StartTimeOffsetMin { get; set; } = ushort.MinValue;
+    }
+
+
     public class SessionAddDto : Mapper<Session>
     {
         public int? EventId { get; set; }
@@ -17,6 +24,7 @@ namespace GTRC_Basics.Models.DTOs
         public ushort? SessionsCount { get; set; }
         public SessionType? SessionType { get; set; }
         public bool? IsObligatedAttendance { get; set; }
+        public int? StintAnalysisMethodId { get; set; }
         public int? PointssystemId { get; set; }
         public int? PreviousSessionId { get; set; }
         public int? GridSessionId { get; set; }
@@ -47,6 +55,7 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? Id { get; set; }
         public string? Event { get; set; }
+        public string? StintAnalysisMethod { get; set; }
         public string? Pointssystem { get; set; }
     }
 

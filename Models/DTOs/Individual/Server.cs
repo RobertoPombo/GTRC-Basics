@@ -11,13 +11,13 @@ namespace GTRC_Basics.Models.DTOs
 
     public class ServerUniqPropsDto0 : Mapper<Server>
     {
-        [Required] public ushort PortUdp { get; set; }
+        [Required] public ushort PortUdp { get; set; } = ushort.MinValue;
     }
 
 
     public class ServerUniqPropsDto1 : Mapper<Server>
     {
-        [Required] public ushort PortTcp { get; set; }
+        [Required] public ushort PortTcp { get; set; } = ushort.MinValue;
     }
 
 

@@ -12,8 +12,9 @@ namespace GTRC_Basics.Models
         public static readonly byte MinDayOfWeekend = 1;
         public static readonly byte MaxDayOfWeekend = 3;
         public static readonly byte MinTimeMultiplier = 1;
+        public static readonly byte MaxTimeMultiplier = 24;
         public static readonly string DefaultServerName = nameof(Server) + " #1";
-        public static readonly string DefaultPassword = "123";
+        public static readonly byte MinCharacterCountPassword = 3;
 
         public override string ToString() { return SessionType.ToString() + " - " + Event.ToString(); }
 
@@ -25,6 +26,8 @@ namespace GTRC_Basics.Models
         public ushort SessionsCount { get; set; } = MinSessionsCount;
         public SessionType SessionType { get; set; } = SessionType.Practice;
         public bool IsObligatedAttendance { get; set; } = false;
+        [ForeignKey(nameof(StintAnalysisMethod))] public int StintAnalysisMethodId { get; set; }
+        public virtual StintAnalysisMethod StintAnalysisMethod { get; set; } = new();
         [ForeignKey(nameof(Pointssystem))] public int PointssystemId { get; set; }
         public virtual Pointssystem Pointssystem { get; set; } = new();
         public int PreviousSessionId { get; set; } = GlobalValues.NoId;
@@ -40,8 +43,8 @@ namespace GTRC_Basics.Models
         public bool ForceCarModel { get; set; } = false;
         public bool WriteBoP { get; set; } = false;
         public string ServerName { get; set; } = DefaultServerName;
-        public string DriverPassword { get; set; } = DefaultPassword;
-        public string SpectatorPassword { get; set; } = DefaultPassword;
-        public string AdminPassword { get; set; } = DefaultPassword;
+        public string DriverPassword { get; set; } = string.Empty;
+        public string SpectatorPassword { get; set; } = string.Empty;
+        public string AdminPassword { get; set; } = string.Empty;
     }
 }

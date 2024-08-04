@@ -62,6 +62,7 @@ namespace GTRC_Basics
             typeof(EntryUserEvent),
             typeof(Pointssystem),
             typeof(PointssystemPosition),
+            typeof(StintAnalysisMethod),
             typeof(Server),
             typeof(Session),
             typeof(Resultsfile),
@@ -99,6 +100,7 @@ namespace GTRC_Basics
             { typeof(EntryUserEvent), "EntriesUsersEvents" },
             { typeof(Pointssystem), "Pointssystems" },
             { typeof(PointssystemPosition), "PointssystemsPositions" },
+            { typeof(StintAnalysisMethod), "StintAnalysisMethods" },
             { typeof(Server), "Servers" },
             { typeof(Session), "Sessions" },
             { typeof(Resultsfile), "Resultsfiles" },
@@ -137,12 +139,13 @@ namespace GTRC_Basics
             { typeof(EntryUserEvent), [typeof(EntryUserEventUniqPropsDto0)] },
             { typeof(Pointssystem), [typeof(PointssystemUniqPropsDto0)] },
             { typeof(PointssystemPosition), [typeof(PointssystemPositionUniqPropsDto0)] },
+            { typeof(StintAnalysisMethod), [typeof(StintAnalysisMethodUniqPropsDto0)] },
             { typeof(Server), [typeof(ServerUniqPropsDto0), typeof(ServerUniqPropsDto1)] },
-            { typeof(Session), [] },
+            { typeof(Session), [typeof(SessionUniqPropsDto0)] },
             { typeof(Resultsfile), [typeof(ResultsfileUniqPropsDto0), typeof(ResultsfileUniqPropsDto1)] },
-            { typeof(Lap), [] },
+            { typeof(Lap), [typeof(LapUniqPropsDto0)] },
             { typeof(Leaderboardline), [typeof(LeaderboardlineUniqPropsDto0)] },
-            { typeof(Incident), [] },
+            { typeof(Incident), [typeof(IncidentUniqPropsDto0)] },
             { typeof(IncidentEntry), [typeof(IncidentEntryUniqPropsDto0)] }
         };
 
@@ -416,6 +419,16 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(PointssystemPositionUpdateDto) },
                     { DtoType.Filter, typeof(PointssystemPositionFilterDto) },
                     { DtoType.Filters, typeof(PointssystemPositionFilterDtos) }
+                }
+            },
+            {
+                typeof(StintAnalysisMethod), new()
+                {
+                    { DtoType.Full, typeof(StintAnalysisMethodFullDto) },
+                    { DtoType.Add, typeof(StintAnalysisMethodAddDto) },
+                    { DtoType.Update, typeof(StintAnalysisMethodUpdateDto) },
+                    { DtoType.Filter, typeof(StintAnalysisMethodFilterDto) },
+                    { DtoType.Filters, typeof(StintAnalysisMethodFilterDtos) }
                 }
             },
             {

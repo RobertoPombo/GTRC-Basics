@@ -9,6 +9,13 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class IncidentUniqPropsDto0 : Mapper<Incident>
+    {
+        [Required] public int SessionId { get; set; }
+        [Required] public uint TimeStampMs { get; set; } = uint.MinValue;
+    }
+
+
     public class IncidentAddDto : Mapper<Incident>
     {
         public int? SessionId { get; set; }

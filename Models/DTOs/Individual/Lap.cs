@@ -9,6 +9,13 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
+    public class LapUniqPropsDto0 : Mapper<Lap>
+    {
+        [Required] public int ResultsfileId { get; set; }
+        [Required] public ushort SessionLapNr { get; set; } = Lap.MinSessionLapNr;
+    }
+
+
     public class LapAddDto : Mapper<Lap>
     {
         public int? ResultsfileId { get; set; }
