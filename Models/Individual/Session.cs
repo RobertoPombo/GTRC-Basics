@@ -6,6 +6,7 @@ namespace GTRC_Basics.Models
 {
     public class Session : IBaseModel
     {
+        public static readonly int DefaultStartTimeOffsetMin = 0;
         public static readonly ushort MinDurationMin = 1;
         public static readonly ushort MinSessionsCount = 1;
         public static readonly byte MinReverseGridFrom = 1;
@@ -21,9 +22,10 @@ namespace GTRC_Basics.Models
         public int Id { get; set; }
         [ForeignKey(nameof(Event))] public int EventId { get; set; }
         public virtual Event Event { get; set; } = new();
-        public ushort StartTimeOffsetMin { get; set; } = ushort.MinValue;
+        public int StartTimeOffsetMin { get; set; } = DefaultStartTimeOffsetMin;
         public ushort DurationMin { get; set; } = MinDurationMin;
         public ushort SessionsCount { get; set; } = MinSessionsCount;
+        public bool IsAllowedInterruption { get; set; } = false;
         public SessionType SessionType { get; set; } = SessionType.Practice;
         public bool IsObligatedAttendance { get; set; } = false;
         [ForeignKey(nameof(StintAnalysisMethod))] public int StintAnalysisMethodId { get; set; }

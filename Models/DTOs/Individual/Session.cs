@@ -12,16 +12,17 @@ namespace GTRC_Basics.Models.DTOs
     public class SessionUniqPropsDto0 : Mapper<Session>
     {
         [Required] public int EventId { get; set; }
-        [Required] public ushort StartTimeOffsetMin { get; set; } = ushort.MinValue;
+        [Required] public int StartTimeOffsetMin { get; set; } = Session.DefaultStartTimeOffsetMin;
     }
 
 
     public class SessionAddDto : Mapper<Session>
     {
         public int? EventId { get; set; }
-        public ushort? StartTimeOffsetMin { get; set; }
+        public int? StartTimeOffsetMin { get; set; }
         public ushort? DurationMin { get; set; }
         public ushort? SessionsCount { get; set; }
+        public bool? IsAllowedInterruption { get; set; }
         public SessionType? SessionType { get; set; }
         public bool? IsObligatedAttendance { get; set; }
         public int? StintAnalysisMethodId { get; set; }
