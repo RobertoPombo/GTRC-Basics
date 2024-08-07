@@ -11,14 +11,14 @@ namespace GTRC_Basics.Models.DTOs
 
     public class ResultsfileUniqPropsDto0 : Mapper<Resultsfile>
     {
-        [Required] public DateTime Date { get; set; } = DateTime.UtcNow;
+        [Required] public DateTime Date { get; set; } = DateTime.Now;
         [Required] public int ServerId { get; set; }
     }
 
 
     public class ResultsfileUniqPropsDto1 : Mapper<Resultsfile>
     {
-        [Required] public DateTime Date { get; set; } = DateTime.UtcNow;
+        [Required] public DateTime Date { get; set; } = DateTime.Now;
         [Required] public int SessionId { get; set; }
     }
 

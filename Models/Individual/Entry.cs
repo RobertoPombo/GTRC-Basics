@@ -20,7 +20,7 @@ namespace GTRC_Basics.Models
         public virtual Team Team { get; set; } = new();
         [ForeignKey(nameof(Car))] public int CarId { get; set; }
         public virtual Car Car { get; set; } = new();
-        public DateTime RegisterDate { get; set; } = DateTime.UtcNow;
+        public DateTime RegisterDate { get; set; } = DateTime.Now;
         public DateTime SignOutDate { get; set; } = GlobalValues.DateTimeMaxValue;
         public short BallastKg { get; set; }
         public short Restrictor { get; set; }

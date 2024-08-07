@@ -22,19 +22,19 @@ namespace GTRC_Basics.Models
         public byte MaxEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
         public bool ForceDriverFromOrganization { get; set; } = true;
         public bool AllowDriverLineupPerEvent { get; set; } = false;
-        public DateTime DateStartRegistration { get; set; } = DateTime.UtcNow;
-        public DateTime DateEndRegistration { get; set; } = DateTime.UtcNow;
+        public DateTime DateStartRegistration { get; set; } = DateTime.Now;
+        public DateTime DateEndRegistration { get; set; } = DateTime.Now;
         public byte MaxNoShows { get; set; } = byte.MinValue;
         public byte MaxSignOuts { get; set; } = byte.MinValue;
         public byte CarRegistrationLimit { get; set; } = byte.MinValue;
-        public DateTime DateStartCarRegistrationLimit { get; set; } = DateTime.UtcNow;
+        public DateTime DateStartCarRegistrationLimit { get; set; } = DateTime.Now;
         public bool GroupCarRegistrationLimits { get; set; } = false;
         public ushort DaysIgnoreCarRegistrationLimit { get; set; } = ushort.MinValue;
         public byte CarChangeLimit { get; set; } = byte.MinValue;
-        public DateTime DateStartCarChangeLimit { get; set; } = DateTime.UtcNow;
+        public DateTime DateStartCarChangeLimit { get; set; } = DateTime.Now;
         [ForeignKey(nameof(Bop))] public int BopId { get; set; }
         public virtual Bop Bop { get; set; } = new();
-        public DateTime DateBoPFreeze { get; set; } = DateTime.UtcNow;
+        public DateTime DateBoPFreeze { get; set; } = DateTime.Now;
         public bool BopLatestModelOnly { get; set; } = false;
         public byte CarLimitBallast { get; set; } = byte.MinValue;
         public byte GainBallast { get; set; } = byte.MinValue;

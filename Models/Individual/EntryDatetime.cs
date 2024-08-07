@@ -11,7 +11,7 @@ namespace GTRC_Basics.Models
         public int Id { get; set; }
         [ForeignKey(nameof(Entry))] public int EntryId { get; set; }
         public virtual Entry Entry { get; set; } = new();
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateTime Date { get; set; } = DateTime.Now;
         [ForeignKey(nameof(Car))] public int CarId { get; set; }
         public virtual Car Car { get; set; } = new();
     }
