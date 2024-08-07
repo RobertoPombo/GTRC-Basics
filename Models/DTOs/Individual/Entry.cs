@@ -13,7 +13,7 @@ namespace GTRC_Basics.Models.DTOs
 
         public static bool GetRegisterState(Entry obj)
         {
-            return obj.RegisterDate < DateTime.Now && obj.SignOutDate > DateTime.Now;
+            return obj.RegisterDate < DateTime.UtcNow && obj.SignOutDate > DateTime.UtcNow;
         }
     }
 

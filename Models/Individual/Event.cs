@@ -18,7 +18,7 @@ namespace GTRC_Basics.Models
         [ForeignKey(nameof(Season))] public int SeasonId { get; set; }
         public virtual Season Season { get; set; } = new();
         public string Name { get; set; } = DefaultName;
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         [ForeignKey(nameof(Track))] public int TrackId { get; set; }
         public virtual Track Track { get; set; } = new();
         public bool IsPreQualifying { get; set; } = false;

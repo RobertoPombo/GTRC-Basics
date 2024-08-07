@@ -20,8 +20,8 @@ namespace GTRC_Basics.Models
         public string Model { get; set; } = string.Empty;
         [ForeignKey(nameof(Carclass))] public int CarclassId { get; set; }
         public virtual Carclass Carclass { get; set; } = new();
-        public ushort Year { get; set; } = (ushort)DateTime.Now.Year;
-        public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+        public ushort Year { get; set; } = (ushort)DateTime.UtcNow.Year;
+        public DateOnly ReleaseDate { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
         public ushort WidthMm { get; set; } = 2000;
         public ushort LengthMm { get; set; } = 5000;
         public string NameLfm { get; set; } = string.Empty;

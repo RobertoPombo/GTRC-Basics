@@ -9,7 +9,7 @@ namespace GTRC_Basics.Models
         public override string ToString() { return Session.ToString() + " - " + Date.ToString(); }
 
         public int Id { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         [ForeignKey(nameof(Server))] public int ServerId { get; set; }
         public virtual Server Server { get; set; } = new();
         [ForeignKey(nameof(Session))] public int SessionId { get; set; }
