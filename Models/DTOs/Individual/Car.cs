@@ -5,7 +5,11 @@ namespace GTRC_Basics.Models.DTOs
 {
     public class CarFullDto : Car
     {
-
+        public static bool GetIsLatestModel(Car obj, List<Car> list)
+        {
+            foreach (Car car in list) { if (car.Manufacturer.Id == obj.Manufacturer.Id && car.Carclass.Id == obj.Carclass.Id && car.Year > obj.Year) { return false; } }
+            return true;
+        }
     }
 
 
