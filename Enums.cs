@@ -141,4 +141,11 @@
         IPv4 = 0,
         IPv6 = 1,
     }
+
+    public enum DiscordChannelType
+    {
+        Log = 0,
+        Registration = 1,
+        TrackReport = 2
+    }
 }

@@ -21,32 +21,11 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
-    public class SeriesUniqPropsDto2 : Mapper<Series>
-    {
-        [Required] public ulong DiscordLogChannelId { get; set; } = GlobalValues.NoDiscordId;
-    }
-
-
-    public class SeriesUniqPropsDto3 : Mapper<Series>
-    {
-        [Required] public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
-    }
-
-
-    public class SeriesUniqPropsDto4 : Mapper<Series>
-    {
-        [Required] public ulong DiscordTrackReportChannelId { get; set; } = GlobalValues.NoDiscordId;
-    }
-
-
     public class SeriesAddDto : Mapper<Series>
     {
         public int? SimId { get; set; }
         public string? Name { get; set; }
         public ulong? DiscordDriverRoleId { get; set; }
-        public ulong? DiscordLogChannelId { get; set; }
-        public ulong? DiscordRegistrationChannelId { get; set; }
-        public ulong? DiscordTrackReportChannelId { get; set; }
     }
 
 

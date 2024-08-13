@@ -504,6 +504,8 @@ namespace GTRC_Basics
             else if (type == typeof(NetworkType?)) { if (Enum.TryParse(strValue, out NetworkType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType)) { if (Enum.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
             else if (type == typeof(IpAdressType?)) { if (Enum.TryParse(strValue, out IpAdressType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DiscordChannelType)) { if (Enum.TryParse(strValue, out DiscordChannelType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(DiscordChannelType?)) { if (Enum.TryParse(strValue, out DiscordChannelType cv)) { return cv; } else { return null; } }
             else if (type == typeof(System.Drawing.Color)) { return null; }
             else if (type == typeof(System.Drawing.Color?)) { return null; }
             else { return null; }

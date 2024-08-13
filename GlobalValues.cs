@@ -69,7 +69,8 @@ namespace GTRC_Basics
             typeof(Lap),
             typeof(Leaderboardline),
             typeof(Incident),
-            typeof(IncidentEntry)];
+            typeof(IncidentEntry),
+            typeof(SeriesDiscordchanneltype)];
 
         public static readonly Dictionary<Type, string> SqlTableNames = new()
         {
@@ -107,7 +108,8 @@ namespace GTRC_Basics
             { typeof(Lap), "Laps" },
             { typeof(Leaderboardline), "Leaderboardlines" },
             { typeof(Incident), "Incidents" },
-            { typeof(IncidentEntry), "IncidentsEntries" }
+            { typeof(IncidentEntry), "IncidentsEntries" },
+            { typeof(SeriesDiscordchanneltype), "SeriesDiscordchanneltypes" }
         };
 
         public static readonly Dictionary<Type, List<Type>> DictUniqPropsDtoModels = new()
@@ -124,7 +126,7 @@ namespace GTRC_Basics
             { typeof(UserDatetime), [typeof(UserDatetimeUniqPropsDto0)] },
             { typeof(Bop), [typeof(BopUniqPropsDto0)] },
             { typeof(BopTrackCar), [typeof(BopTrackCarUniqPropsDto0)] },
-            { typeof(Series), [typeof(SeriesUniqPropsDto0), typeof(SeriesUniqPropsDto1), typeof(SeriesUniqPropsDto2), typeof(SeriesUniqPropsDto3), typeof(SeriesUniqPropsDto4)] },
+            { typeof(Series), [typeof(SeriesUniqPropsDto0), typeof(SeriesUniqPropsDto1)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
             { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] },
             { typeof(Organization), [typeof(OrganizationUniqPropsDto0)] },
@@ -146,7 +148,8 @@ namespace GTRC_Basics
             { typeof(Lap), [typeof(LapUniqPropsDto0)] },
             { typeof(Leaderboardline), [typeof(LeaderboardlineUniqPropsDto0)] },
             { typeof(Incident), [typeof(IncidentUniqPropsDto0)] },
-            { typeof(IncidentEntry), [typeof(IncidentEntryUniqPropsDto0)] }
+            { typeof(IncidentEntry), [typeof(IncidentEntryUniqPropsDto0)] },
+            { typeof(SeriesDiscordchanneltype), [typeof(SeriesDiscordchanneltypeUniqPropsDto0),typeof(SeriesDiscordchanneltypeUniqPropsDto1)] }
         };
 
         public static readonly Dictionary<Type, Dictionary<DtoType, Type>> DictDtoModels = new()
@@ -499,6 +502,16 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(IncidentEntryUpdateDto) },
                     { DtoType.Filter, typeof(IncidentEntryFilterDto) },
                     { DtoType.Filters, typeof(IncidentEntryFilterDtos) }
+                }
+            },
+            {
+                typeof(SeriesDiscordchanneltype), new()
+                {
+                    { DtoType.Full, typeof(SeriesDiscordchanneltypeFullDto) },
+                    { DtoType.Add, typeof(SeriesDiscordchanneltypeAddDto) },
+                    { DtoType.Update, typeof(SeriesDiscordchanneltypeUpdateDto) },
+                    { DtoType.Filter, typeof(SeriesDiscordchanneltypeFilterDto) },
+                    { DtoType.Filters, typeof(SeriesDiscordchanneltypeFilterDtos) }
                 }
             }
             /*
