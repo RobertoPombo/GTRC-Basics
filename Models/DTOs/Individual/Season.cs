@@ -42,9 +42,6 @@ namespace GTRC_Basics.Models.DTOs
         public byte? GainBallast { get; set; }
         public byte? CarLimitRestrictor { get; set; }
         public byte? GainRestrictor { get; set; }
-        public ulong? DiscordDriverRoleId { get; set; }
-        public ulong? DiscordRegistrationChannelId { get; set; }
-        public ulong? DiscordTrackReportChannelId { get; set; }
         public string? ShortDescription { get; set; }
         public string? GeneralDescription { get; set; }
         public string? SpecificDescription { get; set; }

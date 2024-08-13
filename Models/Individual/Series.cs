@@ -8,13 +8,15 @@ namespace GTRC_Basics.Models
     {
         public static readonly string DefaultName = nameof(Series) + " #1";
 
-        public override string ToString() { return Name; }
+        public override string ToString() { return Name + " - " + Sim.ShortName; }
 
         public int Id { get; set; }
-        public string Name { get; set; } = DefaultName;
         [ForeignKey(nameof(Sim))] public int SimId { get; set; }
         public virtual Sim Sim { get; set; } = new();
-        public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
+        public string Name { get; set; } = DefaultName;
+        public ulong DiscordDriverRoleId { get; set; } = GlobalValues.NoDiscordId;
         public ulong DiscordLogChannelId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
+        public ulong DiscordTrackReportChannelId { get; set; } = GlobalValues.NoDiscordId;
     }
 }

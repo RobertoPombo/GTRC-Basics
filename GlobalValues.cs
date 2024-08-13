@@ -124,7 +124,7 @@ namespace GTRC_Basics
             { typeof(UserDatetime), [typeof(UserDatetimeUniqPropsDto0)] },
             { typeof(Bop), [typeof(BopUniqPropsDto0)] },
             { typeof(BopTrackCar), [typeof(BopTrackCarUniqPropsDto0)] },
-            { typeof(Series), [typeof(SeriesUniqPropsDto0)] },
+            { typeof(Series), [typeof(SeriesUniqPropsDto0), typeof(SeriesUniqPropsDto1), typeof(SeriesUniqPropsDto2), typeof(SeriesUniqPropsDto3), typeof(SeriesUniqPropsDto4)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
             { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] },
             { typeof(Organization), [typeof(OrganizationUniqPropsDto0)] },

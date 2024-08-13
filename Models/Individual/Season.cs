@@ -40,9 +40,6 @@ namespace GTRC_Basics.Models
         public byte GainBallast { get; set; } = byte.MinValue;
         public byte CarLimitRestrictor { get; set; } = byte.MinValue;
         public byte GainRestrictor { get; set; } = byte.MinValue;
-        public ulong DiscordDriverRoleId { get; set; } = GlobalValues.NoDiscordId;
-        public ulong DiscordRegistrationChannelId { get; set; } = GlobalValues.NoDiscordId;
-        public ulong DiscordTrackReportChannelId { get; set; } = GlobalValues.NoDiscordId;
         public string ShortDescription { get; set; } = string.Empty;
         public string GeneralDescription { get; set; } = string.Empty;
         public string SpecificDescription { get; set; } = string.Empty;
