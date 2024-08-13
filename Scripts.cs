@@ -97,6 +97,21 @@ namespace GTRC_Basics
             return null;
         }
 
+        public static List<Season> SortByDate(List<Season> list)
+        {
+            for (int index1 = 0; index1 < list.Count - 1; index1++)
+            {
+                for (int index2 = index1; index2 < list.Count; index2++)
+                {
+                    if (list[index1].DateStartRegistration > list[index2].DateStartRegistration)
+                    {
+                        (list[index2], list[index1]) = (list[index1], list[index2]);
+                    }
+                }
+            }
+            return list;
+        }
+
         public static List<Event> SortByDate(List<Event> list)
         {
             for (int index1 = 0; index1 < list.Count - 1; index1++)
