@@ -10,7 +10,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class SeriesDiscordchanneltypeUniqPropsDto0 : Mapper<SeriesDiscordchanneltype>
     {
-        [Required] public int SimId { get; set; }
+        [Required] public int SeriesId { get; set; }
         [Required] public DiscordChannelType DiscordChannelType { get; set; } = DiscordChannelType.Log;
     }
 

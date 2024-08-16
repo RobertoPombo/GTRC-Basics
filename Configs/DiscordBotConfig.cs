@@ -58,10 +58,6 @@ namespace GTRC_Basics.Configs
 
         public ushort CharLimit { get { return charLimit; } set { charLimit = value; } }
 
-        public int SeriesId { get; set; }
-
-        public int SeasonId { get; set; }
-
         public bool IsActive
         {
             get { return isActive; }
