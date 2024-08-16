@@ -16,7 +16,7 @@ namespace GTRC_Basics
         public static readonly ulong MinSteamId = (ulong)Math.Pow(10, 16);
         public static readonly ulong MaxSteamId = MinSteamId * 10 - 1;
         public static readonly ulong NoDiscordId = (ulong)NoId;
-        public static readonly ulong MinDiscordId = (ulong)Math.Pow(10, 17);
+        public static readonly ulong MinDiscordId = (ulong)Math.Pow(10, 16);
         public static readonly ulong MaxDiscordId = ulong.MaxValue;
         public static readonly List<Type> numericalTypes = [
             typeof(byte), typeof(byte?), typeof(short), typeof(short?), typeof(ushort), typeof(ushort?), typeof(int), typeof(int?), typeof(uint), typeof(uint?),
