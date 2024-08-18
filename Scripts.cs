@@ -97,7 +97,7 @@ namespace GTRC_Basics
             return null;
         }
 
-        public static bool ListContains(dynamic list, dynamic obj)
+        public static bool ListContainsId(dynamic list, dynamic obj)
         {
             try { foreach (dynamic _obj in list) { if (_obj.Id == obj.Id) { return true; } } }
             catch { return false; }
