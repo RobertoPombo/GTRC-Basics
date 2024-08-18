@@ -23,8 +23,10 @@ namespace GTRC_Basics.Models.DTOs
         public byte? MaxDriversPerEntryEvent { get; set; }
         public byte? MinEntriesPerTeam { get; set; }
         public byte? MaxEntriesPerTeam { get; set; }
-        public bool? ForceDriverFromOrganization { get; set; }
+        public bool? AllowEntriesShareDriverSameEvent { get; set; }
+        public bool? AllowEntriesShareDriver { get; set; }
         public bool? AllowDriverLineupPerEvent { get; set; }
+        public bool? ForceDriverFromOrganization { get; set; }
         public DateTime? DateStartRegistration { get; set; }
         public DateTime? DateEndRegistration { get; set; }
         public byte? MaxNoShows { get; set; }

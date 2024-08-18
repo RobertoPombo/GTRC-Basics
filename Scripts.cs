@@ -97,6 +97,13 @@ namespace GTRC_Basics
             return null;
         }
 
+        public static bool ListContains(dynamic list, dynamic obj)
+        {
+            try { foreach (dynamic _obj in list) { if (_obj.Id == obj.Id) { return true; } } }
+            catch { return false; }
+            return false;
+        }
+
         public static List<Season> SortByDate(List<Season> list)
         {
             for (int index1 = 0; index1 < list.Count - 1; index1++)

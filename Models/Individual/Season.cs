@@ -20,8 +20,10 @@ namespace GTRC_Basics.Models
         public byte MaxDriversPerEntryEvent { get; set; } = MinMinDriversPerEntryEvent;
         public byte MinEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
         public byte MaxEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
-        public bool ForceDriverFromOrganization { get; set; } = true;
+        public bool AllowEntriesShareDriverSameEvent { get; set; } = false;
+        public bool AllowEntriesShareDriver { get; set; } = false;
         public bool AllowDriverLineupPerEvent { get; set; } = false;
+        public bool ForceDriverFromOrganization { get; set; } = true;
         public DateTime DateStartRegistration { get; set; } = DateTime.UtcNow;
         public DateTime DateEndRegistration { get; set; } = DateTime.UtcNow;
         public byte MaxNoShows { get; set; } = byte.MinValue;
