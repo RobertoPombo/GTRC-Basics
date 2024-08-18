@@ -19,8 +19,8 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? SeriesId { get; set; }
         public string? Name { get; set; }
-        public byte? MinDriversPerEntry { get; set; }
-        public byte? MaxDriversPerEntry { get; set; }
+        public byte? MinDriversPerEntryEvent { get; set; }
+        public byte? MaxDriversPerEntryEvent { get; set; }
         public byte? MinEntriesPerTeam { get; set; }
         public byte? MaxEntriesPerTeam { get; set; }
         public bool? ForceDriverFromOrganization { get; set; }

@@ -7,7 +7,7 @@ namespace GTRC_Basics.Models
     public class Season : IBaseModel
     {
         public static readonly string DefaultName = nameof(Season) + " #1";
-        public static readonly byte MinMinDriversPerEntry = 1;
+        public static readonly byte MinMinDriversPerEntryEvent = 1;
         public static readonly byte MinMinEntriesPerTeam = 1;
 
         public override string ToString() { return Name + " - " + Series.ToString(); }
@@ -16,8 +16,8 @@ namespace GTRC_Basics.Models
         [ForeignKey(nameof(Series))] public int SeriesId { get; set; }
         public virtual Series Series { get; set; } = new();
         public string Name { get; set; } = DefaultName;
-        public byte MinDriversPerEntry { get; set; } = MinMinDriversPerEntry;
-        public byte MaxDriversPerEntry { get; set; } = MinMinDriversPerEntry;
+        public byte MinDriversPerEntryEvent { get; set; } = MinMinDriversPerEntryEvent;
+        public byte MaxDriversPerEntryEvent { get; set; } = MinMinDriversPerEntryEvent;
         public byte MinEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
         public byte MaxEntriesPerTeam { get; set; } = MinMinEntriesPerTeam;
         public bool ForceDriverFromOrganization { get; set; } = true;
