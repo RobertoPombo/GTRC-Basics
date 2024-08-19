@@ -6,6 +6,13 @@ namespace GTRC_Basics
 {
     public static class Scripts
     {
+        public static void CreateDirectories()
+        {
+            if (!Directory.Exists(GlobalValues.BaseDirectory)) { Directory.CreateDirectory(GlobalValues.BaseDirectory); }
+            if (!Directory.Exists(GlobalValues.ConfigDirectory)) { Directory.CreateDirectory(GlobalValues.ConfigDirectory); }
+            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
+        }
+
         public static bool IsCompositeKey(string modelName)
         {
             foreach (Type modelType in GlobalValues.ModelTypeList)

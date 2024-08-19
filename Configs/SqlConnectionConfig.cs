@@ -8,7 +8,7 @@ namespace GTRC_Basics.Configs
     public class SqlConnectionConfig : ConnectionConfig
     {
         public static readonly List<SqlConnectionConfig> List = [];
-        private static readonly string path = GlobalValues.DataDirectory + "config dbsql.json";
+        private static readonly string path = GlobalValues.ConfigDirectory + "config dbsql.json";
         private static readonly string defConStr = "Data Source=@\\@,@;Initial Catalog=@;User ID=@;Password=@;Integrated Security=True@;TrustServerCertificate=true";
 
         public SqlConnectionConfig()
@@ -122,7 +122,6 @@ namespace GTRC_Basics.Configs
 
         public static void LoadJson()
         {
-            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
             if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(List, Formatting.Indented), Encoding.Unicode); }
             try
             {

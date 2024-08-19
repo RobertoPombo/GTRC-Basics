@@ -5,7 +5,7 @@ namespace GTRC_Basics.Configs
 {
     public class GSheetsBotConfig
     {
-        private static readonly string path = GlobalValues.DataDirectory + "config googlesheets bot.json";
+        private static readonly string path = GlobalValues.ConfigDirectory + "config googlesheets bot.json";
 
         private int intervallMin = 0;
 
@@ -24,7 +24,6 @@ namespace GTRC_Basics.Configs
         public static GSheetsBotConfig LoadJson()
         {
             GSheetsBotConfig? gSheetsBotConfig = null;
-            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
             if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(new GSheetsBotConfig(), Formatting.Indented), Encoding.Unicode); }
             try
             {

@@ -24,10 +24,11 @@ namespace GTRC_Basics
             typeof(DateTime), typeof(DateTime?), typeof(DateOnly), typeof(DateOnly?), typeof(TimeSpan), typeof(TimeSpan?)
             ];
 
-        private static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        private static string baseDirectory = "C:\\Users\\Public\\Documents\\GTRC\\";
         private static string currentLogText = string.Empty;
 
         public static string BaseDirectory { get { return baseDirectory; } set { baseDirectory = value; } }
+        public static string ConfigDirectory { get { return baseDirectory + "config\\"; } }
         public static string DataDirectory { get { return baseDirectory + "data\\"; } }
         public static string CurrentLogText { get { return currentLogText; } set { currentLogText = value; OnNewLogText(); } }
 

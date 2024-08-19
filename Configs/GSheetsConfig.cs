@@ -8,8 +8,8 @@ namespace GTRC_Basics.Configs
 {
     public class GSheetsConfig
     {
-        private static readonly string path = GlobalValues.DataDirectory + "config googlesheets.json";
-        private static readonly string pathCrendentials = GlobalValues.DataDirectory + "config googlesheets_credentials.json";
+        private static readonly string path = GlobalValues.ConfigDirectory + "config googlesheets.json";
+        private static readonly string pathCrendentials = GlobalValues.ConfigDirectory + "config googlesheets_credentials.json";
         private static readonly string appName = "GTRC Google-Sheets Registration Syncronization";
         private static readonly string[] scopes = [SheetsService.Scope.Spreadsheets];
         private static GoogleCredential? crendentials;
@@ -78,7 +78,6 @@ namespace GTRC_Basics.Configs
 
         public bool Connectivity()
         {
-            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
             if (!File.Exists(pathCrendentials)) { return false; }
             try
             {
@@ -91,7 +90,6 @@ namespace GTRC_Basics.Configs
 
         public static void LoadJson()
         {
-            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
             if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(List, Formatting.Indented), Encoding.Unicode); }
             try
             {

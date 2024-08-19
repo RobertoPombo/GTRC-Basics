@@ -10,7 +10,7 @@ namespace GTRC_Basics.Configs
             { 1004795316463227040, "MTAwNDc5NTMxNjQ2MzIyNzA0MA.G4Qg1w.-_7ccWcVoZrun6jx-k_7KreF-1fE-blNNhrJzc" },
             { 1008400523390636184, "MTAwODQwMDUyMzM5MDYzNjE4NA.GuiMFH.L0A38VZ9n1enIUMCyAn5-HTqVlLl99XzsqFLW0" },
         };
-        private static readonly string path = GlobalValues.DataDirectory + "config discordBot.json";
+        private static readonly string path = GlobalValues.ConfigDirectory + "config discordBot.json";
         public static readonly List<DiscordBotConfig> List = [];
         public static readonly string DefaultName = "Discord Bot #1";
 
@@ -78,7 +78,6 @@ namespace GTRC_Basics.Configs
 
         public static void LoadJson()
         {
-            if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
             if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(List, Formatting.Indented), Encoding.Unicode); }
             try
             {
