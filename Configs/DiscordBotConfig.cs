@@ -108,5 +108,9 @@ namespace GTRC_Basics.Configs
             DiscordBotConfig? bot = GetActiveBot();
             if (bot is not null) { bot.IsActive = false; }
         }
+
+        public static event Notify? ChangedDiscordBotIsActive;
+
+        public static void OnChangedDiscordBotIsActive() { ChangedDiscordBotIsActive?.Invoke(); }
     }
 }
