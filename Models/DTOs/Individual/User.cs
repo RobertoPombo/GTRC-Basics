@@ -66,9 +66,6 @@ namespace GTRC_Basics.Models.DTOs
         public DateTime? RegisterDate { get; set; }
         public DateTime? BanDate { get; set; }
         public string? Name3Digits { get; set; }
-        public short? EloRating { get; set; }
-        public short? SafetyRating { get; set; }
-        public byte? Warnings { get; set; }
         public string? NickName { get; set; }
     }
 

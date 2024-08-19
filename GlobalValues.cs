@@ -49,7 +49,6 @@ namespace GTRC_Basics
             typeof(BopTrackCar),
             typeof(Series),
             typeof(Season),
-            typeof(SeasonCarclass),
             typeof(Organization),
             typeof(OrganizationUser),
             typeof(Team),
@@ -88,7 +87,6 @@ namespace GTRC_Basics
             { typeof(BopTrackCar), "BopsTracksCars" },
             { typeof(Series), "Series" },
             { typeof(Season), "Seasons" },
-            { typeof(SeasonCarclass), "SeasonsCarclasses" },
             { typeof(Organization), "Organizations" },
             { typeof(OrganizationUser), "OrganizationsUsers" },
             { typeof(Team), "Teams" },
@@ -128,7 +126,6 @@ namespace GTRC_Basics
             { typeof(BopTrackCar), [typeof(BopTrackCarUniqPropsDto0)] },
             { typeof(Series), [typeof(SeriesUniqPropsDto0), typeof(SeriesUniqPropsDto1)] },
             { typeof(Season), [typeof(SeasonUniqPropsDto0)] },
-            { typeof(SeasonCarclass), [typeof(SeasonCarclassUniqPropsDto0)] },
             { typeof(Organization), [typeof(OrganizationUniqPropsDto0)] },
             { typeof(OrganizationUser), [typeof(OrganizationUserUniqPropsDto0)] },
             { typeof(Team), [typeof(TeamUniqPropsDto0)] },
@@ -292,16 +289,6 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(SeasonUpdateDto) },
                     { DtoType.Filter, typeof(SeasonFilterDto) },
                     { DtoType.Filters, typeof(SeasonFilterDtos) }
-                }
-            },
-            {
-                typeof(SeasonCarclass), new()
-                {
-                    { DtoType.Full, typeof(SeasonCarclassFullDto) },
-                    { DtoType.Add, typeof(SeasonCarclassAddDto) },
-                    { DtoType.Update, typeof(SeasonCarclassUpdateDto) },
-                    { DtoType.Filter, typeof(SeasonCarclassFilterDto) },
-                    { DtoType.Filters, typeof(SeasonCarclassFilterDtos) }
                 }
             },
             {
