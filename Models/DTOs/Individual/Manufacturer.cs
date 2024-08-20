@@ -13,7 +13,7 @@ namespace GTRC_Basics.Models.DTOs
 
         public static string GetLogo(Manufacturer obj)
         {
-            return "\\Logos\\" + obj.Name + ".png";
+            return GlobalValues.ManufacturerLogosDirectory + obj.Name + ".png";
         }
     }
 
