@@ -23,9 +23,9 @@ namespace GTRC_Basics.Models.DTOs
         public byte? MaxDriversPerEntryEvent { get; set; }
         public byte? MinEntriesPerTeam { get; set; }
         public byte? MaxEntriesPerTeam { get; set; }
-        public bool? AllowEntriesShareDriverSameEvent { get; set; }
-        public bool? AllowEntriesShareDriver { get; set; }
-        public bool? AllowDriverLineupPerEvent { get; set; }
+        public bool? IsAllowedEntriesShareDriverSameEvent { get; set; }
+        public bool? IsAllowedEntriesShareDriver { get; set; }
+        public bool? IsAllowedDriverLineupPerEvent { get; set; }
         public bool? ForceDriverFromOrganization { get; set; }
         public DateTime? DateStartRegistration { get; set; }
         public DateTime? DateEndRegistration { get; set; }
@@ -44,6 +44,8 @@ namespace GTRC_Basics.Models.DTOs
         public byte? GainBallast { get; set; }
         public byte? CarLimitRestrictor { get; set; }
         public byte? GainRestrictor { get; set; }
+        public DateTime? DateEndAutoGenerateRaceNumbers { get; set; }
+        public DateTime? DateEndChangeTeam { get; set; }
         public string? ShortDescription { get; set; }
         public string? GeneralDescription { get; set; }
         public string? SpecificDescription { get; set; }
