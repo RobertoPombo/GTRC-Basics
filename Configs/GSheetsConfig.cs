@@ -9,7 +9,7 @@ namespace GTRC_Basics.Configs
     public class GSheetsConfig
     {
         private static readonly string path = GlobalValues.ConfigDirectory + "config googlesheets.json";
-        private static readonly string pathCrendentials = GlobalValues.ConfigDirectory + "config googlesheets_credentials.json";
+        private static readonly string pathCrendentials = GlobalValues.ConfigDirectory + "config googlesheets credentials.json";
         private static readonly string appName = "GTRC Google-Sheets Registration Syncronization";
         private static readonly string[] scopes = [SheetsService.Scope.Spreadsheets];
         private static GoogleCredential? crendentials;

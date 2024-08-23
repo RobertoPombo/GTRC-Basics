@@ -3,9 +3,9 @@ using System.Text;
 
 namespace GTRC_Basics.Configs
 {
-    public class JsonBackupConfig
+    public class DatabaseBackupConfig
     {
-        private static readonly string path = GlobalValues.ConfigDirectory + "config json backup.json";
+        private static readonly string path = GlobalValues.ConfigDirectory + "config database backup.json";
         private static readonly int refreshIntervalSecMin = 1;
         private static readonly int refreshIntervalSecMax = 3600;
         private static readonly int intervallCreateHMin = 1;
@@ -39,21 +39,21 @@ namespace GTRC_Basics.Configs
 
         public bool IsActiveDelete { get; set; } = false;
 
-        public static JsonBackupConfig LoadJson()
+        public static DatabaseBackupConfig LoadJson()
         {
-            JsonBackupConfig? config = null;
-            if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(new JsonBackupConfig(), Formatting.Indented), Encoding.Unicode); }
+            DatabaseBackupConfig? config = null;
+            if (!File.Exists(path)) { File.WriteAllText(path, JsonConvert.SerializeObject(new DatabaseBackupConfig(), Formatting.Indented), Encoding.Unicode); }
             try
             {
-                config = JsonConvert.DeserializeObject<JsonBackupConfig>(File.ReadAllText(path, Encoding.Unicode));
+                config = JsonConvert.DeserializeObject<DatabaseBackupConfig>(File.ReadAllText(path, Encoding.Unicode));
                 GlobalValues.CurrentLogText = "Json backup settings restored.";
             }
             catch { GlobalValues.CurrentLogText = "Restore json backup settings failed!"; }
-            config ??= new JsonBackupConfig();
+            config ??= new DatabaseBackupConfig();
             return config;
         }
 
-        public static void SaveJson(JsonBackupConfig config)
+        public static void SaveJson(DatabaseBackupConfig config)
         {
             string text = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText(path, text, Encoding.Unicode);
