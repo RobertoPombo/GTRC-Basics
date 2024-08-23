@@ -11,6 +11,8 @@ namespace GTRC_Basics
             if (!Directory.Exists(GlobalValues.BaseDirectory)) { Directory.CreateDirectory(GlobalValues.BaseDirectory); }
             if (!Directory.Exists(GlobalValues.ConfigDirectory)) { Directory.CreateDirectory(GlobalValues.ConfigDirectory); }
             if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
+            if (!Directory.Exists(GlobalValues.DatabaseDirectory)) { Directory.CreateDirectory(GlobalValues.DatabaseDirectory); }
+            if (!Directory.Exists(GlobalValues.DbBackupDirectory)) { Directory.CreateDirectory(GlobalValues.DbBackupDirectory); }
             if (!Directory.Exists(GlobalValues.ManufacturerLogosDirectory)) { Directory.CreateDirectory(GlobalValues.ManufacturerLogosDirectory); }
         }
 
@@ -404,6 +406,15 @@ namespace GTRC_Basics
                 }
             }
             return text;
+        }
+
+        public static string TimeRemaining2String(long timeRemainingSec)
+        {
+            if (timeRemainingSec > 2 * 60 * 60 * 24 * 365) { return ((int)Math.Ceiling((double)timeRemainingSec / (60 * 60 * 24 * 365))).ToString() + " Years"; }
+            else if (timeRemainingSec > 2 * 60 * 60 * 24) { return ((int)Math.Ceiling((double)timeRemainingSec / (60 * 60 * 24))).ToString() + " Days"; }
+            else if (timeRemainingSec > 2 * 60 * 60) { return ((int)Math.Ceiling((double)timeRemainingSec / (60 * 60))).ToString() + " h"; }
+            else if (timeRemainingSec > 2 * 60) { return ((int)Math.Ceiling((double)timeRemainingSec / 60)).ToString() + " min"; }
+            else { return timeRemainingSec.ToString() + " sec"; }
         }
 
         public static string Ms2String(int ms, string parseType)

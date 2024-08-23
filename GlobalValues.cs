@@ -30,6 +30,8 @@ namespace GTRC_Basics
         public static string BaseDirectory { get { return baseDirectory; } set { baseDirectory = value; } }
         public static string ConfigDirectory { get { return baseDirectory + "config\\"; } }
         public static string DataDirectory { get { return baseDirectory + "data\\"; } }
+        public static string DatabaseDirectory { get { return DataDirectory + "database\\"; } }
+        public static string DbBackupDirectory { get { return DatabaseDirectory + "backups\\"; } }
         public static string ManufacturerLogosDirectory { get { return DataDirectory + "manufacturer logos\\"; } }
         public static string CurrentLogText { get { return currentLogText; } set { currentLogText = value; OnNewLogText(); } }
 
