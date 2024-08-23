@@ -11,9 +11,12 @@ namespace GTRC_Basics
             if (!Directory.Exists(GlobalValues.BaseDirectory)) { Directory.CreateDirectory(GlobalValues.BaseDirectory); }
             if (!Directory.Exists(GlobalValues.ConfigDirectory)) { Directory.CreateDirectory(GlobalValues.ConfigDirectory); }
             if (!Directory.Exists(GlobalValues.DataDirectory)) { Directory.CreateDirectory(GlobalValues.DataDirectory); }
+            if (!Directory.Exists(GlobalValues.ServerDirectory)) { Directory.CreateDirectory(GlobalValues.ServerDirectory); }
             if (!Directory.Exists(GlobalValues.DatabaseDirectory)) { Directory.CreateDirectory(GlobalValues.DatabaseDirectory); }
             if (!Directory.Exists(GlobalValues.DbBackupDirectory)) { Directory.CreateDirectory(GlobalValues.DbBackupDirectory); }
+            if (!Directory.Exists(GlobalValues.DbChangeDetectionDirectory)) { Directory.CreateDirectory(GlobalValues.DbChangeDetectionDirectory); }
             if (!Directory.Exists(GlobalValues.ManufacturerLogosDirectory)) { Directory.CreateDirectory(GlobalValues.ManufacturerLogosDirectory); }
+            if (!Directory.Exists(GlobalValues.DebugDirectory)) { Directory.CreateDirectory(GlobalValues.DebugDirectory); }
         }
 
         public static bool IsCompositeKey(string modelName)
