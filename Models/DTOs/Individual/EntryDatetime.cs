@@ -20,6 +20,7 @@ namespace GTRC_Basics.Models.DTOs
         public int? EntryId { get; set; }
         public DateTime? Date { get; set; }
         public int? CarId { get; set; }
+        public bool? IsPermanent { get; set; }
     }
 
 

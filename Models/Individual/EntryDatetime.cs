@@ -14,5 +14,6 @@ namespace GTRC_Basics.Models
         public DateTime Date { get; set; } = DateTime.UtcNow;
         [ForeignKey(nameof(Car))] public int CarId { get; set; }
         public virtual Car Car { get; set; } = new();
+        public bool IsPermanent { get; set; } = true;
     }
 }
