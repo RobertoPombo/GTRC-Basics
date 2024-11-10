@@ -27,5 +27,7 @@ namespace GTRC_Basics.Models
         public bool IsPointScorer { get; set; } = true;
         public bool IsPermanent { get; set; } = true;
         public ushort RaceNumberPreference { get; set; } = DefaultRaceNumber;
+        public bool IsAlwaysQualifyied { get; set; } = false;
+        public ushort FixedPriority { get; set; } = ushort.MinValue;
     }
 }

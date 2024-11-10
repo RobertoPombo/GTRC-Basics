@@ -37,8 +37,9 @@ namespace GTRC_Basics.Models.DTOs
         public ushort? DaysIgnoreCarRegistrationLimit { get; set; }
         public byte? CarChangeLimit { get; set; }
         public DateTime? DateStartCarChangeLimit { get; set; }
+        public DateTime? DateStartResetPointsForCarChange { get; set; }
         public int? BopId { get; set; }
-        public DateTime? DateBoPFreeze { get; set; }
+        public DateTime? DateBopFreeze { get; set; }
         public bool? BopLatestModelOnly { get; set; }
         public byte? CarLimitBallast { get; set; }
         public byte? GainBallast { get; set; }

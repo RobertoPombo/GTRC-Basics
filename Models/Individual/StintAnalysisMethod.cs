@@ -2,7 +2,7 @@
 
 namespace GTRC_Basics.Models
 {
-    public class StintAnalysisMethod : IBaseModel
+    public class Stintanalysismethod : IBaseModel
     {
         public static readonly string DefaultName = "Stint Analysis Method #1";
         public static readonly ushort MinMaxTimeDeltaPercent = 100;
@@ -12,6 +12,7 @@ namespace GTRC_Basics.Models
         public int Id { get; set; }
         public string Name { get; set; } = DefaultName;
         public bool UseResultsFromSimulation { get; set; } = true;
+        public ResultsCombinationType ResultsCombinationType { get; set; } = ResultsCombinationType.Best;
         public ushort LapRange { get; set; } = ushort.MaxValue;
         public ushort MaxLapsInvalid { get; set; } = ushort.MaxValue;
         public ushort MaxTimeDeltaPercent { get; set; } = ushort.MaxValue;

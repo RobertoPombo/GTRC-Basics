@@ -2,22 +2,23 @@
 
 namespace GTRC_Basics.Models.DTOs
 {
-    public class StintAnalysisMethodFullDto : StintAnalysisMethod
+    public class StintanalysismethodFullDto : Stintanalysismethod
     {
 
     }
 
 
-    public class StintAnalysisMethodUniqPropsDto0 : Mapper<StintAnalysisMethod>
+    public class StintanalysismethodUniqPropsDto0 : Mapper<Stintanalysismethod>
     {
-        [Required] public string Name { get; set; } = StintAnalysisMethod.DefaultName;
+        [Required] public string Name { get; set; } = Stintanalysismethod.DefaultName;
     }
 
 
-    public class StintAnalysisMethodAddDto : Mapper<StintAnalysisMethod>
+    public class StintanalysismethodAddDto : Mapper<Stintanalysismethod>
     {
         public string? Name { get; set; }
         public bool? UseResultsFromSimulation { get; set; }
+        public ResultsCombinationType? ResultsCombinationType { get; set; }
         public ushort? LapRange { get; set; }
         public ushort? MaxLapsInvalid { get; set; }
         public ushort? MaxTimeDeltaPercent { get; set; }
@@ -30,22 +31,22 @@ namespace GTRC_Basics.Models.DTOs
     }
 
 
-    public class StintAnalysisMethodUpdateDto : StintAnalysisMethodAddDto
+    public class StintanalysismethodUpdateDto : StintanalysismethodAddDto
     {
         [Required] public int Id { get; set; } = GlobalValues.NoId;
     }
 
 
-    public class StintAnalysisMethodFilterDto : StintAnalysisMethodAddDto
+    public class StintanalysismethodFilterDto : StintanalysismethodAddDto
     {
         public int? Id { get; set; }
     }
 
 
-    public class StintAnalysisMethodFilterDtos
+    public class StintanalysismethodFilterDtos
     {
-        public StintAnalysisMethodFilterDto Filter { get; set; } = new();
-        public StintAnalysisMethodFilterDto FilterMin { get; set; } = new();
-        public StintAnalysisMethodFilterDto FilterMax { get; set; } = new();
+        public StintanalysismethodFilterDto Filter { get; set; } = new();
+        public StintanalysismethodFilterDto FilterMin { get; set; } = new();
+        public StintanalysismethodFilterDto FilterMax { get; set; } = new();
     }
 }

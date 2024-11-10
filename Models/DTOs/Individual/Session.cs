@@ -25,7 +25,7 @@ namespace GTRC_Basics.Models.DTOs
         public bool? IsAllowedInterruption { get; set; }
         public SessionType? SessionType { get; set; }
         public bool? IsObligatedAttendance { get; set; }
-        public int? StintAnalysisMethodId { get; set; }
+        public int? StintanalysismethodId { get; set; }
         public int? PointssystemId { get; set; }
         public int? PreviousSessionId { get; set; }
         public int? GridSessionId { get; set; }
@@ -34,11 +34,16 @@ namespace GTRC_Basics.Models.DTOs
         public byte? IngameStartTimeHour { get; set; }
         public byte? DayOfWeekend { get; set; }
         public byte? TimeMultiplier { get; set; }
+        public short? AmbientTemp { get; set; }
+        public byte? CloudLevel { get; set; }
+        public byte? RainLevel { get; set; }
+        public byte? WeatherRandomness { get; set; }
+        public bool? FixedConditions { get; set; }
         public EntrylistType? EntrylistType { get; set; }
         public bool? ForceEntrylist { get; set; }
         public bool? ForceDriverInfo { get; set; }
         public bool? ForceCarModel { get; set; }
-        public bool? WriteBoP { get; set; }
+        public bool? WriteBop { get; set; }
         public string? ServerName { get; set; }
         public string? DriverPassword { get; set; }
         public string? SpectatorPassword { get; set; }
@@ -56,7 +61,7 @@ namespace GTRC_Basics.Models.DTOs
     {
         public int? Id { get; set; }
         public string? Event { get; set; }
-        public string? StintAnalysisMethod { get; set; }
+        public string? Stintanalysismethod { get; set; }
         public string? Pointssystem { get; set; }
     }
 

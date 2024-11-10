@@ -68,9 +68,11 @@ namespace GTRC_Basics
             typeof(EntryUserEvent),
             typeof(Pointssystem),
             typeof(PointssystemPosition),
-            typeof(StintAnalysisMethod),
+            typeof(Stintanalysismethod),
             typeof(Server),
             typeof(Session),
+            typeof(Performancerequirement),
+            typeof(Prequalifying),
             typeof(Resultsfile),
             typeof(Lap),
             typeof(Leaderboardline),
@@ -106,9 +108,11 @@ namespace GTRC_Basics
             { typeof(EntryUserEvent), "EntriesUsersEvents" },
             { typeof(Pointssystem), "Pointssystems" },
             { typeof(PointssystemPosition), "PointssystemsPositions" },
-            { typeof(StintAnalysisMethod), "StintAnalysisMethods" },
+            { typeof(Stintanalysismethod), "Stintanalysismethods" },
             { typeof(Server), "Servers" },
             { typeof(Session), "Sessions" },
+            { typeof(Performancerequirement), "Performancerequirements" },
+            { typeof(Prequalifying), "Prequalifyings" },
             { typeof(Resultsfile), "Resultsfiles" },
             { typeof(Lap), "Laps" },
             { typeof(Leaderboardline), "Leaderboardlines" },
@@ -145,9 +149,11 @@ namespace GTRC_Basics
             { typeof(EntryUserEvent), [typeof(EntryUserEventUniqPropsDto0)] },
             { typeof(Pointssystem), [typeof(PointssystemUniqPropsDto0)] },
             { typeof(PointssystemPosition), [typeof(PointssystemPositionUniqPropsDto0)] },
-            { typeof(StintAnalysisMethod), [typeof(StintAnalysisMethodUniqPropsDto0)] },
+            { typeof(Stintanalysismethod), [typeof(StintanalysismethodUniqPropsDto0)] },
             { typeof(Server), [typeof(ServerUniqPropsDto0), typeof(ServerUniqPropsDto1)] },
             { typeof(Session), [typeof(SessionUniqPropsDto0)] },
+            { typeof(Performancerequirement), [typeof(PerformancerequirementUniqPropsDto0)] },
+            { typeof(Prequalifying), [typeof(PrequalifyingUniqPropsDto0)] },
             { typeof(Resultsfile), [typeof(ResultsfileUniqPropsDto0), typeof(ResultsfileUniqPropsDto1)] },
             { typeof(Lap), [typeof(LapUniqPropsDto0)] },
             { typeof(Leaderboardline), [typeof(LeaderboardlineUniqPropsDto0)] },
@@ -419,13 +425,13 @@ namespace GTRC_Basics
                 }
             },
             {
-                typeof(StintAnalysisMethod), new()
+                typeof(Stintanalysismethod), new()
                 {
-                    { DtoType.Full, typeof(StintAnalysisMethodFullDto) },
-                    { DtoType.Add, typeof(StintAnalysisMethodAddDto) },
-                    { DtoType.Update, typeof(StintAnalysisMethodUpdateDto) },
-                    { DtoType.Filter, typeof(StintAnalysisMethodFilterDto) },
-                    { DtoType.Filters, typeof(StintAnalysisMethodFilterDtos) }
+                    { DtoType.Full, typeof(StintanalysismethodFullDto) },
+                    { DtoType.Add, typeof(StintanalysismethodAddDto) },
+                    { DtoType.Update, typeof(StintanalysismethodUpdateDto) },
+                    { DtoType.Filter, typeof(StintanalysismethodFilterDto) },
+                    { DtoType.Filters, typeof(StintanalysismethodFilterDtos) }
                 }
             },
             {
@@ -446,6 +452,26 @@ namespace GTRC_Basics
                     { DtoType.Update, typeof(SessionUpdateDto) },
                     { DtoType.Filter, typeof(SessionFilterDto) },
                     { DtoType.Filters, typeof(SessionFilterDtos) }
+                }
+            },
+            {
+                typeof(Performancerequirement), new()
+                {
+                    { DtoType.Full, typeof(PerformancerequirementFullDto) },
+                    { DtoType.Add, typeof(PerformancerequirementAddDto) },
+                    { DtoType.Update, typeof(PerformancerequirementUpdateDto) },
+                    { DtoType.Filter, typeof(PerformancerequirementFilterDto) },
+                    { DtoType.Filters, typeof(PerformancerequirementFilterDtos) }
+                }
+            },
+            {
+                typeof(Prequalifying), new()
+                {
+                    { DtoType.Full, typeof(PrequalifyingFullDto) },
+                    { DtoType.Add, typeof(PrequalifyingAddDto) },
+                    { DtoType.Update, typeof(PrequalifyingUpdateDto) },
+                    { DtoType.Filter, typeof(PrequalifyingFilterDto) },
+                    { DtoType.Filters, typeof(PrequalifyingFilterDtos) }
                 }
             },
             {

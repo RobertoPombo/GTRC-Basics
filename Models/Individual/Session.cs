@@ -14,6 +14,10 @@ namespace GTRC_Basics.Models
         public static readonly byte MaxDayOfWeekend = 3;
         public static readonly byte MinTimeMultiplier = 1;
         public static readonly byte MaxTimeMultiplier = 24;
+        public static readonly byte MaxCloudLevel = 100;
+        public static readonly byte MaxRainLevel = 100;
+        public static readonly byte MaxWeatherRandomness = 7;
+        public static readonly short DefaultAmbientTemp = 20;
         public static readonly string DefaultServerName = nameof(Server) + " #1";
         public static readonly byte MinCharacterCountPassword = 3;
 
@@ -28,8 +32,8 @@ namespace GTRC_Basics.Models
         public bool IsAllowedInterruption { get; set; } = false;
         public SessionType SessionType { get; set; } = SessionType.Practice;
         public bool IsObligatedAttendance { get; set; } = false;
-        [ForeignKey(nameof(StintAnalysisMethod))] public int StintAnalysisMethodId { get; set; }
-        public virtual StintAnalysisMethod StintAnalysisMethod { get; set; } = new();
+        [ForeignKey(nameof(Stintanalysismethod))] public int StintanalysismethodId { get; set; }
+        public virtual Stintanalysismethod Stintanalysismethod { get; set; } = new();
         [ForeignKey(nameof(Pointssystem))] public int PointssystemId { get; set; }
         public virtual Pointssystem Pointssystem { get; set; } = new();
         public int PreviousSessionId { get; set; } = GlobalValues.NoId;
@@ -39,11 +43,16 @@ namespace GTRC_Basics.Models
         public byte IngameStartTimeHour { get; set; } = byte.MinValue;
         public byte DayOfWeekend { get; set; } = MinDayOfWeekend;
         public byte TimeMultiplier { get; set; } = MinTimeMultiplier;
+        public short AmbientTemp { get; set; } = DefaultAmbientTemp;
+        public byte CloudLevel { get; set; } = byte.MinValue;
+        public byte RainLevel { get; set; } = byte.MinValue;
+        public byte WeatherRandomness { get; set; } = byte.MinValue;
+        public bool FixedConditions { get; set; } = false;
         public EntrylistType EntrylistType { get; set; } = EntrylistType.None;
         public bool ForceEntrylist { get; set; } = false;
         public bool ForceDriverInfo { get; set; } = false;
         public bool ForceCarModel { get; set; } = false;
-        public bool WriteBoP { get; set; } = false;
+        public bool WriteBop { get; set; } = false;
         public string ServerName { get; set; } = DefaultServerName;
         public string DriverPassword { get; set; } = string.Empty;
         public string SpectatorPassword { get; set; } = string.Empty;

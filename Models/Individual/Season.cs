@@ -34,9 +34,10 @@ namespace GTRC_Basics.Models
         public ushort DaysIgnoreCarRegistrationLimit { get; set; } = ushort.MinValue;
         public byte CarChangeLimit { get; set; } = byte.MinValue;
         public DateTime DateStartCarChangeLimit { get; set; } = GlobalValues.DateTimeMaxValue;
+        public DateTime DateStartResetPointsForCarChange { get; set; } = GlobalValues.DateTimeMaxValue;
         [ForeignKey(nameof(Bop))] public int BopId { get; set; }
         public virtual Bop Bop { get; set; } = new();
-        public DateTime DateBoPFreeze { get; set; } = GlobalValues.DateTimeMaxValue;
+        public DateTime DateBopFreeze { get; set; } = GlobalValues.DateTimeMaxValue;
         public bool BopLatestModelOnly { get; set; } = false;
         public byte CarLimitBallast { get; set; } = byte.MinValue;
         public byte GainBallast { get; set; } = byte.MinValue;

@@ -29,12 +29,7 @@ namespace GTRC_Basics.Models.DTOs
         public string? Name { get; set; }
         public DateTime? Date { get; set; }
         public int? TrackId { get; set; }
-        public bool? IsPreQualifying { get; set; }
-        public short? AmbientTemp { get; set; }
-        public byte? CloudLevel { get; set; }
-        public byte? RainLevel { get; set; }
-        public byte? WeatherRandomness { get; set; }
-        public bool? FixedConditions { get; set; }
+        public ResultsCombinationType? PrequalifyingCombinationType { get; set; }
         public ushort? SessionOvertimeSeconds { get; set; }
         public ushort? PreRaceWaitingTimeSeconds { get; set; }
         public ushort? PostQualiSeconds { get; set; }

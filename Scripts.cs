@@ -505,6 +505,10 @@ namespace GTRC_Basics
             else if (type == typeof(SessionType?)) { if (Enum.TryParse(strValue, out SessionType cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
             else if (type == typeof(EntrylistType?)) { if (Enum.TryParse(strValue, out EntrylistType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ResultsCombinationType)) { if (Enum.TryParse(strValue, out ResultsCombinationType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(ResultsCombinationType?)) { if (Enum.TryParse(strValue, out ResultsCombinationType cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionPurpose)) { if (Enum.TryParse(strValue, out SessionPurpose cv)) { return cv; } else { return null; } }
+            else if (type == typeof(SessionPurpose?)) { if (Enum.TryParse(strValue, out SessionPurpose cv)) { return cv; } else { return null; } }
             else if (type == typeof(IncidentStatus)) { if (Enum.TryParse(strValue, out IncidentStatus cv)) { return cv; } else { return null; } }
             else if (type == typeof(IncidentStatus?)) { if (Enum.TryParse(strValue, out IncidentStatus cv)) { return cv; } else { return null; } }
             else if (type == typeof(ReportReason)) { if (Enum.TryParse(strValue, out ReportReason cv)) { return cv; } else { return null; } }

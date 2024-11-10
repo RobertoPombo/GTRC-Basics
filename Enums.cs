@@ -27,6 +27,18 @@
         Season = 3
     }
 
+    public enum ResultsCombinationType
+    {
+        Best = 0,
+        Average = 1
+    }
+
+    public enum SessionPurpose
+    {
+        PreQualifying = 0,
+        PerformanceRequirement = 1
+    }
+
     public enum IncidentStatus
     {
         Open = 0,
@@ -156,7 +168,7 @@
         Entries = 2,
         NewEntries = 3,
         SeasonSettingsViolations = 4,
-        BoP = 5,
+        Bop = 5,
         Events = 6,
         Cars = 7,
         Organizations = 8,
