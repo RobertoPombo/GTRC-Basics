@@ -16,6 +16,7 @@ namespace GTRC_Basics
             if (!Directory.Exists(GlobalValues.DbBackupDirectory)) { Directory.CreateDirectory(GlobalValues.DbBackupDirectory); }
             if (!Directory.Exists(GlobalValues.DbChangeDetectionDirectory)) { Directory.CreateDirectory(GlobalValues.DbChangeDetectionDirectory); }
             if (!Directory.Exists(GlobalValues.ManufacturerLogosDirectory)) { Directory.CreateDirectory(GlobalValues.ManufacturerLogosDirectory); }
+            if (!Directory.Exists(GlobalValues.ResultsDirectory)) { Directory.CreateDirectory(GlobalValues.ResultsDirectory); }
             if (!Directory.Exists(GlobalValues.DebugDirectory)) { Directory.CreateDirectory(GlobalValues.DebugDirectory); }
         }
 
