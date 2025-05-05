@@ -5,7 +5,27 @@ namespace GTRC_Basics.Models.DTOs
 {
     public class SessionFullDto : Session
     {
+        public DateTime StartDate
+        {
+            get { return GetStartDate(this); }
+            set { }
+        }
 
+        public DateTime EndDate
+        {
+            get { return GetEndDate(this); }
+            set { }
+        }
+
+        public static DateTime GetStartDate(Session obj)
+        {
+            return obj.Event.Date.AddMinutes(obj.StartTimeOffsetMin);
+        }
+
+        public static DateTime GetEndDate(Session obj)
+        {
+            return obj.Event.Date.AddMinutes(obj.StartTimeOffsetMin + obj.SessionsCount * obj.DurationMin);
+        }
     }
 
 

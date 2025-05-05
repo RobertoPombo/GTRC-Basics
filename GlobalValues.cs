@@ -35,6 +35,7 @@ namespace GTRC_Basics
         public static string DbBackupDirectory { get { return DatabaseDirectory + "backups\\"; } }
         public static string DbChangeDetectionDirectory { get { return DatabaseDirectory + "change detection\\"; } }
         public static string ManufacturerLogosDirectory { get { return DataDirectory + "manufacturer logos\\"; } }
+        public static string ResultsDirectory { get { return DataDirectory + "results\\"; } }
         public static string DebugDirectory { get { return baseDirectory + "debug\\"; } }
         public static string CurrentLogText { get { return currentLogText; } set { currentLogText = value; OnNewLogText(); } }
 

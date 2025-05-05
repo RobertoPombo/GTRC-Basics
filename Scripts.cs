@@ -177,6 +177,35 @@ namespace GTRC_Basics
             return list;
         }
 
+        public static List<Session> SortByDate(List<Session> list)
+        {
+            for (int index1 = 0; index1 < list.Count - 1; index1++)
+            {
+                for (int index2 = index1; index2 < list.Count; index2++)
+                {
+                    if (list[index1].Event.Date.AddMinutes(list[index1].StartTimeOffsetMin) > list[index2].Event.Date.AddMinutes(list[index2].StartTimeOffsetMin))
+                    {
+                        (list[index2], list[index1]) = (list[index1], list[index2]);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public static bool CheckDoTimeSpansOverlap(DateTime start1, DateTime start2, DateTime end1, DateTime end2)
+        {
+            if (start1 >= end2) { return false; }
+            if (end1 <= start2) { return false; }
+            return true;
+        }
+
+        public static bool CheckDoTimeSpansOverlap(DateOnly start1, DateOnly start2, DateOnly end1, DateOnly end2)
+        {
+            if (start1 >= end2) { return false; }
+            if (end1 <= start2) { return false; }
+            return true;
+        }
+
         public static string RemoveSpaceStartEnd(string s)
         {
             s ??= string.Empty;
