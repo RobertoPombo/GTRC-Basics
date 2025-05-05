@@ -21,7 +21,7 @@ namespace GTRC_Basics.Models
         public static readonly string DefaultServerName = nameof(Server) + " #1";
         public static readonly byte MinCharacterCountPassword = 3;
 
-        public override string ToString() { return SessionType.ToString() + " - " + Event.ToString(); }
+        public override string ToString() { return (Event.Date.AddMinutes(StartTimeOffsetMin)).ToString() + " - " + SessionType.ToString() + " - " + Event.ToString(); }
 
         public int Id { get; set; }
         [ForeignKey(nameof(Event))] public int EventId { get; set; }

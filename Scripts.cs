@@ -322,14 +322,12 @@ namespace GTRC_Basics
             return ms;
         }
 
-        public static string ValidatedPath(string path0, string path)
+        public static string ValidatedPath(string path0, string? path = null)
         {
-
             string pathStart;
             string pathName;
-            List<char> BlacklistPathChar = ['/', ':', '*', '?', '"', '<', '>', '|'];
 
-            if (path == null) { path = path0; }
+            path ??= path0;
 
             if (path.Length < 3 || path.Substring(1, 2) != ":\\")
             {
@@ -346,13 +344,7 @@ namespace GTRC_Basics
                 }
             }
 
-            foreach (char pathChar in BlacklistPathChar)
-            {
-                while (pathName.Contains(pathChar))
-                {
-                    pathName = pathName.Remove(pathName.IndexOf(pathChar), 1);
-                }
-            }
+            pathName = PathRemoveBlacklistedChars(pathName);
 
             if (pathName.Length > 0 && pathName[^1..] != "\\")
             {
@@ -376,6 +368,19 @@ namespace GTRC_Basics
                 path = "//" + path[path0.Length..];
             }
 
+            return path;
+        }
+
+        public static string PathRemoveBlacklistedChars(string path)
+        {
+            List<string> blacklist = ["/", ":", "*", "?", "\"", "<", ">", "|"];
+            foreach (string blacklistItem in blacklist)
+            {
+                while (path.Contains(blacklistItem))
+                {
+                    path = path.Replace(blacklistItem, string.Empty);
+                }
+            }
             return path;
         }
 
