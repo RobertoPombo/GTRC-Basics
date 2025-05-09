@@ -20,6 +20,12 @@ namespace GTRC_Basics.Models.DTOs
 
     public class ColorUniqPropsDto0 : Mapper<Color>
     {
+        [Required] public string Purpose { get; set; } = string.Empty;
+    }
+
+
+    public class ColorUniqPropsDto1 : Mapper<Color>
+    {
         [Required] public byte Alpha { get; set; } = byte.MinValue;
         [Required] public byte Red { get; set; } = byte.MinValue;
         [Required] public byte Green { get; set; } = byte.MinValue;
@@ -29,6 +35,7 @@ namespace GTRC_Basics.Models.DTOs
 
     public class ColorAddDto : Mapper<Color>
     {
+        public string? Purpose { get; set; }
         public byte? Alpha { get; set; }
         public byte? Red { get; set; }
         public byte? Green { get; set; }

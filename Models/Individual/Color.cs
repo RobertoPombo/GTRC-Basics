@@ -4,6 +4,7 @@ namespace GTRC_Basics.Models
 {
     public class Color : IBaseModel
     {
+        public static readonly string DefaultPurpose = nameof(Color);
         public override string ToString()
         {
             System.Drawing.Color argb = System.Drawing.Color.FromArgb(Alpha, Red, Green, Blue); 
@@ -11,6 +12,7 @@ namespace GTRC_Basics.Models
         }
 
         public int Id { get; set; }
+        public string Purpose { get; set; } = DefaultPurpose;
         public byte Alpha { get; set; } = byte.MinValue;
         public byte Red { get; set; } = byte.MinValue;
         public byte Green { get; set; } = byte.MinValue;
