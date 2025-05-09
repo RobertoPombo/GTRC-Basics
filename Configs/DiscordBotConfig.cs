@@ -5,14 +5,12 @@ namespace GTRC_Basics.Configs
 {
     public class DiscordBotConfig
     {
-        private static readonly Dictionary<ulong, string> tokens = new()
-        {
-            { 1004795316463227040, "MTAwNDc5NTMxNjQ2MzIyNzA0MA.G4Qg1w.-_7ccWcVoZrun6jx-k_7KreF-1fE-blNNhrJzc" },
-            { 1008400523390636184, "MTAwODQwMDUyMzM5MDYzNjE4NA.GuiMFH.L0A38VZ9n1enIUMCyAn5-HTqVlLl99XzsqFLW0" },
-        };
         private static readonly string path = GlobalValues.ConfigDirectory + "config discord bot.json";
+        private static readonly string pathTokens = GlobalValues.ConfigDirectory + "config discord bot tokens.json";
         public static readonly List<DiscordBotConfig> List = [];
         public static readonly string DefaultName = "Discord Bot #1";
+
+        public static Dictionary<ulong, string> Tokens { get; set; } = [];
 
         public DiscordBotConfig()
         {
@@ -64,7 +62,7 @@ namespace GTRC_Basics.Configs
             set { if (value != isActive) { if (value) { DeactivateAllBots(); } isActive = value; if (Token == string.Empty) { isActive = false; } } }
         }
 
-        [JsonIgnore] public string Token { get { if (tokens.TryGetValue(discordBotId, out string? token)) { return token; } else { return string.Empty; } } }
+    [JsonIgnore] public string Token { get { if (Tokens.TryGetValue(discordBotId, out string? token)) { return token; } else { return string.Empty; } } }
 
         public bool IsUniqueName()
         {
@@ -74,6 +72,18 @@ namespace GTRC_Basics.Configs
                 if (List[botNr].Name == name && botNr != listIndexThis) { return false; }
             }
             return true;
+        }
+
+        public static void LoadTokens()
+        {
+            if (!File.Exists(pathTokens)) { File.WriteAllText(pathTokens, JsonConvert.SerializeObject(Tokens, Formatting.Indented), Encoding.Unicode); }
+            try
+            {
+                Tokens.Clear();
+                Tokens = JsonConvert.DeserializeObject<Dictionary<ulong, string>>(File.ReadAllText(pathTokens, Encoding.Unicode)) ?? [];
+                GlobalValues.CurrentLogText = "Discord bot tokens loaded.";
+            }
+            catch { GlobalValues.CurrentLogText = "Load discord bot tokens failed!"; }
         }
 
         public static void LoadJson()
