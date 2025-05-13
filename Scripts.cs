@@ -466,7 +466,7 @@ namespace GTRC_Basics
             int seconds = (int)timeRemainingSec - (years * 365 * 24 * 60 * 60) - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
             string yearsStr = years.ToString();
             if (years < 10) { yearsStr = "0" + yearsStr; }
-            string daysStr = hours.ToString();
+            string daysStr = days.ToString();
             if (days < 10) { daysStr = "0" + daysStr; }
             string hoursStr = hours.ToString();
             if (hours < 10) { hoursStr = "0" + hoursStr; }
