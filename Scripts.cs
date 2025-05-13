@@ -455,6 +455,39 @@ namespace GTRC_Basics
             else { return timeRemainingSec.ToString() + " sec"; }
         }
 
+        public static string TimeRemaining2StringPrecise(long timeRemainingSec, bool showAll = false, string delimiter = null)
+        {
+            bool useCustomDelimiter = true;
+            if (delimiter is null) { useCustomDelimiter = false; }
+            int years = (int)Math.Floor((double)timeRemainingSec / (365 * 24 * 60 * 60));
+            int days = (int)Math.Floor((double)(timeRemainingSec - (years * 365 * 24 * 60 * 60)) / (24 * 60 * 60));
+            int hours = (int)Math.Floor((double)(timeRemainingSec - (years * 365 * 24 * 60 * 60) - (days * 24 * 60 * 60)) / (60 * 60));
+            int minutes = (int)Math.Floor((double)(timeRemainingSec - (years * 365 * 24 * 60 * 60) - (days * 24 * 60 * 60) - (hours * 60 * 60)) / 60);
+            int seconds = (int)timeRemainingSec - (years * 365 * 24 * 60 * 60) - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
+            string yearsStr = years.ToString();
+            if (years < 10) { yearsStr = "0" + yearsStr; }
+            string daysStr = hours.ToString();
+            if (days < 10) { daysStr = "0" + daysStr; }
+            string hoursStr = hours.ToString();
+            if (hours < 10) { hoursStr = "0" + hoursStr; }
+            string minutesStr = minutes.ToString();
+            if (minutes < 10) { minutesStr = "0" + minutesStr; }
+            string secondsStr = seconds.ToString();
+            if (seconds < 10) { secondsStr = "0" + secondsStr; }
+            string text = string.Empty;
+            if (!useCustomDelimiter) { delimiter = " Years "; }
+            if (showAll || years > 0) { text += yearsStr + delimiter; }
+            if (!useCustomDelimiter) { delimiter = " Days "; }
+            if (showAll || years > 0 || days > 0) { text += daysStr + delimiter; }
+            if (!useCustomDelimiter) { delimiter = " h "; }
+            if (showAll || years > 0 || days > 0 || hours > 0) { text += hoursStr + delimiter; }
+            if (!useCustomDelimiter) { delimiter = " min "; }
+            if (showAll || years > 0 || days > 0 || hours > 0 || minutes > 0) { text += minutesStr + delimiter; }
+            if (!useCustomDelimiter) { delimiter = " sec"; } else { delimiter = string.Empty; }
+            if (showAll || years > 0 || days > 0 || hours > 0 || minutes > 0 || seconds > 0) { text += secondsStr + delimiter; }
+            return text;
+        }
+
         public static string Ms2String(int ms, string parseType)
         {
             if (ms == int.MinValue) { ms = int.MaxValue; }
